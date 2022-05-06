@@ -3608,7 +3608,7 @@ body.landing #main {
   /* Banner */
 
   /* Nav */
-
+/*
   #page-wrapper {
     -moz-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -3768,6 +3768,7 @@ body.landing #main {
     -ms-transform: translateX(0);
     transform: translateX(0);
   }
+  */
 }
 
 /* Mobile */
