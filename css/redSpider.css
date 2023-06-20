@@ -1,0 +1,427 @@
+@charset "utf-8";
+
+/* 0. header */
+header {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+header .logo {
+	width: 100px;
+	height: 25px;
+}
+
+header .logo img {
+	object-fit: contain;
+}
+
+header .menu-wrap .menu {
+	color: #000;
+}
+
+header .menu-wrap .menu::after {
+	background-color: #000;
+}
+
+header .menu-wrap .menu a.active {
+	font-weight: 600;
+}
+
+/* 1. banner */
+.banner {
+	width: 100%;
+	height: 350px;
+	margin-top: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #F1F0EB;
+}
+
+.banner .txtBox {
+	width: 450px;
+	height: 100%;
+	padding: 30px 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+	background-color: #72171E;
+	color: #fff;
+}
+
+.banner .txtBox .title {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 20px;
+	width: fit-content;
+}
+
+.banner .txtBox span {
+	font-size: 1rem;
+	font-weight: 200;
+	display: block;
+	width: fit-content;
+}
+
+.banner .bannerBox {
+	width: calc(100% - 450px);
+	height: calc(100% - 50px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.banner .bannerBox .swiper {
+	width: 100%;
+	height: 100%;
+	padding: 0 30px;
+	cursor: grab;
+}
+
+.banner .bannerBox .swiper .swiper-slide {
+	font-size: 1rem;
+	background: #fff;
+	position: relative;
+}
+
+.banner .bannerBox .swiper .swiper-slide .title {
+	background-color: #72171E;
+	color: #fff;
+	padding: 5px 10px;
+	width: fit-content;
+	position: absolute;
+	top: 15px;
+	left: 0;
+}
+.banner .bannerBox .swiper .swiper-slide .title b{
+	position: relative;
+	padding-left: 15px;
+}
+.banner .bannerBox .swiper .swiper-slide .title b::before{
+	content: '*';
+	position: absolute;
+	left: 5px;
+}
+
+.banner .bannerBox .swiper .swiper-slide .info-wrap {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+}
+
+.banner .bannerBox .swiper .swiper-slide .info-wrap p {
+	width: 100%;
+	height: fit-content;
+	position: relative;
+	padding-left: 10px;
+	margin: 5px 0;
+}
+
+.banner .bannerBox .swiper .swiper-slide .info-wrap p::before {
+	content: '';
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: #000;
+	position: absolute;
+	left: 0;
+	top: 8px;
+}
+.banner .bannerBox .swiper .swiper-slide .info-wrap p b{
+	font-weight: normal;
+	position: relative;
+}
+.banner .bannerBox .swiper .swiper-slide .info-wrap p b::before{
+	content: '*';
+}
+.banner .bannerBox .swiper .swiper-slide .info-wrap span{
+	display: block;
+	width: 100%;
+	padding-left: 20px;
+	position: relative;
+	font-size: 0.9rem;
+}
+.banner .bannerBox .swiper .swiper-slide .info-wrap span::before{
+	content: '-';
+	position: absolute;
+	left: 10px;
+	top: 0;
+}
+.banner .bannerBox .swiper .swiper-slide .txt-info{
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	width: 95%;
+	font-size: 0.6rem;
+	font-weight: 200;
+	text-align: end;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+/* 2. section 1 */
+.sec1 {
+	width: 100%;
+	height: fit-content;
+	padding: 200px 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: url('../images/redspider-txt.png') no-repeat top center;
+	background-position: 0 100px;
+	background-size: contain;
+	scale: 0.9;
+}
+
+.sec1 .txtBox {
+	width: 100%;
+	height: fit-content;
+}
+
+.sec1 .txtBox span {
+	font-size: 1.3rem;
+	color: #AD3D46;
+	font-weight: 500;
+}
+
+.sec1 .txtBox .title {
+	font-size: 2rem;
+	font-weight: 900;
+}
+
+.sec1 .cardBox {
+	width: 100%;
+	height: 500px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.sec1 .cardBox .card {
+	width: 25%;
+	height: 100%;
+	color: #fff;
+	padding: 50px;
+	transition: 0.3s;
+	text-transform: capitalize;
+}
+
+.sec1 .cardBox .card .title {
+	font-size: 1.3rem;
+	font-weight: 900;
+	margin-bottom: 5px;
+	color: rgba(255, 255, 255, 0.6);
+	transition: 0.3s;
+}
+
+.sec1 .cardBox .card .sub,
+.sec1 .cardBox .card .info,
+.sec1 .cardBox .card span,
+.sec1 .cardBox .card ul li {
+	display: none;
+}
+
+.sec1 .cardBox .card.active {
+	width: 45%;
+	height: 100%;
+}
+
+.sec1 .cardBox .card:nth-child(1) {
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/slider/iot.jpeg') no-repeat center center;
+	background-size: cover;
+}
+
+.sec1 .cardBox .card:nth-child(1).active {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/slider/iot.jpeg') no-repeat center center;
+	background-size: cover;
+}
+
+.sec1 .cardBox .card:nth-child(2) {
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/slider/os.webp') no-repeat center center;
+	background-size: cover;
+}
+
+.sec1 .cardBox .card:nth-child(2).active {
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/slider/os.webp') no-repeat center center;
+	background-size: cover;
+}
+
+.sec1 .cardBox .card:nth-child(3) {
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/slider/web3.jpeg') no-repeat center center;
+	background-size: cover;
+}
+
+.sec1 .cardBox .card:nth-child(3).active {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/slider/web3.jpeg') no-repeat center center;
+	background-size: cover;
+}
+
+.sec1 .cardBox .card.active {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+}
+
+.sec1 .cardBox .card.active .title {
+	color: #fff;
+}
+
+.sec1 .cardBox .card.active .sub {
+	display: inline-block;
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+.sec1 .cardBox .card.active .info {
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.6rem;
+}
+
+.sec1 .cardBox .card.active span {
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 1rem;
+	font-weight: 300;
+	line-height: 1.5rem;
+}
+
+/* 3. section 2 */
+.sec2 {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #F0F0F0;
+	padding: 200px 100px;
+}
+.sec2 .processBox {
+	margin: 20px auto 0 auto;
+	width: 70%;
+	height: fit-content;
+	padding: 50px;
+	/* background-color: #fff; */
+}
+.sec2 .processBox img{
+	object-fit: contain;
+}
+.sec2 p{
+	width: fit-content;
+	margin: 30px auto;
+	font-size: 1rem;
+	font-weight: 300;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.8);
+}
+
+/* 5. footer */
+footer .footer-top .logoBox {
+	width: fit-content;
+	height: 30px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+footer .footer-top .logoBox img {
+	filter: brightness(10);
+	opacity: 0.5;
+}
+
+@media (max-width : 1280px) {
+	html,
+	body {
+		font-size: 90%;
+	}
+
+	.sec1 {
+		padding: 150px 80px;
+	}
+
+	.sec1 .cardBox {
+		height: 450px;
+	}
+}
+
+@media (max-width : 1024px) {
+	.sec1 {
+		padding: 100px 50px;
+	}
+	.sec2 {
+		padding: 100px 50px;
+		background-color: #F0F0F0;
+	}
+}
+
+@media (max-width : 950px) {
+	.sec1 {
+		padding: 100px 0;
+	}
+	.sec2{
+		padding: 50px 30px;
+	}
+}
+
+@media (max-width : 860px) {
+	.banner {
+		height: fit-content;
+		flex-direction: column;
+	}
+
+	.banner .txtBox {
+		width: 100%;
+		height: fit-content;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.banner .bannerBox {
+		padding: 20px 0;
+		width: 100%;
+		height: 300px;
+	}
+}
+
+@media (max-width : 800px) {
+	html,
+	body {
+		font-size: 85%;
+	}
+
+	.sec1 .cardBox {
+		height: fit-content;
+		flex-direction: column;
+	}
+
+	.sec1 .cardBox .card,
+	.sec1 .cardBox .card.active {
+		width: 100%;
+		height: fit-content;
+		padding: 40px;
+		margin: 10px 0;
+	}
+}
+
+@media (max-width : 660px) {
+	html,
+	body {
+		font-size: 80%;
+	}
+
+	.banner .bannerBox {
+		height: 250px;
+	}
+
+	.sec2 .processBox {
+		width: 100%;
+	}
+}
