@@ -25,6 +25,8 @@ $(document).ready(function () {
       $('.sec2 .processBox .ko').show();
       $('.sec2 .processBox .en').hide();
       // purpleHound
+      $('.sec1 .sec-bottom .ko').show();
+      $('.sec1 .sec-bottom .en').hide();
       $('.sec2 .processBox .ko').show();
       $('.sec2 .processBox .en').hide();
       $('.sec4 .sec-bottom .btnInfo').html($('.sec4 .sec-bottom .buttonBox input[type="radio"]:checked').attr('ko'));
@@ -44,6 +46,8 @@ $(document).ready(function () {
       $('.sec2 .processBox .ko').hide();
       $('.sec2 .processBox .en').show();
       // purpleHound
+      $('.sec1 .sec-bottom .ko').hide();
+      $('.sec1 .sec-bottom .en').show();
       $('.sec2 .processBox .ko').hide();
       $('.sec2 .processBox .en').show();
       $('.sec4 .sec-bottom .btnInfo').html($('.sec4 .sec-bottom .buttonBox input[type="radio"]:checked').attr('en'));
@@ -66,6 +70,8 @@ $(document).ready(function () {
       $('.sec2 .processBox .ko').hide();
       $('.sec2 .processBox .en').show();
       // purpleHound
+      $('.sec1 .sec-bottom .ko').hide();
+      $('.sec1 .sec-bottom .en').show();
       $('.sec2 .processBox .ko').hide();
       $('.sec2 .processBox .en').show();
       $('.sec4 .sec-bottom .btnInfo').html($('.sec4 .sec-bottom .buttonBox input[type="radio"]:checked').attr('en'));
@@ -85,6 +91,8 @@ $(document).ready(function () {
       $('.sec2 .processBox .ko').show();
       $('.sec2 .processBox .en').hide();
       // purpleHound
+      $('.sec1 .sec-bottom .ko').show();
+      $('.sec1 .sec-bottom .en').hide();
       $('.sec2 .processBox .ko').show();
       $('.sec2 .processBox .en').hide();
       $('.sec4 .sec-bottom .btnInfo').html($('.sec4 .sec-bottom .buttonBox input[type="radio"]:checked').attr('ko'));
