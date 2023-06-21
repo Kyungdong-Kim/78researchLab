@@ -100,4 +100,19 @@ $(document).ready(function () {
       $('.sec1 .sec-bottom .ko, .sec1 .sec-bottom .en').hide();
     }
   });
+  $(window).resize(function(){
+    if(ww <= 1200){
+      $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').hide();
+      if(lang === 'Ko'){
+        $('.sec1 .sec-bottom .ko').show();
+        $('.sec1 .sec-bottom .en').hide();
+      } else {
+        $('.sec1 .sec-bottom .ko').hide();
+        $('.sec1 .sec-bottom .en').show();
+      }
+    } else {
+      $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').show();
+      $('.sec1 .sec-bottom .ko, .sec1 .sec-bottom .en').hide();
+    }
+  })
 });
