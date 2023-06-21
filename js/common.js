@@ -118,6 +118,15 @@ $(document).ready(function () {
         text: message,
       });
     }
+
+    if(href === ''){
+      let message = (localStorage.getItem('lang') === 'Ko') ? '잠시만 기다려주세요.' : 'ㅖlease wait for a moment';
+      Swal.fire({
+        icon: 'info',
+        title: 'Notice',
+        text: message,
+      });
+    }
   });
 
   // hamburger Btn
