@@ -7,12 +7,10 @@ $(document).ready(function () {
 
   // language
   let lang = localStorage.getItem('lang');
-  console.log(lang);
 
   // Set default language value if not present in local storage
 	if (!localStorage.getItem('lang')) {
 		localStorage.setItem('lang', 'Ko');
-		console.log(localStorage.getItem('lang'));
 	}
 	$(window).on('load', function () {
 		if (localStorage.getItem('lang') === 'Ko') {
@@ -109,18 +107,8 @@ $(document).ready(function () {
   // alert
   $('.sec2 .sec-bottom .service .txtBox a, header .menu-wrap .menu a, header .menuBtn ul li a').click(function () {
     let href = $(this).attr("href");
-    console.log(href);
     if (href === '#none') {
       let message = (localStorage.getItem('lang') === 'Ko') ? '현재 준비중인 서비스입니다.' : 'This is a service in preparation.';
-      Swal.fire({
-        icon: 'info',
-        title: 'Notice',
-        text: message,
-      });
-    }
-
-    if(href === ''){
-      let message = (localStorage.getItem('lang') === 'Ko') ? '잠시만 기다려주세요.' : 'ㅖlease wait for a moment';
       Swal.fire({
         icon: 'info',
         title: 'Notice',
@@ -132,7 +120,6 @@ $(document).ready(function () {
   // hamburger Btn
   const headerMenuBtn = () => {
     let ww = $(window).width();
-    console.log(ww)
     if (ww <= 980) {
       $('header .menu-wrap').hide();
       $('header .menuBtn').show();

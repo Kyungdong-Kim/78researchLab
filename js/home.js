@@ -3,7 +3,6 @@ $(document).ready(function () {
 	// Set default language value if not present in local storage
 	if (!localStorage.getItem('lang')) {
 		localStorage.setItem('lang', 'Ko');
-		console.log(localStorage.getItem('lang'));
 	}
 
   // 1. Header SideBar styling based on Scroll
@@ -16,8 +15,6 @@ $(document).ready(function () {
   $(window).scroll(function () {
     let sct = $(window).scrollTop();
     let ww = $(window).width();
-    console.log(ww)
-    console.log(sct);
     // 1-2-1. Header
     if (sct < sec1) {
       $('header .menu-wrap .menu').css({ color: '#fff' });
