@@ -478,7 +478,7 @@ header .menu-wrap .menu a.active {
 }
 .sec4 .sec-bottom .imgBox{
     width: 1000px;
-    height: 430px;
+    height: 500px;
 }
 .sec4 .sec-bottom .imgBox .img{
     width: 100%;
@@ -668,7 +668,7 @@ footer .footer-top .logoBox{
   }
   .sec4 .sec-bottom .imgBox{
       width: 800px;
-      height: 430px;
+      height: 400px;
   }
 }
 @media (max-width : 980px) {
@@ -702,8 +702,6 @@ footer .footer-top .logoBox{
         margin: 10px 0;
     }
     .sec4 .sec-bottom .imgBox{
-      width: 800px;
-      height: 430px;
       padding: 0;
   }
 }
@@ -724,8 +722,7 @@ footer .footer-top .logoBox{
   }
   .sec4 .sec-bottom .imgBox{
     width: 700px;
-    height: 400px;
-    padding: 0;
+    height: 350px;
   }
 }
 @media (max-width : 800px) {
