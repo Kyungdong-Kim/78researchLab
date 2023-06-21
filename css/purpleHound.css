@@ -734,8 +734,11 @@ footer .footer-top .logoBox{
     height: 800px;
   }
   .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
-    display: none;
-  }
+    width: 250px;
+    height: 250px;
+    right: 30px;
+    bottom: 30px;
+}
   .sec3 h3.title{
     font-size: 1.1rem;
   }
@@ -763,6 +766,9 @@ footer .footer-top .logoBox{
   }
   .sec2 .sec-bottom .tab-wrap .tab.active .txtBox ul li{
     margin: 5px;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
+    display: none;
   }
 }
 @media (max-width : 550px) {
@@ -799,7 +805,11 @@ footer .footer-top .logoBox{
     padding: 5px;
     font-size: 0.9rem;
   }
+  .sec4 .sec-bottom .buttonBox .btn{
+    margin: 0 5px;
+  }
   .sec4 .sec-bottom .buttonBox .btn label.active{
-    font-weight: 500;
+    font-weight: normal;
+    font-size: 0.9rem;
   }
 }
