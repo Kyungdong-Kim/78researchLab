@@ -560,75 +560,75 @@ footer .footer-top .logoBox{
     }
 }
 @media (max-width : 1500px) {
-    .sec2 .sec-bottom .tab-wrap .tab.active .txtBox{
-        padding: 30px;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
-        width: 350px;
-        height: 350px;
-        position: absolute;
-        right: 50px;
-        bottom: 50px;
-        float: left;
-    }
-    .sec3{
-        padding: 120px 80px;
-    }
+  .sec2 .sec-bottom .tab-wrap .tab.active .txtBox{
+      padding: 30px;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
+      width: 350px;
+      height: 350px;
+      position: absolute;
+      right: 50px;
+      bottom: 50px;
+      float: left;
+  }
+  .sec3{
+      padding: 120px 80px;
+  }
 }
 @media (max-width : 1350px) {
-    html, body{
-        font-size: 95%;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab.active#tab2 .txtBox span{
-        right: 0;
-    }
-    .sec2 .sec-bottom{
-        height: 400px;
-        padding: 100px 0;
-    }
-    .sec2 .sec-bottom .tab-wrap{
-        padding: 20px;
-        height: fit-content;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab{
-        width: 100%;
-        height: 100%;
-        display: none;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab.active{
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: center;
-        height: 350px;
-        padding: 0;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
-        width: 250px;
-        height: 250px;
-        right: 30px;
-        bottom: 30px;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab.active#tab2 .imgBox{
-        display: none;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab.active .txtBox,
-    .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .txtBox{
-        width: 100%;
-        background-color: #fff;
-        height: 350px;
-        margin-left: 0;
-        padding: 20px;
-    }
-    .sec2 .sec-bottom .tab-wrap .tab.active#tab2 .txtBox span{
-        display: none;
-    }
+  html, body{
+      font-size: 95%;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab2 .txtBox span{
+      right: 0;
+  }
+  .sec2 .sec-bottom{
+      height: 400px;
+      padding: 100px 0;
+  }
+  .sec2 .sec-bottom .tab-wrap{
+      padding: 20px;
+      height: fit-content;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab{
+      width: 100%;
+      height: 100%;
+      display: none;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active{
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      height: 350px;
+      padding: 0;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
+      width: 250px;
+      height: 250px;
+      right: 30px;
+      bottom: 30px;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab2 .imgBox{
+      display: none;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active .txtBox,
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .txtBox{
+      width: 100%;
+      background-color: #fff;
+      height: 350px;
+      margin-left: 0;
+      padding: 20px;
+  }
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab2 .txtBox span{
+      display: none;
+  }
 }
 @media (max-width : 1200px) {
-    .sec3{
-        width: 95%;
-        padding: 100px 50px;
-    }
+  .sec3{
+      width: 95%;
+      padding: 100px 50px;
+  }
 }
 @media (max-width : 1100px) {
   .sec2{
@@ -768,7 +768,11 @@ footer .footer-top .logoBox{
     margin: 5px;
   }
   .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
-    display: none;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    width: 50%;
   }
 }
 @media (max-width : 550px) {
@@ -779,6 +783,10 @@ footer .footer-top .logoBox{
   .sec2 .sec-bottom .tab-wrap .tab.active .txtBox{
     padding: 10px 20px;
   }
+  .sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox{
+    bottom: 50px;
+    width: 70%;
+  }
   .sec2 .sec-bottom .tab-wrap .tab.active .txtBox ul li{
     margin: 5px;
   }
@@ -788,7 +796,7 @@ footer .footer-top .logoBox{
 }
 @media (max-width : 500px) {
   .sec2{
-    padding: 100px 10px;
+    padding: 100px 20px;
   }
 }
 @media (max-width : 460px) {
