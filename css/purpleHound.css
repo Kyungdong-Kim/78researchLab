@@ -790,13 +790,16 @@ footer .footer-top .logoBox{
     font-size: 1rem;
   }
   .sec4 .sec-bottom .buttonBox{
-    flex-wrap: wrap;
-}
-.sec4 .sec-bottom .buttonBox .btn{
-    padding: 0;
-}
-.sec4 .sec-bottom .buttonBox .btn label{
-  padding: 5px;
-  font-size: 0.9rem;
-}
+      flex-wrap: wrap;
+  }
+  .sec4 .sec-bottom .buttonBox .btn{
+      padding: 0;
+  }
+  .sec4 .sec-bottom .buttonBox .btn label{
+    padding: 5px;
+    font-size: 0.9rem;
+  }
+  .sec4 .sec-bottom .buttonBox .btn label.active{
+    font-weight: 500;
+  }
 }
