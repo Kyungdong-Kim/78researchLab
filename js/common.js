@@ -121,10 +121,10 @@ $(document).ready(function () {
   const headerMenuBtn = () => {
     let ww = $(window).width();
     if (ww <= 980) {
-      $('header .menu-wrap').hide();
+      $('header .sub.menu-wrap').hide();
       $('header .menuBtn').show();
     } else {
-      $('header .menu-wrap').show();
+      $('header .sub.menu-wrap').show();
       $('header .menuBtn').hide();
     }
   };
