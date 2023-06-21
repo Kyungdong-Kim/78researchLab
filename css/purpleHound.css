@@ -39,6 +39,7 @@ header .menu-wrap .menu a.active {
     color: #BEBAD4;
     font-size: 1.1rem;
     font-weight: 600;
+    text-align: center;
 }
 
 .banner .title {
@@ -46,6 +47,7 @@ header .menu-wrap .menu a.active {
     font-size: 1.5rem;
     margin-top: 10px;
     font-weight: 900;
+    text-align: center;
 }
 .banner .title b{
     font-size: 1.6rem;
@@ -480,28 +482,18 @@ header .menu-wrap .menu a.active {
 }
 .sec4 .sec-bottom .imgBox .img{
     width: 100%;
-    height: 400px;
+    height: fit-content;
     margin: 15px auto 10px auto;
     display: none;
 }
 .sec4 .sec-bottom .imgBox .img.active{
     display: block;
 }
-.sec4 .sec-bottom .imgBox .img.active#img1{
+.sec4 .sec-bottom .imgBox .img.active{
     padding: 0 20px;
 }
-.sec4 .sec-bottom .imgBox .img.active#img1 img{
+.sec4 .sec-bottom .imgBox .img.active img{
     object-fit: contain;
-}
-.sec4 .sec-bottom .imgBox .img.active#img2{
-    background: url('../images/gui/gui2.png') no-repeat top center;
-    background-size: contain;
-    padding: 0 20px;
-}
-.sec4 .sec-bottom .imgBox .img.active#img3{
-    background: url('../images/gui/gui3.png') no-repeat top center;
-    background-size: contain;
-    padding: 0 20px;
 }
 .sec4 .sec-bottom .buttonBox{
     width: 100%;
@@ -754,6 +746,7 @@ footer .footer-top .logoBox{
     padding: 30px;
   }
   .sec4{
+    height: fit-content;
     padding: 100px 30px;
   }
   .sec4 .sec-bottom{
@@ -763,25 +756,23 @@ footer .footer-top .logoBox{
     width: 100%;
     height: fit-content;
   }
-  .sec4 .sec-bottom .btnInfo{
-    display: none;
-  }
-  footer{
-    margin-top: -50px;
-  }
 }
 @media (max-width : 650px) {
+  .banner {
+    padding: 0 30px;
+  }
   .sec2 .sec-bottom .tab-wrap .tab.active .txtBox{
     padding: 20px;
   }
   .sec2 .sec-bottom .tab-wrap .tab.active .txtBox ul li{
     margin: 5px;
   }
-  footer {
-    margin-top: -100px;
-  }
 }
 @media (max-width : 550px) {
+  .sec2 .sec-bottom{
+    margin-top: 20px;
+    height: calc(100% - 100px);
+  }
   .sec2 .sec-bottom .tab-wrap .tab.active .txtBox{
     padding: 10px 20px;
   }
@@ -791,4 +782,24 @@ footer .footer-top .logoBox{
   .sec3 h3.title{
     line-height: 20px;
   }
+}
+@media (max-width : 500px) {
+  .sec2{
+    padding: 100px 10px;
+  }
+}
+@media (max-width : 460px) {
+  .banner span {
+    font-size: 1rem;
+  }
+  .sec4 .sec-bottom .buttonBox{
+    flex-wrap: wrap;
+}
+.sec4 .sec-bottom .buttonBox .btn{
+    padding: 0;
+}
+.sec4 .sec-bottom .buttonBox .btn label{
+  padding: 5px;
+  font-size: 0.9rem;
+}
 }
