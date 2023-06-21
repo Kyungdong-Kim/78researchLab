@@ -128,7 +128,6 @@ header .menu-wrap .menu::after {
 }
 #tab1 .txtBox ul,
 #tab1 .txtBox ul li{
-  list-style: square;
   text-align: start;
 }
 #tab1 .txtBox ul{
@@ -143,6 +142,18 @@ header .menu-wrap .menu::after {
   font-size: 1rem;
   font-weight: 500;
   text-decoration: underline;
+  position: relative;
+  padding-left: 10px;
+}
+#tab1 .txtBox ul li p::before{
+  content: '';
+  width: 4px;
+  height: 4px;
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 #tab1 .txtBox ul li:last-child p{
   margin-top: 20px;
