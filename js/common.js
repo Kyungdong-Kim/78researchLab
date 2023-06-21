@@ -1,10 +1,4 @@
 $(document).ready(function () {
-  // reload
-  history.scrollRestoration = "manual"
-  $('header .logo').click(function(){
-    location.reload();
-  });
-
   // language
   let lang = localStorage.getItem('lang');
 

@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  // reload
+  history.scrollRestoration = "manual"
+  $('header .logo').click(function(){
+    location.href = 'https://www.78researchlab.com/';
+  });
+
   // 1. tab
   $('.sec2 .sec-bottom .tab-btn input[type="radio"]').change(function () {
     if ($('#offensive').is(':checked')) {
