@@ -186,10 +186,23 @@ footer .footer-top .logoBox img{
 footer .footer-top .txtBox{
   text-align: center;
   color: #e5e5e5a4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 footer .footer-top .txtBox p{
   font-size: 0.9rem;
   margin: 5px 0;
+  padding: 0 20px;
+  position: relative;
+}
+footer .footer-top .txtBox p:nth-child(-n+3)::after{
+  content: '|';
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #e5e5e5a4;
 }
 footer .footer-top .snsBox{
   width: 300px;
@@ -247,6 +260,11 @@ footer .copyrights{
     width: 30px;
     height: 30px;
     padding: 7px;
+  }
+}
+@media (max-width : 525px) {
+  footer .footer-top .txtBox p:nth-child(-n+3)::after{
+    content: '';
   }
 }
 @media (max-width : 400px) {
