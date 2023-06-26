@@ -65,10 +65,43 @@ $(document).ready(function () {
     }, 3000);
   });
 
+  // email modal
+  $('.sec2 .intro-txt').click(function(){
+    $('.sec3').addClass('active');
+  });
+  $('.sec3 .input-wrap .closeBtn').click(function(){
+    $('.sec3').removeClass('active');
+    $('#name').val('');
+    $('#email').val('');
+    !$('#belongTo').val('');
+    $('#position').val('');
+    $('#name, #email, #belongTo, #position').css({borderBottom : '2px solid rgba(0,0,0,0.3)'})
+  });
+
   // ===== email
   $('#submit').click(function () {
     if (!$('#name').val() || !$('#email').val() || !$('#belongTo').val() || !$('#position').val()) {
       alert('Check Again')
+      if(!$('#name').val()){
+        $('#name').css({borderBottom : '2px solid #a91111a8'})
+      } else {
+        $('#name').css({borderBottom : '2px solid rgba(0,0,0,0.3)'})
+      }
+      if(!$('#email').val()){
+        $('#email').css({borderBottom : '2px solid #a91111a8'})
+      } else {
+        $('#email').css({borderBottom : '2px solid rgba(0,0,0,0.3)'})
+      }
+      if(!$('#belongTo').val()){
+        $('#belongTo').css({borderBottom : '2px solid #a91111a8'})
+      } else {
+        $('#belongTo').css({borderBottom : '2px solid rgba(0,0,0,0.3)'})
+      }
+      if(!$('#position').val()){
+        $('#position').css({borderBottom : '2px solid #a91111a8'})
+      } else {
+        $('#position').css({borderBottom : '2px solid rgba(0,0,0,0.3)'})
+      }
     } else {
       var templateParams = {
         //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성
