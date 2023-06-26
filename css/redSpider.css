@@ -327,6 +327,45 @@ header .menu-wrap .menu a.active {
 	color: rgba(0, 0, 0, 0.8);
 }
 
+/* 4. section 3 */
+.sec3 {
+	width: 100%;
+	height: 200px;
+	padding: 30px 100px;
+}
+.sec3 .input-wrap{
+	width: 100%;
+	height: 100%;
+}
+.sec3 .input-wrap .title{
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.sec3 .input-wrap .input-bottom{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0 30px;
+	width: 100%;
+	height: calc(100% - 40px);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.sec3 .input-wrap .input-bottom input{
+	width: 20%;
+	height: 30px;
+	padding-left: 20px;
+}
+.sec3 .input-wrap .input-bottom button{
+	width: 50px;
+	height: 30px;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #fff;
+}
+
 /* 5. footer */
 footer .footer-top .logoBox {
 	width: fit-content;
@@ -370,6 +409,27 @@ footer .footer-top .logoBox img {
   .sec2 .processBox {
     width: 75%;
   }
+	.sec3 {
+		height: 250px;
+	}
+	.sec3 .input-wrap .title{
+		height: 30px;
+		line-height: 30px;
+	}
+	.sec3 .input-wrap .input-bottom{
+		width: 100%;
+		height: calc(100% - 30px);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.sec3 .input-wrap .input-bottom input{
+		width: 31%;
+	}
+	.sec3 .input-wrap .input-bottom input:nth-child(4){
+		width: calc(100% - 70px);
+	}
 }
 
 @media (max-width : 950px) {
@@ -442,6 +502,19 @@ footer .footer-top .logoBox img {
     width: 80%;
     padding: 20px;
   }
+	.sec3 {
+		height: 270px;
+	}
+	.sec3 .input-wrap .input-bottom input,
+	.sec3 .input-wrap .input-bottom input:nth-child(4){
+		width: 45%;
+		height: 25px;
+		padding-left: 5px;
+	}
+	.sec3 .input-wrap .input-bottom button{
+		margin : 0 auto;
+		width: 70px;
+	}
 }
 
 @media (max-width : 660px) {
@@ -456,6 +529,24 @@ footer .footer-top .logoBox img {
 
 	.sec2 .processBox {
 		width: 100%;
+	}
+}
+@media (max-width : 600px) {
+	.sec3 {
+		height: 380px;
+		padding: 50px;
+	}
+	.sec3 .input-wrap .input-bottom{
+		padding: 10px;
+	}
+	.sec3 .input-wrap .input-bottom input,
+	.sec3 .input-wrap .input-bottom input:nth-child(4){
+		width: 90%;
+		margin: 5px auto;
+	}
+	.sec3 .input-wrap .input-bottom button{
+		margin : 5px auto;
+		width: 70px;
 	}
 }
 @media (max-width : 555px) {

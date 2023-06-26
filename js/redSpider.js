@@ -64,4 +64,31 @@ $(document).ready(function () {
       });
     }, 3000);
   });
+
+  // ===== email
+  $('#submit').click(function () {
+    if (!$('#name').val() || !$('#email').val() || !$('#belongTo').val() || !$('#position').val()) {
+      alert('Check Again')
+    } else {
+      var templateParams = {
+        //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성
+        name: $('#name').val(),
+        email: $('#email').val(),
+        belongTo: $('#belongTo').val(),
+        position: $('#position').val()
+      };
+
+      // emailjs.send('service_id', 'template_id', 보낼내용이 담긴 객체, 'API Public Key')
+      emailjs.send('service_vi1cifh', 'template_lvw4mvh', templateParams, 'tdb7tpSvPwnlfmihQ')
+        .then(function () {
+          let message = (localStorage.getItem('lang') === 'Ko') ? '요청이 완료되었습니다. 이메일을 확인해보세요.' : 'Your request is complete. Check your email.';
+          alert(message)
+          window.location.reload();
+        }, function (error) {
+          console.log(error);
+          let message = (localStorage.getItem('lang') === 'Ko') ? '정상적인 요청이 이루어지지 않았습니다. 다시 시도해주세요.' : 'A legitimate request was not made. please try again.';
+          alert(message)
+        });
+    }
+  });
 });
