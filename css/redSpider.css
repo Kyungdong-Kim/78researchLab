@@ -341,8 +341,8 @@ header .menu-wrap .menu a.active {
 	text-align: center;
 	height: 40px;
 	line-height: 40px;
-	color: #fff;
-	background-color: rgba(0, 0, 0, 0.2);
+	color: #000;
+	background-color: rgba(0, 0, 0, 0.1);
 }
 .sec3 .input-wrap .input-bottom{
 	border: 1px solid rgba(0, 0, 0, 0.1);
