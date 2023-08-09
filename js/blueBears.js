@@ -64,4 +64,16 @@ $(document).ready(function () {
         });
     }
   });
+
+  // zoom patent
+  $('.patent').mouseenter(function() {
+    $(this).css('cursor', 'zoom-in');
+  }).mouseleave(function() {
+    $(this).css('cursor', 'default'); 
+  }).click(function() {
+    $('.sec2 article .bottom-wrap .patent-zoom').addClass('active');
+  });
+  $('.sec2 article .bottom-wrap .patent-zoom').click(function(){
+    $(this).removeClass('active');
+  });
 });

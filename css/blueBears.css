@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+html, body{
+	background-color: #fff;
+}
 /* 0. header */
 /* header {
 	background-color: rgba(0, 0, 0, 0.8);
@@ -25,8 +28,9 @@ header .menu-wrap .menu a.active {
 .banner{
   width: 100%;
   height: 500px;
-  background: linear-gradient(rgba(42, 75, 124, 0.4), rgba(42, 75, 124, 0.4)), url('https://www.78researchlab.com/images/services/blueBears.jpg') no-repeat center center;
-  background-attachment: fixed;
+  /* background: linear-gradient(rgba(42, 75, 124, 0.4), rgba(42, 75, 124, 0.4)), url('https://www.78researchlab.com/images/services/blueBears.jpg') no-repeat center center; */
+	background: url('../images/services/blueBears_banner.png') no-repeat center bottom;
+  /* background-attachment: fixed; */
 	background-size: cover;
 	color: #fff;
 	display: flex;
@@ -37,6 +41,9 @@ header .menu-wrap .menu a.active {
 }
 .banner h1{
 	margin-bottom: 10px;
+}
+.banner p{
+	height: 100px;
 }
 
 /* 2. section */
@@ -148,6 +155,7 @@ header .menu-wrap .menu a.active {
 }
 .sec2 article ul{
 	padding-left: 60px;
+	width: 100%;
 }
 .sec2 article ul li{
 	margin: 5px 0;
@@ -163,6 +171,41 @@ header .menu-wrap .menu a.active {
 	height: fit-content;
 	padding: 50px 0;
 	margin: 0 auto;
+}
+.sec2 article .bottom-wrap{
+	height: 250px;
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+}
+.sec2 article .bottom-wrap ul{
+	width: calc(100% - 250px);
+}
+.sec2 article .bottom-wrap .patent{
+	width: 180px;
+	height: 100%;
+	background: url('../images/services/특허.png') no-repeat center center;
+	margin-right: 30px;
+}
+.sec2 article .bottom-wrap .patent-zoom{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: -1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sec2 article .bottom-wrap .patent-zoom.active{
+	z-index: 99;
+}
+.sec2 article .bottom-wrap .patent-zoom .imgBox{
+	width: fit-content;
+	height: fit-content;
+	transform: scale(2);
 }
 
 /* 2-3. section 3 */
