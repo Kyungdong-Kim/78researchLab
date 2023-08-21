@@ -5,6 +5,32 @@ $(document).ready(function () {
     location.href = 'https://www.78researchlab.com/';
   });
 
+  // 0. changeLang
+  $('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function(){
+    let ww = $(window).width();
+    if($(this).text() === 'En'){
+      if(ww <= 1200){
+        $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').hide();
+        $('.sec1 .sec-bottom .ko.img-ko').show();
+        $('.sec1 .sec-bottom .en.img-en').hide();
+      } else {
+        $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').show();
+        $('.sec1 .sec-bottom .ko.img-ko').hide();
+        $('.sec1 .sec-bottom .en.img-en').hide();
+      }
+    } else {
+      if(ww <= 1200){
+        $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').hide();
+        $('.sec1 .sec-bottom .ko.img-ko').hide();
+        $('.sec1 .sec-bottom .en.img-en').show();
+      } else {
+        $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').show();
+        $('.sec1 .sec-bottom .ko.img-ko').hide();
+        $('.sec1 .sec-bottom .en.img-en').hide();
+      }
+    }
+  })
+
   // 1. tab
   $('.sec2 .sec-bottom .tab-btn input[type="radio"]').change(function () {
     if ($('#offensive').is(':checked')) {
@@ -33,6 +59,7 @@ $(document).ready(function () {
       }
     });
   }, 3000);
+
   // 2-2. Stop Autoplay
   $('.sec3 .cardBox').mouseenter(function () {
     clearInterval(auto);
@@ -95,30 +122,30 @@ $(document).ready(function () {
     if(ww <= 1200){
       $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').hide();
       if(lang === 'Ko'){
-        $('.sec1 .sec-bottom .ko').show();
-        $('.sec1 .sec-bottom .en').hide();
+        $('.sec1 .sec-bottom .ko.img-ko').show();
+        $('.sec1 .sec-bottom .en.img-en').hide();
       } else {
-        $('.sec1 .sec-bottom .ko').hide();
-        $('.sec1 .sec-bottom .en').show();
+        $('.sec1 .sec-bottom .ko.img-ko').hide();
+        $('.sec1 .sec-bottom .en.img-en').show();
       }
     } else {
       $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').show();
-      $('.sec1 .sec-bottom .ko, .sec1 .sec-bottom .en').hide();
+      $('.sec1 .sec-bottom img.ko, .sec1 .sec-bottom img.en').hide();
     }
   });
   $(window).resize(function(){
     if(ww <= 1200){
       $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').hide();
       if(lang === 'Ko'){
-        $('.sec1 .sec-bottom .ko').show();
-        $('.sec1 .sec-bottom .en').hide();
+        $('.sec1 .sec-bottom .ko.img-ko').show();
+        $('.sec1 .sec-bottom .en.img-en').hide();
       } else {
-        $('.sec1 .sec-bottom .ko').hide();
-        $('.sec1 .sec-bottom .en').show();
+        $('.sec1 .sec-bottom .ko.img-ko').hide();
+        $('.sec1 .sec-bottom .en.img-en').show();
       }
     } else {
       $('.sec1 .sec-bottom p, .sec1 .sec-bottom table').show();
-      $('.sec1 .sec-bottom .ko, .sec1 .sec-bottom .en').hide();
+      $('.sec1 .sec-bottom .ko.img-ko, .sec1 .sec-bottom .en.img-en').hide();
     }
   })
 });
