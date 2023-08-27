@@ -7,9 +7,9 @@ $(document).ready(function () {
 
 	// language
 	// Set default language value if not present in local storage
-	if (!localStorage.getItem('lang')) {
-		localStorage.setItem('lang', 'Ko');
-	}
+	// if (!localStorage.getItem('lang')) {
+	// 	localStorage.setItem('lang', 'Ko');
+	// }
 
   // 1. Header SideBar styling based on Scroll
   // 1-1. Get each section height value

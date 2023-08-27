@@ -5,6 +5,22 @@ $(document).ready(function () {
     location.href = 'https://www.78researchlab.com/';
   });
 
+  $(window).on('load', function () {
+    var isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
+    $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
+      var langAttr = isKorean ? 'ko' : 'en';
+      $(this).html($(this).attr(langAttr));
+    });
+    var processBox = $('.sec2 .processBox');
+    if (isKorean) {
+      processBox.find('.ko').show();
+      processBox.find('.en').hide();
+    } else {
+      processBox.find('.ko').hide();
+      processBox.find('.en').show();
+    }
+  });
+
 	// 1. banner slide
   var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,

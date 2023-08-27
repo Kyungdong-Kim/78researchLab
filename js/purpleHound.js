@@ -5,6 +5,33 @@ $(document).ready(function () {
     location.href = 'https://www.78researchlab.com/';
   });
 
+  $(window).on('load', function () {
+    var isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
+  
+    $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
+      var langAttr = isKorean ? 'ko' : 'en';
+      $(this).html($(this).attr(langAttr));
+    });
+  
+    var processBox = $('.sec2 .processBox');
+    if (isKorean) {
+      processBox.find('.ko').show();
+      processBox.find('.en').hide();
+    } else {
+      processBox.find('.ko').hide();
+      processBox.find('.en').show();
+    }
+  
+    $('.sec4 .sec-bottom .btnInfo').html($('.sec4 .sec-bottom .buttonBox input[type="radio"]:checked').attr(isKorean ? 'ko' : 'en'));
+    $('.sec4 .sec-bottom .imgBox .img#img1 .ko').toggle(isKorean);
+    $('.sec4 .sec-bottom .imgBox .img#img1 .en').toggle(!isKorean);
+  
+    var tabSelector = '.sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox';
+    $(`${tabSelector} .ko`).toggle(isKorean);
+    $(`${tabSelector} .en`).toggle(!isKorean);
+  });
+  
+
   // 0. changeLang
   $('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function(){
     let ww = $(window).width();
