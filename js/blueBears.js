@@ -76,4 +76,16 @@ $(document).ready(function () {
   $('.sec2 article .bottom-wrap .patent-zoom').click(function(){
     $(this).removeClass('active');
   });
+
+  // scroll
+  const sec1 = $('.sec1').offset().top;
+  $(window).scroll(function () {
+    let sct = $(window).scrollTop();
+    // 1-2-1. Header
+    if (sct < (sec1 - 50)) {
+      $('header').removeClass('active');
+    } else {
+      $('header').addClass('active');
+    }
+  });
 });
