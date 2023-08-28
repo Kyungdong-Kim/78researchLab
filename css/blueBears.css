@@ -154,6 +154,7 @@ header.active .menu-wrap .menu{
 	border-radius: 10px;
 	line-height: 35px;
 	padding-left: 10px;
+	position: relative;
 }
 .sec2 article ul,
 .sec2 article ul li{
@@ -188,6 +189,16 @@ header.active .menu-wrap .menu{
 }
 .sec2 article .bottom-wrap ul{
 	width: calc(100% - 250px);
+}
+.sec2 article .top .show-patent{
+	display: none;
+	text-decoration: underline;
+	cursor: pointer;
+	position: absolute;
+	right: 5px;
+	bottom: -20px;
+	font-size: 0.9rem;
+	color: rgba(0, 0, 0, 0.5);
 }
 .sec2 article .bottom-wrap .patent{
 	width: 180px;
@@ -366,8 +377,15 @@ header.active .menu-wrap .menu{
 	.sec1 .box-wrap .box:nth-child(2){
 		width: 100%;
 	}
+	.sec1 .box-wrap .box:nth-child(1){
+		height: 200px;
+	}
+	.sec1 .bottom-wrap .box:nth-child(2){
+		height: 250px;
+	}
 	.sec1 .box-wrap .vs{
 		left: 50%;
+		top: 44%;
 	}
 	.sec1 .box-wrap .box .title{
 		position: absolute;
@@ -376,7 +394,8 @@ header.active .menu-wrap .menu{
 		text-align: start;
 		padding: 0 10px;
 		transform: translateX(0);
-		font-size: 1.1rem;
+		font-size: 0.9rem;
+		background-color: rgba(0, 0, 0, 0.1);
 		font-weight: 300;
 		color: rgba(0, 0, 0, 0.5);
 	}
@@ -387,6 +406,10 @@ header.active .menu-wrap .menu{
 	}
 	.sec3{
 		width: 100%;
+		padding: 100px;
+	}
+	.sec3 .title{
+		margin-bottom: 30px;
 	}
 	.sec3 .sec3-inner{
 		width: 100%;
@@ -406,14 +429,44 @@ header.active .menu-wrap .menu{
 	}
 }
 @media (max-width : 950px) {
+	.sec2{
+		width: 100%;
+	}
 	.sec2 article .bottom-wrap{
 		height: fit-content;
 	}
 	.sec2 article .bottom-wrap ul{
 		width: 95%;
 	}
-	.sec2 article .bottom-wrap .patent,
-	.sec2 article .bottom-wrap .patent-zoom{
+	.sec2 article .bottom-wrap .patent{
 		display: none;
+	}
+	.sec2 article .top .show-patent{
+		display: inline-block;
+	}
+}
+@media (max-width : 800px) {
+	.sec{
+		width: 100%;
+		padding: 50px;
+	}
+	.sec3{
+		padding: 100px 50px;
+	}
+	.sec3 .title{
+		margin-bottom: 30px;
+	}
+}
+@media (max-width : 750px) {
+	html,body{
+		font-size: 95%;
+	}
+}
+@media (max-width : 600px) {
+	html,body{
+		font-size: 90%;
+	}
+	.sec2 article .imgBox{
+		width: 95%;
 	}
 }

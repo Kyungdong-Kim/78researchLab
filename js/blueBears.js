@@ -76,6 +76,9 @@ $(document).ready(function () {
   $('.sec2 article .bottom-wrap .patent-zoom').click(function(){
     $(this).removeClass('active');
   });
+  $('.sec2 article .top .show-patent').click(function(){
+    $('.sec2 article .bottom-wrap .patent-zoom').addClass('active');
+  });
 
   // scroll
   const sec1 = $('.sec1').offset().top;
