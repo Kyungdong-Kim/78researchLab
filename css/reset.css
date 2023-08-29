@@ -154,7 +154,8 @@ header .menuBtn.active ul li{
   border-bottom: 1px solid rgba(0,0,0,0.1);
   padding: 5px 10px;
 }
-header .menuBtn.active ul li a.active{
+header .menuBtn.active ul li p.active,
+header .menu-wrap li p.active{
   font-weight: 800;
 }
 
