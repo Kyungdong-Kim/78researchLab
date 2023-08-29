@@ -20,8 +20,17 @@ header .menu-wrap .menu::after {
 header .menu-wrap .menu a.active {
 	font-weight: 600;
 }
+header .menuBtn span{
+  background-color: #fff;
+}
+header.active{
+	background-color: rgba(255, 255, 255, 0.6);
+}
 header.active .menu-wrap .menu{
 	color: #000;
+}
+header.active .menuBtn span{
+  background-color: #000;
 }
 
 /* 1. banner */
@@ -380,7 +389,7 @@ header.active .menu-wrap .menu{
 	.sec1 .box-wrap .box:nth-child(1){
 		height: 200px;
 	}
-	.sec1 .bottom-wrap .box:nth-child(2){
+	.sec1 .box-wrap .box:nth-child(2){
 		height: 250px;
 	}
 	.sec1 .box-wrap .vs{
@@ -388,7 +397,6 @@ header.active .menu-wrap .menu{
 		top: 44%;
 	}
 	.sec1 .box-wrap .box .title{
-		position: absolute;
 		top: 10px;
 		left: 0;
 		text-align: start;
@@ -438,6 +446,9 @@ header.active .menu-wrap .menu{
 	.sec2 article .bottom-wrap ul{
 		width: 95%;
 	}
+	.sec2 article:nth-child(1) .bottom-wrap{
+		margin-top: 25px;
+	}
 	.sec2 article .bottom-wrap .patent{
 		display: none;
 	}
@@ -453,9 +464,6 @@ header.active .menu-wrap .menu{
 	.sec3{
 		padding: 100px 50px;
 	}
-	.sec3 .title{
-		margin-bottom: 30px;
-	}
 }
 @media (max-width : 750px) {
 	html,body{
@@ -468,5 +476,59 @@ header.active .menu-wrap .menu{
 	}
 	.sec2 article .imgBox{
 		width: 95%;
+	}
+	.sec2 article ul{
+		padding-left: 40px;
+	}
+	.sec2 article .top .icon{
+		width: 20px;
+		height: 20px;
+	}
+	.sec2 article .top .txt{
+		width: calc(100% - 30px);
+	}
+}
+@media (max-width : 530px) {
+	html,body{
+		font-size: 85%;
+	}
+	.sec{
+		padding: 30px;
+	}
+	.sec2 article ul{
+		padding-left: 30px;
+	}
+	.sec1 .box-wrap .box:nth-child(2) p span{
+		font-size: 0.8rem;
+	}
+	.sec1 .box-wrap .box:nth-child(1),
+	.sec1 .box-wrap .box:nth-child(2){
+		width: 100%;
+		padding: 20px 0;
+	}
+	.sec1 .box-wrap .box:nth-child(1){
+		height: 130px;
+	}
+	.sec1 .box-wrap .box:nth-child(2){
+		height: 150px;
+	}
+	.sec1 .box-wrap .vs{
+		width: 40px;
+		height: 40px;
+		left: 50%;
+		top: 46%;
+	}
+	.sec3 .title{
+		letter-spacing: 10px;
+		font-size: 1.1rem;
+		margin-bottom: 10px;
+	}
+	.sec3 .sec3-inner{
+		margin: 20px auto;
+	}
+}
+@media (max-width : 400px) {
+	html, body{
+		font-size: 80%;
 	}
 }
