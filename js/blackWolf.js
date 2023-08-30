@@ -4,4 +4,15 @@ $(document).ready(function () {
   $('header .logo').click(function(){
     location.href = 'https://www.78researchlab.com/';
   });
+
+  // window scroll event
+  const sec1 = $('.sec1').offset().top;
+  $(window).scroll(function(){
+    let sct = $(window).scrollTop();
+    if(sct >= (sec1/2)){
+      $('.sec1 .bottom table tbody tr:last-child, .sec1 .bottom table tbody tr td .iconBox.doubleCircleIcon').addClass('active');
+    } else {
+      $('.sec1 .bottom table tbody tr:last-child, .sec1 .bottom table tbody tr td .iconBox.doubleCircleIcon').removeClass('active');
+    }
+  });
 });
