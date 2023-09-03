@@ -451,6 +451,9 @@ header.active .menuBtn span{
 	.sec2 article .bottom-wrap ul{
 		width: 95%;
 	}
+	.sec2 article:nth-child(1) .top .txt{
+		position: relative;
+	}
 	.sec2 article:nth-child(1) .bottom-wrap{
 		margin-top: 25px;
 	}
@@ -459,6 +462,9 @@ header.active .menuBtn span{
 	}
 	.sec2 article .top .show-patent{
 		display: inline-block;
+		position: absolute;
+		right: 10px;
+		bottom: -20px;
 	}
 }
 @media (max-width : 800px) {

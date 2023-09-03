@@ -1,5 +1,16 @@
 @charset "utf-8";
 
+/* 0. header */
+header.active{
+	background-color: rgba(255, 255, 255, 0.6);
+}
+header.active .menu-wrap .menu{
+	color: #000;
+}
+header.active .menuBtn span{
+  background-color: #000;
+}
+
 /* 1. banner */
 .banner{
   width: 100%;
@@ -240,4 +251,10 @@
   position: absolute;
   bottom: -30px;
   left: -1px;
+}
+
+@media (max-width : 1100px) {
+  html,body{
+    font-size: 95%;
+  }
 }
