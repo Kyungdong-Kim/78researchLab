@@ -5,6 +5,21 @@ $(document).ready(function () {
     location.href = 'https://www.78researchlab.com/';
   });
 
+  // img
+	$('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function(){
+    if ($(this).text() === 'En') {
+      $('.sec2 article .imgBox .en').hide();
+      $('.sec2 article .imgBox .ko').show();
+      $('.sec3 .sec3-inner .imgBox .en').hide();
+      $('.sec3 .sec3-inner .imgBox .ko').show();
+    } else {
+      $('.sec2 article .imgBox .en').show();
+      $('.sec2 article .imgBox .ko').hide();
+      $('.sec3 .sec3-inner .imgBox .en').show();
+      $('.sec3 .sec3-inner .imgBox .ko').hide();
+    }
+  });
+
   // email modal
   $('.sec3 .intro-txt').click(function(){
     $('.sec4').addClass('active');
