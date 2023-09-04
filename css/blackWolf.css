@@ -105,6 +105,9 @@ header.active .menuBtn span{
 .sec1 .bottom table tbody tr:last-child.active td:nth-child(4){
   border-left: none;
 }
+.sec1 .bottom table tbody tr td:first-child{
+  padding: 0 3px;
+}
 .sec1 .bottom table tbody tr td .iconBox{
   width: 20px;
   height: 20px;
@@ -252,9 +255,37 @@ header.active .menuBtn span{
   bottom: -30px;
   left: -1px;
 }
+.sec3 .boxWrap .box .txtBox p span{
+  width: calc(100% - 180px);
+}
 
 @media (max-width : 1100px) {
   html,body{
     font-size: 95%;
+  }
+  .sec3 .boxWrap{
+    width: 90%;
+  }
+}
+@media (max-width : 1000px) {
+  .sec2 .bottom table tbody tr td:first-child{
+    padding: 3px 5px;
+  }
+}
+@media (max-width : 900px) {
+  html, body{
+    font-size: 90%;
+  }
+  .sec1 .bottom table tbody tr td .iconBox{
+    width: 15px;
+    height: 15px;
+  }
+  .sec3 .boxWrap{
+    width: 100%;
+  }
+}
+@media (max-width : 800px) {
+  html, body {
+    font-size: 85%;
   }
 }
