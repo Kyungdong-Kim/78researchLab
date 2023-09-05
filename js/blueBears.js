@@ -105,5 +105,24 @@ $(document).ready(function () {
     } else {
       $('header').addClass('active');
     }
+    // Section1
+    if(sct >= (sec1/2)){
+      $('header').addClass('active');
+      $('.sec1 table tbody tr:last-child, .sec1 table tbody tr:last-child td .iconBox.doubleCircleIcon').addClass('active');
+    } else {
+      $('header').removeClass('active');
+      $('.sec1 table tbody tr:last-child, .sec1 table tbody tr:last-child td .iconBox.doubleCircleIcon').removeClass('active');
+    }
   });
+
+  // window Resize
+  $(window).resize(function(){
+    let ww = $(window).width();
+    console.log(ww);
+    if(ww <= 950){
+      $('.sec2 article .top .txt .show-patent').addClass('active');
+    } else {
+      $('.sec2 article .top .txt .show-patent').removeClass('active');
+    }
+  })
 });
