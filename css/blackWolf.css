@@ -4,6 +4,21 @@
 header.active{
 	background-color: rgba(255, 255, 255, 0.6);
 }
+header .menu-wrap .menu {
+	color: #fff;
+}
+header .menu-wrap .menu::after {
+	background-color: #fff;
+}
+header .menu-wrap .menu a.active {
+	font-weight: 600;
+}
+header .menuBtn span{
+  background-color: #fff;
+}
+header.active{
+	background-color: rgba(255, 255, 255, 0.6);
+}
 header.active .menu-wrap .menu{
 	color: #000;
 }

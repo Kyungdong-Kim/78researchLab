@@ -17,4 +17,14 @@ $(document).ready(function () {
       $('.sec1 .bottom table tbody tr:last-child, .sec1 .bottom table tbody tr td .iconBox.doubleCircleIcon').removeClass('active');
     }
   });
+
+  $(window).scroll(function () {
+    let sct = $(window).scrollTop();
+    // 1-2-1. Header
+    if (sct < (sec1 - 50)) {
+      $('header').removeClass('active');
+    } else {
+      $('header').addClass('active');
+    }
+  });
 });
