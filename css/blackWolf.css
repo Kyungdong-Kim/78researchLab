@@ -37,6 +37,7 @@ header.active .menuBtn span{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 .banner h1{
 	margin-bottom: 5px;
@@ -76,9 +77,6 @@ header.active .menuBtn span{
 .sec1 .bottom table thead tr th,
 .sec1 .bottom table tbody tr td{
   border: 1px solid #F2F2F2;
-}
-.sec1 .bottom table thead tr th,
-.sec1 .bottom table tbody tr td{
   width: calc(100% / 4);
   text-align: center;
 }
@@ -95,7 +93,7 @@ header.active .menuBtn span{
   height: 45px;
   font-size: 0.9rem;
   font-weight: 400;
-  padding: 10px 0;
+  padding: 10px 5px;
 }
 .sec1 .bottom table tbody tr:nth-child(even){
   background-color: #F2F2F2;
@@ -119,9 +117,6 @@ header.active .menuBtn span{
 .sec1 .bottom table tbody tr:last-child td:nth-child(4),
 .sec1 .bottom table tbody tr:last-child.active td:nth-child(4){
   border-left: none;
-}
-.sec1 .bottom table tbody tr td:first-child{
-  padding: 0 3px;
 }
 .sec1 .bottom table tbody tr td .iconBox{
   width: 20px;
@@ -302,5 +297,55 @@ header.active .menuBtn span{
 @media (max-width : 800px) {
   html, body {
     font-size: 85%;
+  }
+}
+@media (max-width : 650px) {
+  html,body{
+    font-size: 80%;
+  }
+  .sec{
+    width: 90%;
+    margin: 70px auto;
+  }
+  .sec3{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .sec3 .innerWrap{
+    padding: 50px 0;
+  }
+  .sec3 .innerWrap .boxWrap{
+    width: 100%;
+  }
+}
+@media (max-width : 550px) {
+  .banner{
+    padding: 0 50px;
+  }
+  .sec3 .boxWrap .box{
+    padding: 0 10px;
+  }
+  .sec3 .boxWrap .box .year{
+    font-size: 1.5rem;
+    padding-top: 24px;
+    width: fit-content;
+  }
+  .sec3 .boxWrap .box .txtBox {
+    width: calc(100% - 60px);
+  }
+  .sec3 .boxWrap .box .txtBox p{
+    height: 30px;
+  }
+  .sec3 .boxWrap .box .txtBox p::before{
+    content: '';
+    width: 6px;
+    height: 6px;
+    left: -23.5px;
+  }
+  .sec3 .boxWrap .box .txtBox p b{
+    width: 110px;
+  }
+  .sec3 .boxWrap .box .txtBox p span{
+    width: calc(100% - 110px);
   }
 }
