@@ -435,6 +435,10 @@ header.active .menuBtn span{
 	.sec{
 		width: 95%;
 	}
+	.sec1 table tbody tr td .iconBox{
+    width: 15px;
+    height: 15px;
+  }
 	.sec2{
 		width: 100%;
 	}

@@ -4,6 +4,13 @@ $(document).ready(function () {
   $('header .logo').click(function(){
     location.href = 'https://www.78researchlab.com/';
   });
+  // showPatent
+  let ww = $(window).width();
+  if(ww <= 950){
+    $('.sec2 article .top .txt .show-patent').addClass('active');
+  } else {
+    $('.sec2 article .top .txt .show-patent').removeClass('active');
+  }
 
   // img
 	$('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function(){
@@ -118,7 +125,6 @@ $(document).ready(function () {
   // window Resize
   $(window).resize(function(){
     let ww = $(window).width();
-    console.log(ww);
     if(ww <= 950){
       $('.sec2 article .top .txt .show-patent').addClass('active');
     } else {
