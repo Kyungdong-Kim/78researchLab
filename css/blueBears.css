@@ -485,6 +485,11 @@ header.active .menuBtn span{
 	html,body{
 		font-size: 90%;
 	}
+	.sec1 table thead tr th:first-child,
+	.sec1 table tbody tr td:first-child{
+		width: 100px;
+		font-size: 0.8rem;
+	}
 	.sec2 article .imgBox{
 		width: 95%;
 	}

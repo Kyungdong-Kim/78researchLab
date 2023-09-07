@@ -317,17 +317,32 @@ header.active .menuBtn span{
   .sec3 .innerWrap .boxWrap{
     width: 100%;
   }
+  .sec3 .boxWrap .box .year{
+    font-size: 1.7rem;
+    padding-top: 23px;
+  }
+  .sec3 .boxWrap .box .txtBox {
+    width: calc(100% - 70px);
+  }
 }
 @media (max-width : 550px) {
   .banner{
     padding: 0 50px;
+  }
+  .sec3{
+    padding: 30px;
+  }
+  .sec3 .plan{
+    letter-spacing: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
   }
   .sec3 .boxWrap .box{
     padding: 0 10px;
   }
   .sec3 .boxWrap .box .year{
     font-size: 1.5rem;
-    padding-top: 24px;
+    padding-top: 19px;
     width: fit-content;
   }
   .sec3 .boxWrap .box .txtBox {
@@ -347,5 +362,30 @@ header.active .menuBtn span{
   }
   .sec3 .boxWrap .box .txtBox p span{
     width: calc(100% - 110px);
+  }
+}
+@media (max-width : 450px) {
+  .sec3{
+    padding: 10px;
+  }
+  .sec3 .boxWrap .box .year{
+    font-size: 1.3rem;
+    padding-top: 30px;
+    width: fit-content;
+  }
+  .sec3 .boxWrap .box .txtBox p{
+    margin: 10px 0;
+  }
+}
+@media (max-width : 400px) {
+
+  .sec3 .boxWrap .box .txtBox{
+    width: calc(100% - 55px);
+  }
+  .sec3 .boxWrap .box .txtBox p b{
+    width: 100px;
+  }
+  .sec3 .boxWrap .box .txtBox p span{
+    width: calc(100% - 100px);
   }
 }
