@@ -2,7 +2,7 @@ $(document).ready(function () {
   // reload
   history.scrollRestoration = "manual"
   $('header .logo').click(function(){
-    location.href = 'https://www.78researchlab.com/';
+    location.reload();
   });
 
   $(window).on('load', function () {
@@ -45,7 +45,6 @@ $(document).ready(function () {
       }
     },
   });
-	
 
 	// 2. sec1 cardBax
 	$('.sec1 .cardBox .card').click(function(){
