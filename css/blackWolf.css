@@ -74,10 +74,13 @@ header.active .menuBtn span{
   width: 100%;
   border-spacing: 0;
 }
+.sec1 .bottom table thead tr th:first-child,
+.sec1 .bottom table tbody tr td:first-child{
+	width: 150px;
+}
 .sec1 .bottom table thead tr th,
 .sec1 .bottom table tbody tr td{
   border: 1px solid #F2F2F2;
-  width: calc(100% / 4);
   text-align: center;
 }
 .sec1 .bottom table thead tr th{
@@ -95,9 +98,6 @@ header.active .menuBtn span{
   font-weight: 400;
   padding: 10px 5px;
 }
-.sec1 .bottom table tbody tr:nth-child(even){
-  background-color: #F2F2F2;
-}
 .sec1 .bottom table tbody tr:last-child.active td:first-child{
   background-color: #373838;
   color: #fff;
@@ -109,7 +109,6 @@ header.active .menuBtn span{
 .sec1 .bottom table tbody tr:last-child.active td{
   border: 2px solid #373838;
 }
-.sec1 .bottom table tbody tr:last-child td:nth-child(n+2):nth-child(-n+3),
 .sec1 .bottom table tbody tr:last-child.active td:nth-child(n+2):nth-child(-n+3){
   border-left: none;
   border-right: none;

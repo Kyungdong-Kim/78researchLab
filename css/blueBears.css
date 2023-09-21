@@ -120,12 +120,10 @@ header.active .menuBtn span{
 .sec1 table tbody tr:last-child.active td{
   border: 2px solid #2A4B7C;
 }
-.sec1 table tbody tr:last-child td:nth-child(n+2):nth-child(-n+3),
 .sec1 table tbody tr:last-child.active td:nth-child(n+2):nth-child(-n+3){
   border-left: none;
   border-right: none;
 }
-.sec1 table tbody tr:last-child td:nth-child(4),
 .sec1 table tbody tr:last-child.active td:nth-child(4){
   border-left: none;
 }
