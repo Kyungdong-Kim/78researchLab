@@ -89,7 +89,7 @@ $(document).ready(function () {
 });
 
   // 2. banner text typing effect
-  const content = "Is Your System safe from Hacking?";
+  const content = "Is Your System Safe From Hacking?";
   const text = document.querySelector(".banner .swiper .swiper-wrapper .swiper-slide:first-child .title");
   let i = 0;
   function typing() {
