@@ -15,24 +15,20 @@ $(document).ready(function () {
   // img
 	$('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function(){
     if ($(this).text() === 'En') {
-      $('.sec2 article .imgBox .en').hide();
-      $('.sec2 article .imgBox .ko').show();
-      $('.sec3 .sec3-inner .imgBox .en').hide();
-      $('.sec3 .sec3-inner .imgBox .ko').show();
+      $('.en').hide();
+      $('.ko').show();
     } else {
-      $('.sec2 article .imgBox .en').show();
-      $('.sec2 article .imgBox .ko').hide();
-      $('.sec3 .sec3-inner .imgBox .en').show();
-      $('.sec3 .sec3-inner .imgBox .ko').hide();
+      $('.en').show();
+      $('.ko').hide();
     }
   });
 
   // email modal
-  $('.sec3 .intro-txt').click(function(){
-    $('.sec4').addClass('active');
+  $('.sec2 .intro-txt').click(function(){
+    $('.sec3').addClass('active');
   });
-  $('.sec4 .input-wrap .closeBtn').click(function(){
-    $('.sec4').removeClass('active');
+  $('.sec3 .input-wrap .closeBtn').click(function(){
+    $('.sec3').removeClass('active');
     $('#name').val('');
     $('#email').val('');
     !$('#belongTo').val('');
@@ -98,9 +94,10 @@ $(document).ready(function () {
   $('.sec2 article .bottom-wrap .patent-zoom').click(function(){
     $(this).removeClass('active');
   });
-  $('.sec2 article .top .show-patent').click(function(){
+  $('.sec2 article').on('click', '.top .txt .show-patent', function(){
     $('.sec2 article .bottom-wrap .patent-zoom').addClass('active');
   });
+
 
   // scroll
   const sec1 = $('.sec1').offset().top;
