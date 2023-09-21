@@ -5,12 +5,6 @@ $(document).ready(function () {
     location.reload();
   });
 
-	// language
-	// Set default language value if not present in local storage
-	// if (!localStorage.getItem('lang')) {
-	// 	localStorage.setItem('lang', 'Ko');
-	// }
-
   // 1. Header SideBar styling based on Scroll
   // 1-1. Get each section height value
   const sec1 = $('.sec1').offset().top;
@@ -95,7 +89,7 @@ $(document).ready(function () {
 });
 
   // 2. banner text typing effect
-  const content = "Are You Safe From Hacking?";
+  const content = "Is Your System safe from Hacking?";
   const text = document.querySelector(".banner .swiper .swiper-wrapper .swiper-slide:first-child .title");
   let i = 0;
   function typing() {
