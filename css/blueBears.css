@@ -141,19 +141,14 @@ header.active .menuBtn span{
   background: url('../images/icons/circle.svg') no-repeat center center;
   background-size: contain;
   opacity: 0.3;
+	transition: 0.5s;
 }
 .sec1 table tbody tr td .iconBox.closeIcon{
   background: url('../images/icons/close.svg') no-repeat center center;
   background-size: contain;
   opacity: 0.3;
 }
-.sec1 table tbody tr td .iconBox.doubleCircleIcon{
-  background: url('../images/icons/doubleCircle.svg') no-repeat center center;
-  background-size: contain;
-  opacity: 0.3;
-  transition: 0.5s;
-}
-.sec1 table tbody tr td .iconBox.doubleCircleIcon.active{
+.sec1 table tbody tr td .iconBox.circleIcon.active{
   opacity: 0.9;
 }
 

@@ -11,10 +11,10 @@ $(document).ready(function () {
     let sct = $(window).scrollTop();
     if(sct >= (sec1/2)){
       $('header').addClass('active');
-      $('.sec1 .bottom table tbody tr:last-child, .sec1 .bottom table tbody tr td .iconBox.doubleCircleIcon').addClass('active');
+      $('.sec1 .bottom table tbody tr:last-child, .sec1 .bottom table tbody tr:last-child td .iconBox.circleIcon').addClass('active');
     } else {
       $('header').removeClass('active');
-      $('.sec1 .bottom table tbody tr:last-child, .sec1 .bottom table tbody tr td .iconBox.doubleCircleIcon').removeClass('active');
+      $('.sec1 .bottom table tbody tr:last-child, .sec1 .bottom table tbody tr:last-child td .iconBox.circleIcon').removeClass('active');
     }
   });
 

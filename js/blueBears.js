@@ -115,10 +115,10 @@ $(document).ready(function () {
     // Section1
     if(sct >= (sec1/2)){
       $('header').addClass('active');
-      $('.sec1 table tbody tr:last-child, .sec1 table tbody tr:last-child td .iconBox.doubleCircleIcon').addClass('active');
+      $('.sec1 table tbody tr:last-child, .sec1 table tbody tr:last-child td .iconBox.circleIcon').addClass('active');
     } else {
       $('header').removeClass('active');
-      $('.sec1 table tbody tr:last-child, .sec1 table tbody tr:last-child td .iconBox.doubleCircleIcon').removeClass('active');
+      $('.sec1 table tbody tr:last-child, .sec1 table tbody tr:last-child td .iconBox.circleIcon').removeClass('active');
     }
   });
 
