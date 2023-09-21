@@ -57,8 +57,8 @@ header.active .menuBtn span{
   height: fit-content;
 }
 .sec1 .top p{
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 900;
   margin-bottom: 10px;
 }
 .sec1 .top span{
@@ -76,7 +76,7 @@ header.active .menuBtn span{
 }
 .sec1 .bottom table thead tr th:first-child,
 .sec1 .bottom table tbody tr td:first-child{
-	width: 150px;
+	width: 120px;
 }
 .sec1 .bottom table thead tr th,
 .sec1 .bottom table tbody tr td{
@@ -87,6 +87,10 @@ header.active .menuBtn span{
   background-color: #D0D1D1;
   height: fit-content;
   padding: 10px;
+}
+.sec1 .bottom table thead tr th:nth-child(n+2),
+.sec1 .bottom table tbody tr td:nth-child(n+2){
+  width: calc((100% - 120px) / 3);
 }
 .sec1 .bottom table thead tr th:nth-child(1){
   /* border: none; */
