@@ -36,9 +36,8 @@ header.active .menuBtn span{
 /* 1. banner */
 .banner{
   width: 100%;
-  height: 500px;
-  /* background: linear-gradient(rgba(42, 75, 124, 0.4), rgba(42, 75, 124, 0.4)), url('https://www.78researchlab.com/images/services/blueBears.jpg') no-repeat center center; */
-	background: url('../images/services/blueBears_banner.png') no-repeat center bottom;
+  height: 400px;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.78researchlab.com/images/services/blueBears.jpg') no-repeat center center;
   /* background-attachment: fixed; */
 	background-size: cover;
 	color: #fff;
@@ -273,47 +272,9 @@ header.active .menuBtn span{
 
 /* 2-3. section 3 */
 .sec3{
-	width: 100%;
-	max-width: 100%;
-	background-color: #F8F8F8;
-	padding: 150px;
-	position: relative;
-}
-.sec3 .sec3-inner{
-	width: 80%;
-	max-width: 1200px;
-	margin: 0 auto;
-}
-.sec3 .title{
-	text-transform: uppercase;
-	letter-spacing: 20px;
-	font-size: 1.2rem;
-	font-weight: 600;
-	text-align: center;
-	margin-bottom: 50px;
-}
-.sec3 .imgBox{
-	width: 100%;
-	height: fit-content;
-	margin: 0 auto;
-}
-.sec3 .imgBox .en{
 	display: none;
 }
-.sec3 .intro-txt{
-	font-size: 0.9rem;
-	text-decoration: underline;
-	cursor: pointer;
-	position: absolute;
-	right: 30px;
-	bottom: 30px;
-}
-
-/* 2-4. section 4 */
-.sec4{
-	display: none;
-}
-.sec4.active{
+.sec3.active{
 	width: 100%;
 	height: 100vh;
 	position: fixed;
@@ -325,7 +286,7 @@ header.active .menuBtn span{
 	align-items: center;
 	z-index: 99;
 }
-.sec4.active .input-wrap{
+.sec3.active .input-wrap{
 	width: 600px;
 	height: 500px;
 	background-color: #fff;
@@ -336,14 +297,14 @@ header.active .menuBtn span{
 	flex-direction: column;
 	position: relative;
 }
-.sec4.active .input-wrap .imgBox{
+.sec3.active .input-wrap .imgBox{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	opacity: 0.05;
 }
-.sec4.active .input-wrap .closeBtn{
+.sec3.active .input-wrap .closeBtn{
 	width: 20px;
 	height: 20px;
 	position: absolute;
@@ -351,22 +312,22 @@ header.active .menuBtn span{
 	top: 20px;
 	cursor: pointer;
 }
-.sec4.active .input-wrap .closeBtn span{
+.sec3.active .input-wrap .closeBtn span{
 	display: block;
 	width: 100%;
 	height: 1px;
 	background-color: #000;
 	position: absolute;
 }
-.sec4.active .input-wrap .closeBtn span:nth-child(1){
+.sec3.active .input-wrap .closeBtn span:nth-child(1){
 	top: 50%;
 	transform: translateY(-50%) rotate(45deg);
 }
-.sec4.active .input-wrap .closeBtn span:nth-child(2){
+.sec3.active .input-wrap .closeBtn span:nth-child(2){
 	top: 50%;
 	transform: translateY(-50%) rotate(-45deg);
 }
-.sec4.active .input-wrap .input-top{
+.sec3.active .input-wrap .input-top{
 	width: 100%;
 	height: 50px;
 	line-height: 50px;
@@ -375,7 +336,7 @@ header.active .menuBtn span{
 	font-weight: 600;
 	color: rgba(0, 0, 0, 0.8);
 }
-.sec4.active .input-wrap .input-bottom{
+.sec3.active .input-wrap .input-bottom{
 	width: 100%;
 	height: calc(100% - 200px);
 	display: flex;
@@ -383,7 +344,7 @@ header.active .menuBtn span{
 	align-items: center;
 	justify-content: center;
 }
-.sec4.active .input-wrap .input-bottom input{
+.sec3.active .input-wrap .input-bottom input{
 	outline: none;
 	width: 90%;
 	margin: 10px 0;
@@ -394,7 +355,7 @@ header.active .menuBtn span{
 	background-color: transparent;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
-.sec4.active .input-wrap .input-bottom button{
+.sec3.active .input-wrap .input-bottom button{
 	width: 70px;
 	padding: 5px 10px;
 	background-color: rgba(0, 0, 0, 0.7);
@@ -406,17 +367,6 @@ header.active .menuBtn span{
 @media (max-width : 1130px) {
 	.sec{
 		width: 90%;
-	}
-	.sec3{
-		width: 100%;
-		padding: 100px;
-	}
-	.sec3 .title{
-		margin-bottom: 30px;
-	}
-	.sec3 .sec3-inner{
-		width: 100%;
-		margin: 0 auto;
 	}
 }
 @media (max-width : 1000px) {
@@ -472,9 +422,6 @@ header.active .menuBtn span{
 		width: 100%;
 		padding: 50px;
 	}
-	.sec3{
-		padding: 100px 50px;
-	}
 }
 @media (max-width : 750px) {
 	html,body{
@@ -516,14 +463,6 @@ header.active .menuBtn span{
 	}
 	.sec2 article ul{
 		padding-left: 30px;
-	}
-	.sec3 .title{
-		letter-spacing: 10px;
-		font-size: 1.1rem;
-		margin-bottom: 10px;
-	}
-	.sec3 .sec3-inner{
-		margin: 20px auto;
 	}
 }
 @media (max-width : 400px) {
