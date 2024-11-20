@@ -1,3 +1,11 @@
+// PurpleHound 자산 정보
+export const phAssetsData = {
+  simulation: 54321,
+  scenario: 93234,
+  action: 395931
+}
+
+// Action 대표 카테고리 리스트
 export const actionCategory = [
   ['네트워크 공격', 20, {name: 'networkAttack', description: '네트워크 통신 프로토콜을 이용하여 네트워크 장비를 대상으로 하는 공격입니다.' }],
   ['APT 공격', 20, {name: 'aptAttack', description: '특정 조직이나 개인을 겨냥한 맞춤형 피싱 공격으로, 신뢰할 수 있는 출처로 위장하여 악성코드를 유포하거나 중요 정보를 탈취합니다.' }], 
@@ -6,6 +14,7 @@ export const actionCategory = [
   ['통신사 특화 공격', 20, {name: 'telecomAttack', description: '통신사의 시그널링 시스템을 악용하여 통화 도청, 위치 추적, SMS 가로채기 등을 시도하는 공격입니다.' }],
 ];
 
+// 카테고리별 세부 내용 리스트
 export const networkAttack = [
   {
     id: 1,
