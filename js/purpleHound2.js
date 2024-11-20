@@ -20,14 +20,11 @@ $(document).ready(function() {
   });
 
   // ===== 3. Sec3
-  // 3-1. 스크롤 애니메이션
-
-  // 3-2. UI 단계 이동 및 GIF 재실행
   let slideInterval;
   let isInSection3 = false;
   let isScrollEventActive = false;
 
-  // 3-2-1. 스크롤 애니메이션
+  // 3-1. 활성화된 GUI 단계 확인을 위한 영역 스크롤
   const scrollItemBox = $item => {
     const container = $('.sec3 .sec-bottom .left');
     const currentIndex = $item.index() + 1;
@@ -43,16 +40,15 @@ $(document).ready(function() {
     container.animate({ scrollTop: offset }, 500);
   } //scrollImgBox
 
-  // 3-2-2. GIF 초기화
+  // 3-2. GIF 초기화 : GIF 애니메이션을 처음부터 다시 재생하기 위해 요소 복제 후 교체
   const resetGif = index => {
     const $activeGif = $('.sec3 .sec-bottom .right img[data-index="' + index + '"]');
-    // GIF 애니메이션을 처음부터 다시 재생하기 위해 요소 복제 후 교체
     const $newActiveGif = $activeGif.clone(true);
     $activeGif.replaceWith($newActiveGif);
     return $newActiveGif;
   } //resetGif
 
-  // 3-2-3. 선택된 단계의 UI GIF 활성화
+  // 3-3. 선택된 단계의 UI GIF 활성화
   const activateStepGui = $item => {
     $item.addClass('active').siblings('.item-box').removeClass('active');
     scrollItemBox($item);
@@ -67,17 +63,15 @@ $(document).ready(function() {
     resetSlideInterval(duration);
   } //activateStepGui
 
-  // 3-2-4. 자동 단계 이동
+  // 3-4. 자동 단계 이동
   const autoMoveStep = () => {
     const $currentActive = $('.sec3 .sec-bottom .left .item-box.active');
     let $nextItem = $currentActive.next('.item-box');
-    $nextItem = $nextItem.length === 0 ? 
-      $('.sec3 .sec-bottom .left .item-box').first() : 
-      $nextItem;
+    $nextItem = $nextItem.length === 0 ? $('.sec3 .sec-bottom .left .item-box').first() : $nextItem;
     activateStepGui($nextItem);
   } //autoMoveStep
 
-  // 3-2-5. interval 반복 함수 초기화
+  // 3-5. interval 반복 함수 초기화
   const resetSlideInterval = duration => {
     if (slideInterval) {
       clearInterval(slideInterval);
@@ -86,21 +80,16 @@ $(document).ready(function() {
     slideInterval = setInterval(autoMoveStep, duration);
   } //resetSlideInterval
 
-  // 3-2-6. Section3 진입/이탈 체크 함수
+  // 3-6. Section3 진입/이탈 체크
   const checkSection3 = () => {
     const $sec3 = $('.sec3');
     const $sec3Top = $sec3.offset().top;
     const scrollTop = $(window).scrollTop();
     const isInSec3 = scrollTop >= $sec3Top - 200 && scrollTop < $sec3Top + $sec3.height() / 2;
 
-    // 1. section3 영역에 진입했다면 스크롤 막고 내부 scroll로 단계 이동하고 싶음
-    if($(window).scrollTop() >= $sec3Top) {
-      console.log('SCROLL 완료');
-    }
-
-    // 2. section3 영역이라면 activeIndex에 해당하는 GIF를 재실행해
+    // 1. section3 영역이라면 activeIndex에 해당하는 GIF를 재실행해
     if (isInSec3) {
-      // 2-1. 스크롤 이벤트가 비활성화 상태일 때
+      // 2. 스크롤 이벤트가 비활성화 상태일 때
       if (!isScrollEventActive) {
         isScrollEventActive = true;
         const activeIndex = $('.sec3 .sec-bottom .left .item-box.active').find('.index').data('index');
@@ -112,7 +101,7 @@ $(document).ready(function() {
       
       if (!isInSection3) {
         isInSection3 = true;
-        slideInterval = setInterval(autoMoveStep, 5000); // 기본 5000ms로 시작
+        slideInterval = setInterval(autoMoveStep, 5000);
       }
     } else {
       if (isScrollEventActive) {
@@ -128,9 +117,10 @@ $(document).ready(function() {
     }
   }
 
-  // 3-2-7. Section3 영역 진입 확인을 위한 초기 실행 및 스크롤 이벤트 리스너 등록
+  // 3-7. Section3 영역 진입 확인을 위한 초기 실행 및 스크롤 이벤트 리스너 등록
   checkSection3();
   $(window).scroll(checkSection3);
+  
 
   // ===== 4. sec4 : countUp 및 카테고리별 Action 정보
   const formatCount = num => {
