@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/purpleHound2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css">
   <title>PurpleHound | 78researchlab</title>
 </head>
 <body>
@@ -136,7 +137,7 @@
           <div class="txt-box" data-index='4'>
             <p class="title">
               디버거 형식의 실행 결과 확인
-              <span class="patent-badge">특허</span>
+              <span class="patent-badge">특허 출원 기술</span>
             </p>
             <p class="sub">실행 중인 시뮬레이션의 각 단계와 상태를 디버거 형식으로 직관적인 확인이 가능합니다. BreakPoint, Resume, Suspend, Step, Abort의 세밀한 제어 기능을 제공하여 시뮬레이션 진행 과정을 통제할 수 있습니다.</p>
           </div>
@@ -160,7 +161,7 @@
       <div class="right">
         <img src="./images/gui/gui_1.gif" alt="PH_gui_1" data-index='1' data-duration='3100'>
         <img src="./images/gui/gui_2.gif" alt="PH_gui_2" data-index='2' data-duration='9120'>
-        <img src="./images/gui/gui_3.gif" alt="PH_gui_3" data-index='3' data-duration='11800'>
+        <img src="./images/gui/gui_3.gif" alt="PH_gui_3" data-index='3' data-duration='13290'>
         <img src="./images/gui/gui_4.gif" alt="PH_gui_4" data-index='4' data-duration='19820'>
         <img src="./images/gui/gui_5.gif" alt="PH_gui_5" data-index='5' data-duration='15310'>
         <img src="./images/gui/gui_6.gif" alt="PH_gui_6" data-index='6' data-duration='13630'>
@@ -173,8 +174,149 @@
       <p class="title">국내 환경에 맞춘 최적의 공격 시나리오 제공</p>
       <p class="sub">국내 ICT 환경에 최적화된 공격 시나리오로 유사 솔루션과 차별화된 보안을 지원합니다.</p>
     </div>
-    <div class="sec-bottom"></div>
+    <div class="sec-bottom">
+      <!-- 1. chart 추가 -->
+      <div class="left">
+        <div id="chart"></div>
+        <div class="tab">
+          <div class="top">
+            <button class="active" data-value="54321">시뮬레이션</button>
+            <button data-value="95735">시나리오</button>
+            <button data-value="472395">액션</button>
+          </div>
+          <div class="bottom"></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="info-box">
+          <p class="title">
+            <span class="category">네트워크 공격</span> 
+            _ TOP 5
+          </p>
+          <p class="sub">네트워크 통신 프로토콜을 이용하여 네트워크 장비를 대상으로 하는 공격입니다.</p>
+          <table>
+            <tr>
+              <th>index</th>
+              <th>name</th>
+              <th>description</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>ARP 스푸핑</td>
+              <td>ARP 스푸핑은 ARP 프로토콜을 이용하여 네트워크 장비의 MAC 주소를 속여 네트워크 트래픽을 목표 장비로 리디렉션하는 공격입니다.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>DNS 스푸핑</td>
+              <td>DNS 스푸핑은 DNS 서버의 응답을 가로채거나 위조하여 사용자를 악성 사이트로 유도하는 공격입니다.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>ICMP 폭탄 공격</td>
+              <td>ICMP 폭탄 공격은 대량의 ICMP 패킷을 전송하여 네트워크 대역폭을 소비하고 시스템 자원을 고갈시키는 DoS 공격입니다.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>SYN 폭탄 공격</td>
+              <td>SYN 폭탄 공격은 TCP 연결 설정 과정에서 SYN 패킷만을 대량 전송하여 서버의 연결 대기 큐를 가득 채워 정상적인 서비스를 방해하는 공격입니다.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>UDP 폭탄 공격</td>
+              <td>UDP 폭탄 공격은 대량의 UDP 패킷을 무작위 포트로 전송하여 네트워크 대역폭을 소비하고 시스템 자원을 고갈시키는 DoS 공격입니다.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <section class="sec sec5">  
+    <div class="sec-top">
+      <p class="title">국내 환경에 맞춘 최적의 공격 시나리오 제공</p>
+      <p class="sub">국내 ICT 환경에 최적화된 공격 시나리오로 유사 솔루션과 차별화된 보안을 지원합니다.</p>
+    </div>
+    <div class="sec-bottom">
+      <div class="left">
+        <div class="box">
+          <p class="name">시뮬레이션</p>
+          <p class="cnt">
+            <b data-value='54321'></b>
+            <span>개</span>
+          </p>
+        </div>
+        <div class="box">
+          <p class="name">시나리오</p>
+          <p class="cnt">
+            <b data-value='95735'></b>
+            <span>개</span>
+          </p>
+        </div>
+        <div class="box">
+          <p class="name">액션</p>
+          <p class="cnt">
+            <b data-value='472395'></b>
+            <span>개</span>
+          </p>
+        </div>
+      </div>
+      <div class="middle">
+        <div class="circle">
+          <div class="point active" data-index='0'></div>
+          <div class="point" data-index='1'></div>
+          <div class="point" data-index='2'></div>
+          <div class="point" data-index='3'></div>
+          <div class="point" data-index='4'></div>
+        </div>
+      </div>
+      <div class="right">
+        <p class="title">
+          <span class="category">네트워크 공격</span> 
+          _ TOP 5
+        </p>
+        <p class="sub">네트워크 통신 프로토콜을 이용하여 네트워크 장비를 대상으로 하는 공격입니다.</p>
+        <table>
+          <tr>
+            <th>index</th>
+            <th>name</th>
+            <th>description</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>ARP 스푸핑</td>
+            <td>ARP 스푸핑은 ARP 프로토콜을 이용하여 네트워크 장비의 MAC 주소를 속여 네트워크 트래픽을 목표 장비로 리디렉션하는 공격입니다.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>DNS 스푸핑</td>
+            <td>DNS 스푸핑은 DNS 서버의 응답을 가로채거나 위조하여 사용자를 악성 사이트로 유도하는 공격입니다.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>ICMP 폭탄 공격</td>
+            <td>ICMP 폭탄 공격은 대량의 ICMP 패킷을 전송하여 네트워크 대역폭을 소비하고 시스템 자원을 고갈시키는 DoS 공격입니다.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>SYN 폭탄 공격</td>
+            <td>SYN 폭탄 공격은 TCP 연결 설정 과정에서 SYN 패킷만을 대량 전송하여 서버의 연결 대기 큐를 가득 채워 정상적인 서비스를 방해하는 공격입니다.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>UDP 폭탄 공격</td>
+            <td>UDP 폭탄 공격은 대량의 UDP 패킷을 무작위 포트로 전송하여 네트워크 대역폭을 소비하고 시스템 자원을 고갈시키는 DoS 공격입니다.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec sec6">
+    <div class="wrap">
+      <div class="circle"></div>
+    </div>
+  </div>
 
   <footer>
     <div class="footer-top">
@@ -235,7 +377,9 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="./js/purpleHound2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"></script>
+  <script src="./js/purpleHound2.js" type="module"></script>  
 </body>
 </html>
