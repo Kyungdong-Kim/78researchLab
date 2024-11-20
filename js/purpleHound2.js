@@ -40,13 +40,15 @@ $(document).ready(function() {
     container.animate({ scrollTop: offset }, 500);
   } //scrollImgBox
 
-  // 3-2. GIF 초기화 : GIF 애니메이션을 처음부터 다시 재생하기 위해 요소 복제 후 교체
+  // 3-2. GIF 초기화 : GIF 재생 시작 시점을 처음으로 되돌리기 위해 src 속성 재설정
   const resetGif = index => {
     const $activeGif = $('.sec3 .sec-bottom .right img[data-index="' + index + '"]');
-    const $newActiveGif = $activeGif.clone(true);
-    $activeGif.replaceWith($newActiveGif);
-    return $newActiveGif;
-  } //resetGif
+    const src = $activeGif.attr('src');
+    $activeGif.attr('src', ''); 
+    $activeGif.attr('src', src);
+    return $activeGif;
+  }; //resetGif
+  
 
   // 3-3. 선택된 단계의 UI GIF 활성화
   const activateStepGui = $item => {
