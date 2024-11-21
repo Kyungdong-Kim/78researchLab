@@ -162,6 +162,9 @@ header .menu-wrap .menu a.active {
 }
 
 /* #3. section 3 */
+.sec3 .sec-bottom{
+  margin-top: 20px;
+}
 .sec3 .sec-bottom .left{
   width: 40%;
   height: 100%;

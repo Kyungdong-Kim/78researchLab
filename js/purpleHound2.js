@@ -20,7 +20,7 @@ $(document).ready(function() {
   });
 
   // ===== 3. Sec3
-  let slideInterval;
+  let currentTimeoutId;
   let isInSection3 = false;
   let isScrollEventActive = false;
 
@@ -62,8 +62,8 @@ $(document).ready(function() {
     // GIF 파일 길이에 따른 자동 단계 이동 시간 설정
     const $img = $('.sec3 .sec-bottom .right img[data-index="' + index + '"]');
     const duration = $img.data('duration') || 5000;
-    resetSlideInterval(duration);
-  } //activateStepGui
+    moveStepWithTimeout(duration);
+  }; //activateStepGui
 
   // 3-4. 자동 단계 이동
   const autoMoveStep = () => {
@@ -71,16 +71,15 @@ $(document).ready(function() {
     let $nextItem = $currentActive.next('.item-box');
     $nextItem = $nextItem.length === 0 ? $('.sec3 .sec-bottom .left .item-box').first() : $nextItem;
     activateStepGui($nextItem);
-  } //autoMoveStep
+  }; //autoMoveStep
 
-  // 3-5. interval 반복 함수 초기화
-  const resetSlideInterval = duration => {
-    if (slideInterval) {
-      clearInterval(slideInterval);
-      slideInterval = undefined;
+  // 3-5. 각 단계마다 지연 시간 후 자동 이동
+  const moveStepWithTimeout = duration => {
+    if (currentTimeoutId) {
+      clearTimeout(currentTimeoutId);
     }
-    slideInterval = setInterval(autoMoveStep, duration);
-  } //resetSlideInterval
+    currentTimeoutId = setTimeout(autoMoveStep, duration + 1000);
+  }; //moveStepWithTimeout
 
   // 3-6. Section3 진입/이탈 체크
   const checkSection3 = () => {
@@ -103,7 +102,8 @@ $(document).ready(function() {
       
       if (!isInSection3) {
         isInSection3 = true;
-        slideInterval = setInterval(autoMoveStep, 5000);
+        const $firstItem = $('.sec3 .sec-bottom .left .item-box').first();
+        activateStepGui($firstItem);
       }
     } else {
       if (isScrollEventActive) {
@@ -113,16 +113,15 @@ $(document).ready(function() {
       
       if (isInSection3) {
         isInSection3 = false;
-        clearInterval(slideInterval);
-        slideInterval = undefined;
+        clearTimeout(currentTimeoutId);
       }
     }
-  }
+  } //checkSection3
 
   // 3-7. Section3 영역 진입 확인을 위한 초기 실행 및 스크롤 이벤트 리스너 등록
   checkSection3();
   $(window).scroll(checkSection3);
-  
+
 
   // ===== 4. sec4 : countUp 및 카테고리별 Action 정보
   const formatCount = num => {
