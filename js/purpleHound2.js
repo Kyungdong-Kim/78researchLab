@@ -168,18 +168,19 @@ $(document).ready(function() {
 
   // 4-2. 원형 시각화 라인 그리기
   const drawPointsOnCircle = numPoints => {
-    const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
+    // const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
     const $circle = $('.sec4 .sec-bottom .container .circle-wrap .circle');
-    const size = $circleWrap.width();
+    const size = $circle.width();
     
     $circle.css({
       width: size,
       height: size
     });
 
-    const radius = size / 2;
+    let radius = size / 2;
     const centerX = $circle.position().left + radius;
     const centerY = $circle.position().top + radius;
+    radius = radius - 35;
     const iconClasses = [
       'fas fa-network-wired',     // 네트워크 아이콘
       'fas fa-building',          // APT 아이콘
@@ -212,14 +213,14 @@ $(document).ready(function() {
         </div>`
       ).css({
         position: 'absolute',
-        width: '50px',
-        height: '50px', 
+        width: i === 0 ? '100px' : '50px',
+        height: i === 0 ? '100px' : '50px', 
         backgroundColor: '#9f94b3',
         boxSizing: 'border-box',
         borderRadius: '50%',
         cursor: 'pointer',
-        left: (x - 25) + 'px',
-        top: (y - 25) + 'px',
+        left: i === 0 ? (x - 20) + 'px' : (x - 25) + 'px',
+        top: i === 0 ? (y - 45) + 'px' : (y - 25) + 'px',
         transition: 'all 0.5s ease',
         display: 'flex',
         justifyContent: 'center',
@@ -260,8 +261,10 @@ $(document).ready(function() {
         const y = centerY + radius * Math.sin(angle);
         
         $(this).css({
-          left: (x - 25) + 'px',
-          top: (y - 25) + 'px'
+          width: i === clickedIndex ? '100px' : '50px',
+          height: i === clickedIndex ? '100px' : '50px',
+          left: i === clickedIndex ? (x - 20) + 'px' : (x - 25) + 'px',
+          top: i === clickedIndex ? (y - 45) + 'px' : (y - 25) + 'px'
         });
       });
 
@@ -296,32 +299,40 @@ $(document).ready(function() {
       default:
         attackData = [];
     }
-    const $title = $('.sec4 .sec-bottom .table-wrap .title .category');
-    const $sub = $('.sec4 .sec-bottom .table-wrap .sub');
-    const $table = $('.sec4 .sec-bottom .table-wrap table');
+    const $tableWrap = $('.sec4 .sec-bottom .table-wrap');
+    const $title = $tableWrap.find('.title .category');
+    const $sub = $tableWrap.find('.sub');
+    const $table = $tableWrap.find('table');
+    const $contents = $tableWrap.find('.title, .sub, table');
 
-    $title.text(data[0]);
-    $sub.text(data[2].description);
-    $table.empty();
+    // 기존 데이터 fadeOut
+    $contents.fadeOut(300, function() {
+      $title.text(data[0]);
+      $sub.text(data[2].description);
+      $table.empty();
 
-    // 5-3-2. 매칭된 데이터를 사용한 table 값 채우기
-    const headerRow = `
-      <tr>
-        <th>index</th>
-        <th>name</th>
-        <th>description</th>
-      </tr>
-    `;
-    
-    const dataRows = attackData.map((item) => `
-      <tr>
-        <td>${item.id}</td>
-        <td>${item.name}</td>
-        <td>${item.description}</td>
-      </tr>
-    `).join('');
+      // 5-3-2. 매칭된 데이터를 사용한 table 값 채우기
+      const headerRow = `
+        <tr>
+          <th>index</th>
+          <th>name</th>
+          <th>description</th>
+        </tr>
+      `;
+      
+      const dataRows = attackData.map((item) => `
+        <tr>
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.description}</td>
+        </tr>
+      `).join('');
 
-    $table.html(headerRow + dataRows);
-  }
+      $table.html(headerRow + dataRows);
+      
+      // 새로운 데이터 fadeIn
+      $contents.fadeIn(300);
+    });
+  } //activeInfoTable
   activeInfoTable(0) // 기본값 설정
 });

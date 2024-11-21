@@ -316,7 +316,7 @@ header .menu-wrap .menu a.active {
   width: 30px;
   height: 5px;
   margin: 10px 0 20px 0;
-  background-color: rebeccapurple;
+  background-color: #5F4B8B;
 }
 .sec4 .sec-bottom .asset-box .box .name{
   color: #787878;
@@ -334,7 +334,6 @@ header .menu-wrap .menu a.active {
 .sec4 .sec-bottom .container .circle-wrap{
   width: 30%;
   height: 100%;
-  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -343,14 +342,17 @@ header .menu-wrap .menu a.active {
   width: 100%;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 6px solid #9f94b3;
+  border: 70px solid #F1F1F1;
+  position: relative;
 }
 .sec4 .sec-bottom .container .circle-wrap .point .icon{
   font-size: 1.6rem;
   color: #FFFFFF;
   opacity: 0.5;
+  transition: all 0.6s ease;
 }
 .sec4 .sec-bottom .container .circle-wrap .point .icon.active{
+  font-size: 3.6rem;
   opacity: 1;
 }
 .sec4 .sec-bottom .container .table-wrap{
