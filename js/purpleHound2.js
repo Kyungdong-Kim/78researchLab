@@ -180,8 +180,13 @@ $(document).ready(function() {
     const radius = size / 2;
     const centerX = $circle.position().left + radius;
     const centerY = $circle.position().top + radius;
-    const colorList = ['red', 'orange', 'yellow', 'green', 'blue']
-
+    const iconClasses = [
+      'fas fa-network-wired',     // 네트워크 아이콘
+      'fas fa-building',          // APT 아이콘
+      'fas fa-microchip',         // IPC 아이콘
+      'fas fa-coins',             // 금융 아이콘
+      'fas fa-mobile-alt'         // 통신 아이콘
+  ];
     // 5-2-1. 포인트 생성 및 배치
     for (let i = 0; i < numPoints; i++) {
       const angle = (2 * Math.PI / numPoints) * i;
@@ -201,17 +206,24 @@ $(document).ready(function() {
       }).text(actionCategory[i][0]);
 
       // 5-2-3. 포인트 생성
-      const $point = $('<div class="point" data-index="' + i + '"></div>').css({
+      const $point = $(
+        `<div class="point" data-index="${i}">
+          <i class="${iconClasses[i]} icon ${i === 0 ? 'active' : ''}"></i>
+        </div>`
+      ).css({
         position: 'absolute',
-        width: '20px',
-        height: '20px', 
-        backgroundColor: colorList[i],
+        width: '50px',
+        height: '50px', 
+        backgroundColor: '#9f94b3',
         boxSizing: 'border-box',
         borderRadius: '50%',
         cursor: 'pointer',
-        left: (x - 10) + 'px',
-        top: (y - 10) + 'px',
-        transition: 'all 0.5s ease'
+        left: (x - 25) + 'px',
+        top: (y - 25) + 'px',
+        transition: 'all 0.5s ease',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       });
 
       // 5-2-4. 포인트 hover 이벤트 핸들러 추가
@@ -238,6 +250,9 @@ $(document).ready(function() {
       const clickedIndex = $(this).data('index');
       const points = $('.point');
       
+      $('.point .icon').removeClass('active');
+      $(this).find('.icon').addClass('active');
+      
       points.each(function(i) {
         const newIndex = (i - clickedIndex + numPoints) % numPoints;
         const angle = (2 * Math.PI / numPoints) * newIndex;
@@ -245,8 +260,8 @@ $(document).ready(function() {
         const y = centerY + radius * Math.sin(angle);
         
         $(this).css({
-          left: (x - 10) + 'px',
-          top: (y - 10) + 'px'
+          left: (x - 25) + 'px',
+          top: (y - 25) + 'px'
         });
       });
 

@@ -36,6 +36,7 @@ header .menu-wrap .menu a.active {
   top: 50%;
   left: 100px;
   transform: translateY(-50%);
+  margin-top: -50px;
   padding: 20px 10px;
 }
 .banner .text-box[data-aos="fade-up-right"] {
@@ -170,7 +171,7 @@ header .menu-wrap .menu a.active {
   position: relative;
   margin: 10px;
   width: 100%;
-  height: 150px;
+  height: calc(33% - 10px);
   position: relative;
 }
 .sec3 .sec-bottom .left .item-box::before{
@@ -208,7 +209,7 @@ header .menu-wrap .menu a.active {
   right: 30px;
   width: calc(100% - 100px);
   height: 100%;
-  padding: 20px;
+  padding: 30px 40px;
   border-radius: 10px;
   opacity: 0.5;
   cursor: pointer;
@@ -245,7 +246,7 @@ header .menu-wrap .menu a.active {
   vertical-align: middle;
 }
 .sec3 .sec-bottom .left .item-box .txt-box .sub{
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 .sec3 .sec-bottom .right{
@@ -344,9 +345,16 @@ header .menu-wrap .menu a.active {
   border-radius: 50%;
   border: 6px solid #9f94b3;
 }
-
+.sec4 .sec-bottom .container .circle-wrap .point .icon{
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  opacity: 0.5;
+}
+.sec4 .sec-bottom .container .circle-wrap .point .icon.active{
+  opacity: 1;
+}
 .sec4 .sec-bottom .container .table-wrap{
-  width: 70%;
+  width: calc(70% - 30px);
   height: 100%;
   padding: 50px;
   background-color: #F1F1F1;
