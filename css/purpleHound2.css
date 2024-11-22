@@ -342,7 +342,7 @@ header .menu-wrap .menu a.active {
   align-items: center;
 }
 .sec4 .sec-bottom .container .circle-wrap .circle{
-  width: 100%;
+  height: 95%;
   box-sizing: border-box;
   border-radius: 50%;
   border: 40px solid #F1F1F1;

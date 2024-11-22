@@ -47,7 +47,7 @@ $(document).ready(function() {
     $activeGif.attr('src', ''); 
     $activeGif.attr('src', src);
     return $activeGif;
-  }; //resetGif
+  } //resetGif
   
 
   // 3-3. 선택된 단계의 UI GIF 활성화
@@ -63,7 +63,7 @@ $(document).ready(function() {
     const $img = $('.sec3 .sec-bottom .right img[data-index="' + index + '"]');
     const duration = $img.data('duration') || 5000;
     moveStepWithTimeout(duration);
-  }; //activateStepGui
+  } //activateStepGui
 
   // 3-4. 자동 단계 이동
   const autoMoveStep = () => {
@@ -71,7 +71,7 @@ $(document).ready(function() {
     let $nextItem = $currentActive.next('.item-box');
     $nextItem = $nextItem.length === 0 ? $('.sec3 .sec-bottom .left .item-box').first() : $nextItem;
     activateStepGui($nextItem);
-  }; //autoMoveStep
+  } //autoMoveStep
 
   // 3-5. 각 단계마다 지연 시간 후 자동 이동
   const moveStepWithTimeout = duration => {
@@ -79,7 +79,7 @@ $(document).ready(function() {
       clearTimeout(currentTimeoutId);
     }
     currentTimeoutId = setTimeout(autoMoveStep, duration + 1000);
-  }; //moveStepWithTimeout
+  } //moveStepWithTimeout
 
   // 3-6. Section3 진입/이탈 체크
   const checkSection3 = () => {
@@ -129,58 +129,68 @@ $(document).ready(function() {
     return num.toLocaleString();
   } //formatCount
 
-  // 4-1. countUp 애니메이션
   let isCountUpAnimated = false;
-
-  $(window).scroll(function() {
+  // 4-1. countUp 애니메이션
+  const startCountUpAnimation = () => {
+    $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
+      const $this = $(this);
+      const key = $this.data('key');
+      const targetValue = phAssetsData[key];
+      const duration = 1000;
+      
+      $({ count: 0 }).animate({ count: targetValue }, {
+        duration: duration,
+        step: function() {
+          const roundedValue = Math.round(this.count / 100) * 100;
+          $this.text(formatCount(roundedValue));
+        },
+        complete: function() {
+          const finalValue = Math.round(targetValue / 100) * 100;
+          $this.text(formatCount(finalValue));
+        }
+      });
+    });
+  } //startCountUpAnimation
+  
+  const checkVisibility = () => {
     const scrollTop = $(window).scrollTop();
     const windowHeight = $(window).height();
     const $sec4 = $('.sec4');
     const sec4Offset = $sec4.offset();
     
-    // 4-1-1. 요소가 화면에 들어왔는지 확인
-    const isVisible = (scrollTop + windowHeight) >= (sec4Offset.top + 90);
-
-    // 4-1-2. 화면에 보이고 아직 애니메이션이 실행되지 않았을 경우 실행
+    return (scrollTop + windowHeight) >= (sec4Offset.top + 90);
+  } //checkVisibility
+  
+  $(window).scroll(function() {
+    const isVisible = checkVisibility();
+  
     if (isVisible && !isCountUpAnimated) {
       isCountUpAnimated = true;
-      
-      $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
-        const $this = $(this);
-        const key = $this.data('key');
-        const targetValue = phAssetsData[key];
-        const duration = 1000;
-        
-        $({ count: 0 }).animate({ count: targetValue }, {
-          duration: duration,
-          step: function() {
-            const roundedValue = Math.round(this.count / 100) * 100;
-            $this.text(formatCount(roundedValue));
-          },
-          complete: function() {
-            const finalValue = Math.round(targetValue / 100) * 100;
-            $this.text(formatCount(finalValue));
-          }
-        });
-      });
+      startCountUpAnimation();
     } else if (!isVisible && isCountUpAnimated) {
       isCountUpAnimated = false;
-
-      $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function () {
+  
+      $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
         $(this).text(formatCount(0));
       });
     }
   });
 
+  if (checkVisibility() && !isCountUpAnimated) {
+    isCountUpAnimated = true;
+    startCountUpAnimation();
+  } //기본값 설정
+
   // 4-2. 원형 시각화 라인 그리기
   const drawPointsOnCircle = numPoints => {
+    const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
     const $circle = $('.sec4 .sec-bottom .container .circle-wrap .circle');
-    const size = $circle.width();
-    
+    const size = Math.min($circleWrap.width(), $circleWrap.height()) - 50;
     $circle.css({
       width: size,
       height: size
     });
+    $circleWrap.find('.point, .tooltip').remove();
 
     let radius = size / 2;
     const centerX = $circle.position().left + radius;
@@ -219,7 +229,7 @@ $(document).ready(function() {
       ).css({
         position: 'absolute',
         width: i === 0 ? '100px' : '50px',
-        height: i === 0 ? '100px' : '50px', 
+        height: i === 0 ? '100px' : '50px',
         backgroundColor: '#9f94b3',
         boxSizing: 'border-box',
         borderRadius: '50%',
@@ -245,10 +255,9 @@ $(document).ready(function() {
           $tooltip.css('display', 'none');
         }
       );
-
       // 5-2-5. circle-wrap에 포인트 및 툴팁 추가
-      $('.sec4 .sec-bottom .container .circle-wrap').append($point);
-      $('.sec4 .sec-bottom .container .circle-wrap').append($tooltip);
+      $circleWrap.append($point);
+      $circleWrap.append($tooltip);
     }
 
     // 5-2-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
@@ -272,11 +281,18 @@ $(document).ready(function() {
           top: i === clickedIndex ? (y - 45) + 'px' : (y - 25) + 'px'
         });
       });
-
-      activeInfoTable(clickedIndex)
+  
+      activeInfoTable(clickedIndex);
     });
   } //drawPointsOnCircle
   drawPointsOnCircle(actionCategory.length);
+  
+  $(window).on('resize', function() {
+    // requestAnimationFrame: 브라우저 내장함수로 부드러운 프레임 애니메이션 지원
+    requestAnimationFrame(() => {
+      drawPointsOnCircle(actionCategory.length);
+    });
+  }); // window 사이즈가 조절될 때마다 좌표 자동화 재실행
 
   // 4-3. Click 이벤트에 따른 카테고리 정보 활성화
   const activeInfoTable = index => {
@@ -339,5 +355,5 @@ $(document).ready(function() {
       $contents.fadeIn(300);
     });
   } //activeInfoTable
-  activeInfoTable(0) // 기본값 설정
+  activeInfoTable(0); // 기본값 설정
 });
