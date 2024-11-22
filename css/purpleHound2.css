@@ -345,7 +345,7 @@ header .menu-wrap .menu a.active {
   width: 100%;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 70px solid #F1F1F1;
+  border: 40px solid #F1F1F1;
   position: relative;
 }
 .sec4 .sec-bottom .container .circle-wrap .point .icon{

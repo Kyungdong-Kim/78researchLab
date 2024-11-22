@@ -83,10 +83,11 @@ $(document).ready(function() {
 
   // 3-6. Section3 진입/이탈 체크
   const checkSection3 = () => {
-    const $sec3 = $('.sec3');
-    const $sec3Top = $sec3.offset().top;
     const scrollTop = $(window).scrollTop();
-    const isInSec3 = scrollTop >= $sec3Top - 200 && scrollTop < $sec3Top + $sec3.height() / 2;
+    const windowHeight = $(window).height();
+    const $sec3 = $('.sec3');
+    const sec3Offset = $sec3.offset();
+    const isInSec3 = (scrollTop + windowHeight) >= (sec3Offset.top + 90);
 
     // 1. section3 영역이라면 activeIndex에 해당하는 GIF를 재실행해
     if (isInSec3) {
@@ -133,12 +134,12 @@ $(document).ready(function() {
 
   $(window).scroll(function() {
     const scrollTop = $(window).scrollTop();
-    const sec4Top = $('.sec4 .sec-top');
-    const sec4Offset = sec4Top.offset().top;
     const windowHeight = $(window).height();
+    const $sec4 = $('.sec4');
+    const sec4Offset = $sec4.offset();
     
     // 4-1-1. 요소가 화면에 들어왔는지 확인
-    const isVisible = scrollTop > (sec4Offset - windowHeight + 70) && scrollTop < (sec4Offset + sec4Top.height());
+    const isVisible = (scrollTop + windowHeight) >= (sec4Offset.top + 90);
 
     // 4-1-2. 화면에 보이고 아직 애니메이션이 실행되지 않았을 경우 실행
     if (isVisible && !isCountUpAnimated) {
@@ -162,12 +163,17 @@ $(document).ready(function() {
           }
         });
       });
+    } else if (!isVisible && isCountUpAnimated) {
+      isCountUpAnimated = false;
+
+      $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function () {
+        $(this).text(formatCount(0));
+      });
     }
   });
 
   // 4-2. 원형 시각화 라인 그리기
   const drawPointsOnCircle = numPoints => {
-    // const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
     const $circle = $('.sec4 .sec-bottom .container .circle-wrap .circle');
     const size = $circle.width();
     
@@ -179,7 +185,7 @@ $(document).ready(function() {
     let radius = size / 2;
     const centerX = $circle.position().left + radius;
     const centerY = $circle.position().top + radius;
-    radius = radius - 35;
+    radius = radius - 20;
     const iconClasses = [
       'fas fa-network-wired',     // 네트워크 아이콘
       'fas fa-building',          // APT 아이콘
@@ -218,7 +224,7 @@ $(document).ready(function() {
         boxSizing: 'border-box',
         borderRadius: '50%',
         cursor: 'pointer',
-        left: i === 0 ? (x - 20) + 'px' : (x - 25) + 'px',
+        left: i === 0 ? (x - 45) + 'px' : (x - 25) + 'px',
         top: i === 0 ? (y - 45) + 'px' : (y - 25) + 'px',
         transition: 'all 0.5s ease',
         display: 'flex',
@@ -260,9 +266,9 @@ $(document).ready(function() {
         const y = centerY + radius * Math.sin(angle);
         
         $(this).css({
-          width: i === clickedIndex ? '100px' : '50px',
-          height: i === clickedIndex ? '100px' : '50px',
-          left: i === clickedIndex ? (x - 20) + 'px' : (x - 25) + 'px',
+          width: i === clickedIndex ? '100px' : '70px',
+          height: i === clickedIndex ? '100px' : '70px',
+          left: i === clickedIndex ? (x - 45) + 'px' : (x - 25) + 'px',
           top: i === clickedIndex ? (y - 45) + 'px' : (y - 25) + 'px'
         });
       });
