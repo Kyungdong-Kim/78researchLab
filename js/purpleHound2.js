@@ -356,4 +356,76 @@ $(document).ready(function() {
     });
   } //activeInfoTable
   activeInfoTable(0); // 기본값 설정
+
+  // 5. modal
+  $('.sec4 .sales-btn').click(function(){
+    $('.modal').addClass('active');
+  });
+  const closeModal = () => {
+    $('.modal').removeClass('active');
+    $('#name, #company, #phone-part1, #phone-part2, #phone-part3, #email').each(function() {
+      $(this).val('');
+      $(this).closest('input-wrap').css({border: '1px solid rgba(0, 0, 0, 0.3)'})
+    });
+  } //closeModal
+  $('.modal .input-wrap .closeBtn').click(closeModal);
+
+  // ===== email
+  $('#submit').click(function () {
+    if (!$('#name').val() || !$('#email').val() || !$('#company').val() || !$('#phone-part1').val() || !$('#phone-part2').val() || !$('#phone-part3').val()) {
+      alert('Check Again')
+      if(!$('#name').val()){
+        $('#name').closest('.input-wrap').css({border: '2px solid #5F4B8Ba8'});
+      } else {
+        $('#name').closest('.input-wrap').css({border: '1px solid rgba(0, 0, 0, 0.3)'})
+      }
+      if(!$('#email').val()){
+        $('#email').closest('.input-wrap').css({border: '2px solid #5F4B8Ba8'})
+      } else {
+        $('#email').closest('.input-wrap').css({border: '2px solid rgba(0,0,0,0.3)'})
+      }
+      if(!$('#company').val()){
+        $('#company').closest('.input-wrap').css({border: '2px solid #5F4B8Ba8'})
+      } else {
+        $('#company').closest('.input-wrap').css({border: '2px solid rgba(0,0,0,0.3)'})
+      }
+      if(!$('#phone-part1').val() || !$('#phone-part2').val() || !$('#phone-part3').val()){
+        $('#phone-part1, #phone-part2, #phone-part3').each(function() {
+          $(this).closest('.input-wrap').css({border: '2px solid #5F4B8Ba8'});
+        });
+      } else {
+        $('#phone-part1, #phone-part2, #phone-part3').each(function() {
+          $(this).closest('.input-wrap').css({border: '2px solid rgba(0,0,0,0.3)'});
+        });
+      }
+    } else {
+      alert('요청함');
+
+      var templateParams = {
+        //각 요소는 emailJS에서 설정한 템플릿과 동일한 명으로 작성
+        name: $('#name').val(),
+        email: `${$('#email').val()}@${$('#email-domain').val()}`,
+        phone: `${$('#phone-part1').val()}-${$('#phone-part2').val()}-${$('#phone-part3').val()}`,
+        company: $('#company').val()
+      };
+      console.log(templateParams);
+
+      // emailjs.send('service_id', 'template_id', 보낼내용이 담긴 객체, 'API Public Key')
+      // emailjs.send('service_4hpv7ij', 'template_nsrcypa', templateParams, 'rfXnZSjM-mMJ48knD')
+      //   .then(function () {
+      //     console.log('end')
+      //     window.location.reload();
+      //   }, function (error) {
+      //     console.log(error);
+      //   });
+      emailjs.send('service_4hpv7ij', 'template_nsrcypa', templateParams, 'S_ZyZuYUCIUbQgyvy')
+      .then(function (response) {
+        console.log('SUCCESS!', response);
+      }, function (error) {
+        console.error('EmailJS error:', error);
+      });
+
+      closeModal();
+    }
+  });
 });

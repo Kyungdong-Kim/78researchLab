@@ -71,7 +71,7 @@
   </div>
 
   <section class="sec sec1">
-    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="70">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
       <p class="title">안전한 가상화 시스템을 통한 실전 같은 사이버 공격 대응</p>
       <p class="sub">실제 공격 시뮬레이션으로 검증된 가상화 시스템 환경을 제공합니다.</p>
     </div>
@@ -81,7 +81,7 @@
   </section>
   
   <section class="sec sec2">
-    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="70">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
       <p class="title">사이버 보안 역량을 높이는 실전 대응 시나리오</p>
       <p class="sub">대응 역량 검증, 최신 위협 대응, 모의 해킹 보완 등 다양한 보안 활용 사례를 제공합니다.</p>
     </div>
@@ -104,7 +104,7 @@
   </section>
   
   <section class="sec sec3">
-    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="70">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
       <p class="title">단계별로 직관적인 시뮬레이션 인터페이스</p>
       <p class="sub">사용자 중심의 단계별 UI로 더욱 쉬운 보안 시뮬레이션을 진행합니다.</p>
     </div>
@@ -169,8 +169,8 @@
     </div>
   </section>
 
-  <div class="sec sec4">
-    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="70">
+  <section class="sec sec4">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
       <p class="title">국내 환경에 맞춘 최적의 공격 시나리오 제공</p>
       <p class="sub">국내 ICT 환경에 최적화된 공격 시나리오로 유사 솔루션과 차별화된 보안을 지원합니다.</p>
     </div>
@@ -206,7 +206,58 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <button class="sales-btn">소개 자료 요청</button>
+  </section>
+
+  <div class="modal">
+		<div class="input-wrap">
+			<div class="imgBox">
+				<img src="./favicon/purpleHound.ico" alt="PurpleHound">
+			</div>
+			<div class="closeBtn">
+				<span></span><span></span>
+			</div>
+			<div class="input-top">
+				<p
+				 ko="PurpleHound 데모 자료 요청하기"
+				 en="Request a PurpleHound intro">PurpleHound 데모 자료 요청하기</p>
+			</div>
+      <div class="input-bottom">
+        <div class="input-wrap">
+          <p>이름</p>
+          <input id="name" name="name" type="text" autocomplete="name" aria-label="이름 입력">
+        </div>
+        <div class="input-wrap">
+          <p>소속</p>
+          <input id="company" name="company" type="text" autocomplete="organization" aria-label="소속 입력">
+        </div>
+        <div class="input-wrap">
+          <p>전화번호</p>
+          <div class="phone-number-inputs">
+            <input id="phone-part1" type="text" maxlength="3" placeholder="010" autocomplete="off">
+            <span>-</span>
+            <input id="phone-part2" type="text" maxlength="4" placeholder="1234" autocomplete="off">
+            <span>-</span>
+            <input id="phone-part3" type="text" maxlength="4" placeholder="5678" autocomplete="off">
+          </div>
+        </div>
+        <div class="input-wrap">
+          <p>이메일</p>
+          <div class="email-inputs">
+            <input id="email" type="text" autocomplete="off">
+            <span>@</span>
+            <select id="email-domain">
+              <option value="gmail.com">gmail.com</option>
+              <option value="naver.com">naver.com</option>
+              <option value="daum.net">daum.net</option>
+            </select>
+          </div>
+        </div>
+        <button id="submit" type="submit">Send</button>
+      </div>      
+		</div>
+	</div>
 
   <footer>
     <div class="footer-top">
@@ -267,6 +318,7 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="./js/purpleHound2.js" type="module"></script>  
