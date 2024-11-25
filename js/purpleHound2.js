@@ -5,7 +5,7 @@ $(document).ready(function() {
   AOS.init();
 
   // ===== 2. Sec2 : swiper 사용 설정
-  new Swiper(".mySwiper", {
+  const swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 30,
     speed: 800,
@@ -20,6 +20,33 @@ $(document).ready(function() {
       type: 'bullets',
     },
   });
+  
+  const checkScroll = () => {
+    const sec2 = document.querySelector('.sec2');
+    const sec2Rect = sec2.getBoundingClientRect();
+    const sec2Top = sec2Rect.top + window.scrollY;
+    const sec2Bottom = sec2Top + sec2Rect.height;
+    
+    const windowBottom = window.scrollY + window.innerHeight;
+    const threshold = windowBottom - window.innerHeight / 2;
+  
+    // 조건에 맞으면 autoplay 활성화
+    if (sec2Top <= threshold) {
+      if (!swiper.autoplay.running) {
+        swiper.autoplay.start();
+        console.log('시작')
+      }
+    } else {
+      if (swiper.autoplay.running) {
+        swiper.autoplay.stop();
+        console.log('멈춤')
+      }
+    }
+  };
+  
+  window.addEventListener('scroll', checkScroll);
+  checkScroll();
+  
 
   // ===== 3. Sec3
   let currentTimeoutId;
