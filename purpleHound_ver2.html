@@ -172,10 +172,10 @@
   <section class="sec sec4">
     <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
       <p class="title">국내 환경에 맞춘 최적의 공격 시나리오 제공</p>
-      <p class="sub">국내 ICT 환경에 최적화된 공격 시나리오로 유사 솔루션과 차별화된 보안을 지원합니다.</p>
+      <p class="sub">국내 ICT 환경에 최적화된 공격 시나리오로 유사 솔루션과 차별화된 가용성(현실성) 높은 공격 시나리오를 제공합니다.</p>
     </div>
     <div class="sec-bottom">
-      <div class="asset-box">
+      <!-- <div class="asset-box">
         <div class="box">
           <p class="cnt" data-key="simulation">0</p>
           <div class="line"></div>
@@ -190,6 +190,12 @@
           <p class="cnt" data-key="action">0</p>
           <div class="line"></div>
           <p class="name">액션</p>
+        </div>
+      </div> -->
+      <div class="box-wrap">
+        <div class="count-box">
+          <p class="count">30 +</p>
+          <p>매달 30개 이상의 최신 APT 공격 시나리오 추가</p>
         </div>
       </div>
       <div class="container">
@@ -220,17 +226,17 @@
 			</div>
 			<div class="input-top">
 				<p
-				 ko="PurpleHound 데모 자료 요청하기"
-				 en="Request a PurpleHound intro">PurpleHound 데모 자료 요청하기</p>
+				 ko="PurpleHound 자료 요청하기"
+				 en="Request a PurpleHound intro">PurpleHound 자료 요청하기</p>
 			</div>
       <div class="input-bottom">
         <div class="input-wrap">
           <p>이름</p>
-          <input id="name" name="name" type="text" autocomplete="name" aria-label="이름 입력">
+          <input id="name" name="name" type="text" autocomplete="off" aria-label="이름 입력">
         </div>
         <div class="input-wrap">
           <p>소속</p>
-          <input id="company" name="company" type="text" autocomplete="organization" aria-label="소속 입력">
+          <input id="company" name="company" type="text" autocomplete="off" aria-label="소속 입력">
         </div>
         <div class="input-wrap">
           <p>전화번호</p>
@@ -247,14 +253,20 @@
           <div class="email-inputs">
             <input id="email" type="text" autocomplete="off">
             <span>@</span>
+            <input type="text" id="custom-email-domain">
             <select id="email-domain">
+              <option value="">직접 입력</option>
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
               <option value="daum.net">daum.net</option>
             </select>
           </div>
         </div>
-        <button id="submit" type="submit">Send</button>
+        <div class="checkbox-wrap">
+          <input type="checkbox" name="agree" id="agree">
+          <label for="agree">개인정보 동의</label>
+        </div>
+        <button id="submit" type="submit">요청하기</button>
       </div>      
 		</div>
 	</div>

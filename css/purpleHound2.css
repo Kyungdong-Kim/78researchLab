@@ -325,7 +325,36 @@ header .menu-wrap .menu a.active {
 }
 .sec4 .sec-bottom .asset-box .box .name{
   color: #787878;
-
+}
+.sec4 .sec-bottom .box-wrap{
+  width: 100%;
+  height: 200px;
+  /* background-color: rebeccapurple; */
+  background-color: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sec4 .sec-bottom .box-wrap .count-box{
+  /* width: 30%; */
+  width: 100%;
+  height: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: wheat; */
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 15px;
+}
+.sec4 .sec-bottom .box-wrap .count-box .count{
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #5F4B8B;
+}
+.sec4 .sec-bottom .box-wrap .count-box p{
+  font-size: 1rem;
 }
 .sec4 .sec-bottom .container{
   width: 100%;
@@ -582,6 +611,15 @@ header .menu-wrap .menu a.active {
 	padding: 5px 10px;
 	background-color: rgba(0, 0, 0, 0.7);
 	color: #fff;
+}
+.modal.active .checkbox-wrap{
+  width: 90%;
+  height: 30px;
+  text-align: end;
+}
+.modal.active .checkbox-wrap input,
+.modal.active .checkbox-wrap label{
+  cursor: pointer;
 }
 
 /* #6. footer */
