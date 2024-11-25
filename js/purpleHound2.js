@@ -1,4 +1,4 @@
-import { phAssetsData, actionCategory, networkAttack, aptAttack, ipcAttack, financeAttack, telecomAttack } from '../data/purpleHoundData.js';
+import { actionCategory, networkAttack, aptAttack, vulnAttack, financeAttack, telecomAttack } from '../data/purpleHoundData.js';
 
 $(document).ready(function() {
   // ===== 1. Animation On Scroll 라이브러리 초기화
@@ -11,7 +11,7 @@ $(document).ready(function() {
     speed: 800,
     effect: "slide",
     autoplay: {
-      delay: 3000,
+      delay: 5000,
       disableOnInteraction: false,
     },
     pagination: {
@@ -20,7 +20,6 @@ $(document).ready(function() {
       type: 'bullets',
     },
   });
-  
 
   // ===== 3. Sec3
   let currentTimeoutId;
@@ -51,7 +50,6 @@ $(document).ready(function() {
     $activeGif.attr('src', src);
     return $activeGif;
   } //resetGif
-  
 
   // 3-3. 선택된 단계의 UI GIF 활성화
   const activateStepGui = $item => {
@@ -132,57 +130,57 @@ $(document).ready(function() {
     return num.toLocaleString();
   } //formatCount
 
-  let isCountUpAnimated = false;
+  // let isCountUpAnimated = false;
   // 4-1. countUp 애니메이션
-  const startCountUpAnimation = () => {
-    $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
-      const $this = $(this);
-      const key = $this.data('key');
-      const targetValue = phAssetsData[key];
-      const duration = 1000;
+  // const startCountUpAnimation = () => {
+  //   $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
+  //     const $this = $(this);
+  //     const key = $this.data('key');
+  //     const targetValue = phAssetsData[key];
+  //     const duration = 1000;
       
-      $({ count: 0 }).animate({ count: targetValue }, {
-        duration: duration,
-        step: function() {
-          const roundedValue = Math.round(this.count / 100) * 100;
-          $this.text(formatCount(roundedValue));
-        },
-        complete: function() {
-          const finalValue = Math.round(targetValue / 100) * 100;
-          $this.text(formatCount(finalValue));
-        }
-      });
-    });
-  } //startCountUpAnimation
+  //     $({ count: 0 }).animate({ count: targetValue }, {
+  //       duration: duration,
+  //       step: function() {
+  //         const roundedValue = Math.round(this.count / 100) * 100;
+  //         $this.text(formatCount(roundedValue));
+  //       },
+  //       complete: function() {
+  //         const finalValue = Math.round(targetValue / 100) * 100;
+  //         $this.text(formatCount(finalValue));
+  //       }
+  //     });
+  //   });
+  // } //startCountUpAnimation
   
-  const checkVisibility = () => {
-    const scrollTop = $(window).scrollTop();
-    const windowHeight = $(window).height();
-    const $sec4 = $('.sec4');
-    const sec4Offset = $sec4.offset();
+  // const checkVisibility = () => {
+  //   const scrollTop = $(window).scrollTop();
+  //   const windowHeight = $(window).height();
+  //   const $sec4 = $('.sec4');
+  //   const sec4Offset = $sec4.offset();
     
-    return (scrollTop + windowHeight) >= (sec4Offset.top + 90);
-  } //checkVisibility
+  //   return (scrollTop + windowHeight) >= (sec4Offset.top + 90);
+  // } //checkVisibility
   
-  $(window).scroll(function() {
-    const isVisible = checkVisibility();
+  // $(window).scroll(function() {
+  //   const isVisible = checkVisibility();
   
-    if (isVisible && !isCountUpAnimated) {
-      isCountUpAnimated = true;
-      startCountUpAnimation();
-    } else if (!isVisible && isCountUpAnimated) {
-      isCountUpAnimated = false;
+  //   if (isVisible && !isCountUpAnimated) {
+  //     isCountUpAnimated = true;
+  //     startCountUpAnimation();
+  //   } else if (!isVisible && isCountUpAnimated) {
+  //     isCountUpAnimated = false;
   
-      $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
-        $(this).text(formatCount(0));
-      });
-    }
-  });
+  //     $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
+  //       $(this).text(formatCount(0));
+  //     });
+  //   }
+  // });
 
-  if (checkVisibility() && !isCountUpAnimated) {
-    isCountUpAnimated = true;
-    startCountUpAnimation();
-  } //기본값 설정
+  // if (checkVisibility() && !isCountUpAnimated) {
+  //   isCountUpAnimated = true;
+  //   startCountUpAnimation();
+  // } //기본값 설정
 
   // 4-2. 원형 시각화 라인 그리기
   const drawPointsOnCircle = numPoints => {
@@ -305,19 +303,19 @@ $(document).ready(function() {
 
     // 5-3-1. attackType에 따라 해당하는 데이터 매칭
     switch(attackType) {
-      case '네트워크 공격':
+      case '네트워크 공격 시나리오':
         attackData = networkAttack;
         break;
-      case 'APT 공격':
+      case 'APT 공격 시나리오':
         attackData = aptAttack;
         break;
-      case 'IPC 공격':
-        attackData = ipcAttack;
+      case '취약점 공격 시나리오':
+        attackData = vulnAttack;
         break;
-      case '금융사 특화 공격':
+      case '금융권 대상 공격 시나리오':
         attackData = financeAttack;
         break;
-      case '통신사 특화 공격':
+      case '통신 시스템 공격 시나리오':
         attackData = telecomAttack;
         break;
       default:

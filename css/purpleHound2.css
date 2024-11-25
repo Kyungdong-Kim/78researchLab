@@ -284,7 +284,7 @@ header .menu-wrap .menu a.active {
   justify-content: center;
   align-items: center;
 }
-.sec4 .sec-bottom .asset-box{
+/* .sec4 .sec-bottom .asset-box{
   background-color: #F0F0F0;
   width: 100%;
   height: 200px;
@@ -325,11 +325,10 @@ header .menu-wrap .menu a.active {
 }
 .sec4 .sec-bottom .asset-box .box .name{
   color: #787878;
-}
+} */
 .sec4 .sec-bottom .box-wrap{
   width: 100%;
   height: 200px;
-  /* background-color: rebeccapurple; */
   background-color: #F0F0F0;
   display: flex;
   justify-content: center;
@@ -343,7 +342,6 @@ header .menu-wrap .menu a.active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: wheat; */
   background-color: rgba(255,255,255,0.5);
   border-radius: 15px;
 }
@@ -353,9 +351,15 @@ header .menu-wrap .menu a.active {
   margin-bottom: 20px;
   color: #5F4B8B;
 }
+.sec4 .sec-bottom .box-wrap .count-box .count span{
+  color: gray;
+  font-size: 1rem;
+  font-weight: normal;
+}
 .sec4 .sec-bottom .box-wrap .count-box p{
   font-size: 1rem;
 }
+
 .sec4 .sec-bottom .container{
   width: 100%;
   height: 500px;
