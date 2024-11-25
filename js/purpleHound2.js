@@ -4,7 +4,7 @@ $(document).ready(function() {
   // ===== 1. Animation On Scroll 라이브러리 초기화
   AOS.init();
 
-  // ===== 2. Sec2 : swiper 사용 설정
+  // === 2. Swiper 초기화
   const swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 30,
@@ -15,39 +15,34 @@ $(document).ready(function() {
       disableOnInteraction: false,
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: ".swiper-pagination",
       clickable: true,
-      type: 'bullets',
+      type: "bullets",
     },
   });
-  
+
   const checkScroll = () => {
-    const sec2 = document.querySelector('.sec2');
+    const sec2 = document.querySelector(".sec2");
     const sec2Rect = sec2.getBoundingClientRect();
-    const sec2Top = sec2Rect.top + window.scrollY;
-    const sec2Bottom = sec2Top + sec2Rect.height;
-    
-    const windowBottom = window.scrollY + window.innerHeight;
-    const threshold = windowBottom - window.innerHeight / 2;
-  
-    // 조건에 맞으면 autoplay 활성화
-    if (sec2Top <= threshold) {
+    const sec2InView =
+      sec2Rect.top < window.innerHeight && sec2Rect.bottom > 0;
+
+    if (sec2InView) {
+      // 2-1. .sec2가 viewport 내에 있을 경우 autoplay 시작
       if (!swiper.autoplay.running) {
         swiper.autoplay.start();
-        console.log('시작')
       }
     } else {
+      // 2-2. .sec2가 viewport 밖에 있으면 autoplay 멈춤
       if (swiper.autoplay.running) {
         swiper.autoplay.stop();
-        console.log('멈춤')
       }
     }
-  };
-  
-  window.addEventListener('scroll', checkScroll);
+  } //checkScroll
+
+  window.addEventListener("scroll", checkScroll);
   checkScroll();
   
-
   // ===== 3. Sec3
   let currentTimeoutId;
   let isInSection3 = false;
@@ -153,9 +148,9 @@ $(document).ready(function() {
 
 
   // ===== 4. sec4 : countUp 및 카테고리별 Action 정보
-  const formatCount = num => {
-    return num.toLocaleString();
-  } //formatCount
+  // const formatCount = num => {
+  //   return num.toLocaleString();
+  // } //formatCount
 
   // let isCountUpAnimated = false;
   // 4-1. countUp 애니메이션
@@ -400,7 +395,7 @@ $(document).ready(function() {
     $('#email-domain').val('');
     $('#agree').prop('checked', false)
     $('#agree label').css({ fontWeight: 'normal' });
-  }; //closeModal
+  } //closeModal
   $('.modal .input-wrap .closeBtn').click(closeModal);
 
   // 5-2. 필수 입력값 확인
@@ -487,7 +482,7 @@ $(document).ready(function() {
     const customDomainInput = $('#custom-email-domain');
 
     customDomainInput.val(selectEle);
-  };
+  }
   inputDomain();
   // select 요소 변경 시 inputDomain 함수 호출
   $('#email-domain').on('change', inputDomain);

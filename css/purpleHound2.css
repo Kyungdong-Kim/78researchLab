@@ -68,8 +68,17 @@ header .menu-wrap .menu a.active {
   height: 100%;
   position: absolute;
   bottom: 0;
-  background: url('../images/services/purpleHound2.png') no-repeat right;
-  background-size: cover;
+  /* background: url('../images/services/purpleHound2.png') no-repeat right; */
+  /* background-size: cover; */
+}
+.banner .img-box{
+  position: relative;
+}
+.banner .img-box img{
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 /* 1-1.common section */
