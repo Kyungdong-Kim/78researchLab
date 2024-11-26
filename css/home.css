@@ -274,11 +274,11 @@ section.sec .sec-bottom{
   height: 100%;
 }
 .sec2 .sec-bottom .service:nth-child(1) .imgBox{
-  background : linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) ,url('../images/services/redSpider.jpg') no-repeat center center;
+  background : linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) ,url('../images/services/purpleHound.jpeg') no-repeat center center;
   background-size: cover;
 }
 .sec2 .sec-bottom .service:nth-child(2) .imgBox{
-  background : linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) ,url('../images/services/purpleHound.jpeg') no-repeat center center;
+  background : linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) ,url('../images/services/redSpider.jpg') no-repeat center center;
   background-size: cover;
 }
 .sec2 .sec-bottom .service:nth-child(3) .imgBox{
@@ -322,7 +322,7 @@ section.sec .sec-bottom{
   content: '';
   width: 5px;
   height: 5px;
-  background-color: #BB2E2E;
+  background-color: #5F4B87;
   position: absolute;
   right: -7px;
   top: 3px;
@@ -331,7 +331,7 @@ section.sec .sec-bottom{
   content: '';
   width: 5px;
   height: 5px;
-  background-color: #5F4B87;
+  background-color: #BB2E2E;
   position: absolute;
   right: -7px;
   top: 3px;
@@ -377,10 +377,10 @@ section.sec .sec-bottom{
   transition: 0.1s;
 }
 .sec2 .sec-bottom .service:nth-child(1) .txtBox a{
-  background-color: #BB2E2E;
+  background-color: #5F4B87;
 }
 .sec2 .sec-bottom .service:nth-child(2) .txtBox a{
-  background-color: #5F4B87;
+  background-color: #BB2E2E;
 }
 .sec2 .sec-bottom .service:nth-child(3) .txtBox a{
   background-color: #324A7B;
