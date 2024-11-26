@@ -1,10 +1,10 @@
 // Action 대표 카테고리 리스트
 export const actionCategory = [
-  ['네트워크 공격 시나리오', 20, {name: 'networkAttack', description: '네트워크 통신 프로토콜을 이용하여 네트워크 장비를 대상으로 하는 공격입니다.' }],
-  ['APT 공격 시나리오', 20, {name: 'aptAttack', description: '특정 조직이나 개인을 겨냥한 맞춤형 피싱 공격으로, 신뢰할 수 있는 출처로 위장하여 악성코드를 유포하거나 중요 정보를 탈취합니다.' }], 
-  ['취약점 공격 시나리오', 20, {name: 'vulnAttack', description: '프로세스 간 공유되는 메모리 영역을 악의적으로 조작하여 데이터를 탈취하거나 변조하는 공격입니다.' }], 
-  ['금융권 대상 공격 시나리오', 20, {name: 'financeAttack', description: '신뢰할 수 있는 소프트웨어 공급업체나 서비스 제공업체를 통해 악성코드를 유포하는 간접적인 공격 방식입니다.' }],
-  ['통신 시스템 공격 시나리오', 20, {name: 'telecomAttack', description: '통신사의 시그널링 시스템을 악용하여 통화 도청, 위치 추적, SMS 가로채기 등을 시도하는 공격입니다.' }],
+  ['네트워크 공격 시나리오', 20, {name: 'networkAttack'}],
+  ['APT 공격 시나리오', 20, {name: 'aptAttack'}], 
+  ['취약점 공격 시나리오', 20, {name: 'vulnAttack'}], 
+  ['금융권 대상 공격 시나리오', 20, {name: 'financeAttack'}],
+  ['통신 시스템 공격 시나리오', 20, {name: 'telecomAttack'}],
 ];
 
 // 카테고리별 세부 내용 리스트

@@ -345,22 +345,20 @@ $(document).ready(function() {
     }
     const $tableWrap = $('.sec4 .sec-bottom .table-wrap');
     const $title = $tableWrap.find('.title .category');
-    const $sub = $tableWrap.find('.sub');
     const $table = $tableWrap.find('table');
     const $contents = $tableWrap.find('.title, .sub, table');
 
     // 기존 데이터 fadeOut
     $contents.fadeOut(300, function() {
       $title.text(data[0]);
-      $sub.text(data[2].description);
       $table.empty();
 
       // 5-3-2. 매칭된 데이터를 사용한 table 값 채우기
       const headerRow = `
         <tr>
-          <th>index</th>
-          <th>name</th>
-          <th>description</th>
+          <th>순위</th>
+          <th>공격 유형</th>
+          <th>설명</th>
         </tr>
       `;
       
