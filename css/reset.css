@@ -157,6 +157,8 @@ header .menuBtn.active ul li{
 header .menuBtn.active ul li p.active,
 header .menu-wrap li p.active{
   font-weight: 800;
+  margin: 0;
+  transform: translateY(0);
 }
 
 /* footer */
