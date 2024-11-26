@@ -28,57 +28,30 @@ header .menu-wrap .menu a.active {
   height: 100vh;
   position: relative;
 }
-.banner .text-box {
-  width: 50%;
-  height: 25%;
-  min-height: fit-content;
-  position: absolute;
-  top: 50%;
-  left: 100px;
-  transform: translateY(-50%);
-  margin-top: -50px;
-  padding: 20px 10px;
+.banner .mobile-img{
+  display: none;
 }
-.banner .text-box[data-aos="fade-up-right"] {
-  transform: translate(-50px, calc(-50% + 50px)) !important;
-  opacity: 0;
-}
-.banner .text-box[data-aos="fade-up-right"].aos-animate {
-  transform: translateY(-50%) !important;
-  opacity: 1;
-}
-.banner .text-box .font-light{
-  font-size: 1.3rem;
-  font-weight: 300;
-}
-.banner .text-box .font-bold{
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.banner .text-box img{
-  width: 80%;
-  max-width: fit-content;
-  height: 50%;
-  max-height: fit-content;
-  margin: 15px 0;
-  object-fit: contain;
-}
+.banner .text-img-box,
 .banner .img-box{
   width: 100%;
   height: 100%;
   position: absolute;
-  bottom: 0;
-  /* background: url('../images/services/purpleHound2.png') no-repeat right; */
-  /* background-size: cover; */
+  top: 0;
+  right: 0;
+  display: block;
 }
-.banner .img-box{
-  position: relative;
+.banner .text-img-box img{
+  object-fit: contain;
+  object-position: left top;
 }
 .banner .img-box img{
-  object-fit: cover;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
   position: absolute;
   bottom: 0;
   right: 0;
+  object-position: right bottom;
 }
 
 /* 1-1.common section */
@@ -186,6 +159,7 @@ header .menu-wrap .menu a.active {
   margin: 10px;
   width: 100%;
   height: calc(33% - 10px);
+  min-height: 100px;
   position: relative;
 }
 .sec3 .sec-bottom .left .item-box::before{
@@ -249,6 +223,7 @@ header .menu-wrap .menu a.active {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .sec3 .sec-bottom .left .item-box .txt-box .title .patent-badge {
   display: inline-block;
@@ -260,6 +235,10 @@ header .menu-wrap .menu a.active {
   border-radius: 10px;
   color: #5F4B8B;
   vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
 }
 .sec3 .sec-bottom .left .item-box .txt-box .sub{
   font-size: 1rem;
@@ -501,7 +480,7 @@ header .menu-wrap .menu a.active {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
   padding-top: 30px;
 }
 .modal.active .input-wrap .input-bottom .input-wrap{
@@ -510,6 +489,7 @@ header .menu-wrap .menu a.active {
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  margin: 10px 0;
 }
 .modal.active .input-wrap .input-bottom .input-wrap p{
   position: absolute;
@@ -577,20 +557,20 @@ header .menu-wrap .menu a.active {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-.modal.active .input-wrap .input-bottom #submit{
-	width: 70px;
-	padding: 5px 10px;
-	background-color: rgba(0, 0, 0, 0.7);
-	color: #fff;
-}
 .modal.active .checkbox-wrap{
   width: 90%;
-  height: 30px;
+  height: fit-content;
   text-align: end;
 }
 .modal.active .checkbox-wrap input,
 .modal.active .checkbox-wrap label{
   cursor: pointer;
+}
+.modal.active .input-wrap .input-bottom #submit{
+	width: 70px;
+	padding: 5px 10px;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #fff;
 }
 
 /* #6. footer */
@@ -631,10 +611,6 @@ opacity: 0.5;
 }
 
 @media (max-width: 1400px) {
-  .banner .img-box img{
-    object-fit: cover;
-    object-position: right;
-  }
   .sec2 .sec-bottom{
     height: 70%;
     margin-top: 20px;
@@ -716,33 +692,13 @@ opacity: 0.5;
   html, body{
     font-size: 15px;
   }
-  .banner .img-box{
-    z-index: -1;
-  }
-  .banner .text-box {
-    width: auto;
-    max-width: 80%;
-    position: absolute;
-    top: 30%;
-    left: 50px;
-    transform: translateY(-50%);
-    margin-top: -50px;
-  }
-  .banner .text-box[data-aos="fade-up-right"] {
-    transform: translate(-50px, calc(50% - 50px)) !important;
-    opacity: 0;
-  }
-  .banner .text-box[data-aos="fade-up-right"].aos-animate {
-    transform: translateY(0) !important;
-    opacity: 1;
-  }
   .sec1{
     padding: 150px 30px;
     height: 80vh;
   }
   .sec1 .sec-bottom{
     height: 80%;
-    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0 10px;
   }
   .sec2 .sec-bottom{
@@ -802,6 +758,24 @@ opacity: 0.5;
   }
 }
 
+@media (max-width: 950px) {
+  .banner {
+    width: 100%;
+    height: fit-content;
+    background: url('../images/services/purpleHound_mobile.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right top;
+  }
+  .banner .mobile-img{
+    display: block;
+  }
+  .banner .text-img-box,
+  .banner .img-box{
+    display: none;
+  }
+}
+
 @media (max-width: 810px) {
   html, body{
     font-size: 14px;
@@ -849,8 +823,26 @@ opacity: 0.5;
   html, body{
     font-size: 13px;
   }
+  .sec .sec-top .title{
+    padding: 0 20px;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+  .sec .sec-top .sub{
+    padding: 0 30px;
+    margin-bottom: 10px;
+  }
+  .sec1 .sec-top{
+    margin-bottom: 10px;
+  }
   .sec3 .sec-bottom .left .item-box .txt-box .sub{
     font-size: 0.9rem;
+  }
+
+  .modal.active .input-wrap{
+    width: 90vw;
+    /* height: 70vh; */
+    height: fit-content;
   }
 }
 
@@ -867,6 +859,9 @@ opacity: 0.5;
 }
 
 @media (max-width: 550px) {
+  html, body{
+    font-size: 11px;
+  }
   .sec3{
     padding: 150px 10px;
   }
@@ -882,5 +877,74 @@ opacity: 0.5;
   .sec4 .sec-bottom .container .table-wrap #accordionFlushExample{
     width: 100%;
     display: block;
+  }
+}
+
+@media (max-height: 750px) {
+  .modal.active .input-wrap{
+    height: fit-content;
+    padding: 20px 0;
+  }
+  .modal.active .input-wrap .input-bottom{
+    height: calc(100% - 100px);
+    padding-top: 20px;
+  }
+}
+@media (max-height: 560px) {
+  .modal.active .input-wrap{
+    width: 95vw;
+  }
+}
+
+@media (max-width: 450px) {
+  .sec{
+    height: fit-content;
+    min-height: 50vh;
+    padding: 50px 10px;
+  }
+  .sec1 .sec-top{
+    margin-bottom: 30px;
+  }
+  .sec .sec-bottom{
+    min-height: 60vh;
+    height: fit-content;
+  }
+  .sec1 .sec-bottom{
+    min-height: 30vh;
+  }
+  .sec2 .sec-bottom{
+    margin: 0;
+    min-height: 30vh;
+    padding: 0;
+  }
+  .sec2 .sec-bottom .slider{
+    width: 100%;
+    height: 20vh;
+    padding: 20px 100px 0 100px;
+  }
+  .sec2 .sec-bottom .slider .inner,
+  .sec2 .sec-bottom .slider .swiper-wrapper,
+  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide,
+  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .sec2 .sec-bottom .slider .swiper-wrapper{
+    height: calc(100% - 50px);
+  }
+  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide.swiper-slide-active{
+    background-color: #FFFFFF;
+    height: 100%;
+  }
+
+  .sec3 .sec-bottom{
+    height: 120vh;
+  }
+  .sec3 .sec-bottom .left {
+    height: 60%;
+  }
+  .sec3 .sec-bottom .right{
+    height: 35%;
   }
 }

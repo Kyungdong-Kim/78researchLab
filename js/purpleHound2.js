@@ -515,6 +515,9 @@ $(document).ready(function() {
   inputDomain();
   // select 요소 변경 시 inputDomain 함수 호출
   $('#email-domain').on('change', inputDomain);
+  $('#custom-email-domain').on('input', function() {
+    $('#email-domain').val('');
+  });  
 
   // 클릭 이벤트 핸들러
   $('#submit').click(function () {
