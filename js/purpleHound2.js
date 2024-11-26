@@ -147,166 +147,188 @@ $(document).ready(function() {
   $(window).scroll(checkSection3);
 
 
-  // ===== 4. sec4 : countUp 및 카테고리별 Action 정보
-  // const formatCount = num => {
-  //   return num.toLocaleString();
-  // } //formatCount
-
-  // let isCountUpAnimated = false;
-  // 4-1. countUp 애니메이션
-  // const startCountUpAnimation = () => {
-  //   $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
-  //     const $this = $(this);
-  //     const key = $this.data('key');
-  //     const targetValue = phAssetsData[key];
-  //     const duration = 1000;
-      
-  //     $({ count: 0 }).animate({ count: targetValue }, {
-  //       duration: duration,
-  //       step: function() {
-  //         const roundedValue = Math.round(this.count / 100) * 100;
-  //         $this.text(formatCount(roundedValue));
-  //       },
-  //       complete: function() {
-  //         const finalValue = Math.round(targetValue / 100) * 100;
-  //         $this.text(formatCount(finalValue));
-  //       }
-  //     });
-  //   });
-  // } //startCountUpAnimation
-  
-  // const checkVisibility = () => {
-  //   const scrollTop = $(window).scrollTop();
-  //   const windowHeight = $(window).height();
-  //   const $sec4 = $('.sec4');
-  //   const sec4Offset = $sec4.offset();
-    
-  //   return (scrollTop + windowHeight) >= (sec4Offset.top + 90);
-  // } //checkVisibility
-  
-  // $(window).scroll(function() {
-  //   const isVisible = checkVisibility();
-  
-  //   if (isVisible && !isCountUpAnimated) {
-  //     isCountUpAnimated = true;
-  //     startCountUpAnimation();
-  //   } else if (!isVisible && isCountUpAnimated) {
-  //     isCountUpAnimated = false;
-  
-  //     $('.sec4 .sec-bottom .asset-box .box .cnt[data-key]').each(function() {
-  //       $(this).text(formatCount(0));
-  //     });
-  //   }
-  // });
-
-  // if (checkVisibility() && !isCountUpAnimated) {
-  //   isCountUpAnimated = true;
-  //   startCountUpAnimation();
-  // } //기본값 설정
-
-  // 4-2. 원형 시각화 라인 그리기
+  // ===== 4. sec4 : 카테고리별 Action 정보
+  // 4-1. 원형 시각화 라인 그리기
   const drawPointsOnCircle = numPoints => {
-    const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
-    const $circle = $('.sec4 .sec-bottom .container .circle-wrap .circle');
-    const size = Math.min($circleWrap.width(), $circleWrap.height()) - 50;
-    $circle.css({
-      width: size,
-      height: size
-    });
-    $circleWrap.find('.point, .tooltip').remove();
-
-    let radius = size / 2;
-    const centerX = $circle.position().left + radius;
-    const centerY = $circle.position().top + radius;
-    radius = radius - 20;
     const iconClasses = [
       'fas fa-network-wired',     // 네트워크 아이콘
       'fas fa-building',          // APT 아이콘
       'fas fa-microchip',         // IPC 아이콘
       'fas fa-coins',             // 금융 아이콘
       'fas fa-mobile-alt'         // 통신 아이콘
-  ];
-    // 5-2-1. 포인트 생성 및 배치
-    for (let i = 0; i < numPoints; i++) {
-      const angle = (2 * Math.PI / numPoints) * i;
-      const x = centerX + radius * Math.cos(angle);
-      const y = centerY + radius * Math.sin(angle);
+    ];
 
-      // 5-2-2. 툴팁 생성
-      const $tooltip = $('<div class="tooltip"></div>').css({
-        position: 'absolute',
-        backgroundColor: '#333',
-        color: '#fff',
-        padding: '5px 10px',
-        borderRadius: '4px',
-        fontSize: '12px',
-        display: 'none',
-        zIndex: 100
-      }).text(actionCategory[i][0]);
-
-      // 5-2-3. 포인트 생성
-      const $point = $(
-        `<div class="point" data-index="${i}">
-          <i class="${iconClasses[i]} icon ${i === 0 ? 'active' : ''}"></i>
-        </div>`
-      ).css({
-        position: 'absolute',
-        width: i === 0 ? '100px' : '50px',
-        height: i === 0 ? '100px' : '50px',
-        backgroundColor: '#9f94b3',
-        boxSizing: 'border-box',
-        borderRadius: '50%',
-        cursor: 'pointer',
-        left: i === 0 ? (x - 45) + 'px' : (x - 25) + 'px',
-        top: i === 0 ? (y - 45) + 'px' : (y - 25) + 'px',
-        transition: 'all 0.5s ease',
+    const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
+    const $circle = $('.sec4 .sec-bottom .container .circle-wrap .circle');
+    $circleWrap.find('.point, .tooltip').remove();
+    $circle.find('.btn').remove();
+    $('.btn').find('.tooltip').remove();
+    
+    if($(window).width() > 1300){
+      $circleWrap.css({
+        width: '30%',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
-      });
+      });  
 
-      // 5-2-4. 포인트 hover 이벤트 핸들러 추가
-      $point.hover(
-        function(e) {
-          $tooltip.css({
-            left: e.pageX + 10 + 'px',
-            top: e.pageY - 20 + 'px',
-            display: 'block'
-          });
-        },
-        function() {
-          $tooltip.css('display', 'none');
-        }
-      );
-      // 5-2-5. circle-wrap에 포인트 및 툴팁 추가
-      $circleWrap.append($point);
-      $circleWrap.append($tooltip);
-    }
-
-    // 5-2-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
-    $('.point').on('click', function() {
-      const clickedIndex = $(this).data('index');
-      const points = $('.point');
-      
-      $('.point .icon').removeClass('active');
-      $(this).find('.icon').addClass('active');
-      
-      points.each(function(i) {
-        const newIndex = (i - clickedIndex + numPoints) % numPoints;
-        const angle = (2 * Math.PI / numPoints) * newIndex;
+      const size = Math.min($circleWrap.width(), $circleWrap.height()) - 50;
+      $circle.css({
+        width: size,
+        height: size,
+        boxSizing: 'border-box',
+        borderRadius: '50%',
+        border: '40px solid #F1F1F1',
+        position: 'relative'
+      });    
+  
+      let radius = size / 2;
+      const centerX = $circle.position().left + radius;
+      const centerY = $circle.position().top + radius;
+      radius = radius - 20;
+      // 4-1-1. 포인트 생성 및 배치
+      for (let i = 0; i < numPoints; i++) {
+        const angle = (2 * Math.PI / numPoints) * i;
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
-        
-        $(this).css({
-          width: i === clickedIndex ? '100px' : '70px',
-          height: i === clickedIndex ? '100px' : '70px',
-          left: i === clickedIndex ? (x - 45) + 'px' : (x - 25) + 'px',
-          top: i === clickedIndex ? (y - 45) + 'px' : (y - 25) + 'px'
+
+        // 4-1-2. 툴팁 생성
+        const $tooltip = $('<div class="tooltip"></div>').css({
+          position: 'absolute',
+          backgroundColor: '#333',
+          color: '#fff',
+          padding: '5px 10px',
+          borderRadius: '4px',
+          fontSize: '12px',
+          display: 'none',
+          zIndex: 100
+        }).text(actionCategory[i][0]);
+
+        // 4-1-3. 포인트 생성
+        const $point = $(
+          `<div class="point" data-index="${i}">
+            <i class="${iconClasses[i]} icon ${i === 0 ? 'active' : ''}"></i>
+          </div>`
+        ).css({
+          position: 'absolute',
+          width: i === 0 ? '100px' : '50px',
+          height: i === 0 ? '100px' : '50px',
+          backgroundColor: '#9f94b3',
+          boxSizing: 'border-box',
+          borderRadius: '50%',
+          cursor: 'pointer',
+          left: i === 0 ? (x - 45) + 'px' : (x - 25) + 'px',
+          top: i === 0 ? (y - 45) + 'px' : (y - 25) + 'px',
+          transition: 'all 0.5s ease',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         });
+
+        // 4-1-4. 포인트 hover 이벤트 핸들러 추가
+        $point.hover(
+          function(e) {
+            $tooltip.css({
+              left: e.pageX + 10 + 'px',
+              top: e.pageY - 20 + 'px',
+              display: 'block'
+            });
+          },
+          function() {
+            $tooltip.css('display', 'none');
+          }
+        );
+        // 4-1-5. circle-wrap에 포인트 및 툴팁 추가
+        $circleWrap.append($point);
+        $circleWrap.append($tooltip);
+      }
+
+      // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
+      $('.point').on('click', function() {
+        const clickedIndex = $(this).data('index');
+        const points = $('.point');
+        
+        $('.point .icon').removeClass('active');
+        $(this).find('.icon').addClass('active');
+        
+        points.each(function(i) {
+          const newIndex = (i - clickedIndex + numPoints) % numPoints;
+          const angle = (2 * Math.PI / numPoints) * newIndex;
+          const x = centerX + radius * Math.cos(angle);
+          const y = centerY + radius * Math.sin(angle);
+          
+          $(this).css({
+            width: i === clickedIndex ? '100px' : '70px',
+            height: i === clickedIndex ? '100px' : '70px',
+            left: i === clickedIndex ? (x - 45) + 'px' : (x - 25) + 'px',
+            top: i === clickedIndex ? (y - 45) + 'px' : (y - 25) + 'px'
+          });
+        });
+    
+        activeInfoTable(clickedIndex);
       });
-  
-      activeInfoTable(clickedIndex);
-    });
+    } else {
+      $circleWrap.css({
+        width: '50px',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+      });
+      
+      $circle.css({
+        width: '100%',
+        height: '100%',
+        borderRadius: '0',
+        border: 'none',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'start',
+        alignItems: 'end',
+        boxSizing: 'border-box',
+      });      
+
+      for (let i = 0; i < numPoints; i++) {
+        // .circle-wrap .circle 요소 내부에 탭 버튼 생성
+        const $tabBtn = $(
+          `<button class="btn ${i === 0 ? 'active' : ''}" data-index="${i}">
+            <i class="${iconClasses[i]} icon"></i>
+          </button>`
+        );
+
+        // .btn 안에 툴팁 추가
+        const $tooltip = $('<div class="tooltip"></div>').text(actionCategory[i][0]);
+
+        // 4-1-4. 포인트 hover 이벤트 핸들러 추가
+        $tabBtn.hover(
+          function(e) {
+            $tooltip.css({
+              left: '45px',
+              top: '35px',
+              display: 'block'
+            });
+          },
+          function() {
+            $tooltip.css('display', 'none');
+          }
+        );
+        // 탭버튼 및 툴팁 추가
+        $circle.append($tabBtn);
+        $tabBtn.append($tooltip);
+      }
+
+      // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
+      $('.btn').on('click', function() {
+        const clickedIndex = $(this).data('index');
+        const btns = $('.btn');
+        
+        $(this).addClass('active').siblings('.btn').removeClass('active');
+        activeInfoTable(clickedIndex);
+      });
+    }
   } //drawPointsOnCircle
   drawPointsOnCircle(actionCategory.length);
   
@@ -317,13 +339,13 @@ $(document).ready(function() {
     });
   }); // window 사이즈가 조절될 때마다 좌표 자동화 재실행
 
-  // 4-3. Click 이벤트에 따른 카테고리 정보 활성화
+  // 4-2. Click 이벤트에 따른 카테고리 정보 활성화
   const activeInfoTable = index => {
     const data = actionCategory[index];
     const attackType = data[0];
     let attackData;
 
-    // 5-3-1. attackType에 따라 해당하는 데이터 매칭
+    // 4-2-1. attackType에 따라 해당하는 데이터 매칭
     switch(attackType) {
       case '네트워크 공격 시나리오':
         attackData = networkAttack;
@@ -353,7 +375,7 @@ $(document).ready(function() {
       $title.text(data[0]);
       $table.empty();
 
-      // 5-3-2. 매칭된 데이터를 사용한 table 값 채우기
+      // 4-2-2. 매칭된 데이터를 사용한 table 값 채우기
       const headerRow = `
         <tr>
           <th>순위</th>
