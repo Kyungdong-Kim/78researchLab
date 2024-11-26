@@ -162,7 +162,6 @@ $(document).ready(function() {
     const $circle = $('.sec4 .sec-bottom .container .circle-wrap .circle');
     $circleWrap.find('.point, .tooltip').remove();
     $circle.find('.btn').remove();
-    $('.btn').find('.tooltip').remove();
     
     if($(window).width() > 1300){
       $circleWrap.css({
@@ -266,7 +265,7 @@ $(document).ready(function() {
           });
         });
     
-        activeInfoTable(clickedIndex);
+        activeCategoryInfo(clickedIndex);
       });
     } else {
       $circleWrap.css({
@@ -298,107 +297,117 @@ $(document).ready(function() {
             <i class="${iconClasses[i]} icon"></i>
           </button>`
         );
-
-        // .btn 안에 툴팁 추가
-        const $tooltip = $('<div class="tooltip"></div>').text(actionCategory[i][0]);
-
-        // 4-1-4. 포인트 hover 이벤트 핸들러 추가
-        $tabBtn.hover(
-          function(e) {
-            $tooltip.css({
-              left: '45px',
-              top: '35px',
-              display: 'block'
-            });
-          },
-          function() {
-            $tooltip.css('display', 'none');
-          }
-        );
         // 탭버튼 및 툴팁 추가
         $circle.append($tabBtn);
-        $tabBtn.append($tooltip);
       }
 
       // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
       $('.btn').on('click', function() {
         const clickedIndex = $(this).data('index');
-        const btns = $('.btn');
         
         $(this).addClass('active').siblings('.btn').removeClass('active');
-        activeInfoTable(clickedIndex);
+        activeCategoryInfo(clickedIndex);
       });
     }
   } //drawPointsOnCircle
   drawPointsOnCircle(actionCategory.length);
   
-  $(window).on('resize', function() {
-    // requestAnimationFrame: 브라우저 내장함수로 부드러운 프레임 애니메이션 지원
-    requestAnimationFrame(() => {
-      drawPointsOnCircle(actionCategory.length);
-    });
-  }); // window 사이즈가 조절될 때마다 좌표 자동화 재실행
-
   // 4-2. Click 이벤트에 따른 카테고리 정보 활성화
-  const activeInfoTable = index => {
+  const activeCategoryInfo = (index) => {
     const data = actionCategory[index];
     const attackType = data[0];
     let attackData;
-
+  
     // 4-2-1. attackType에 따라 해당하는 데이터 매칭
-    switch(attackType) {
-      case '네트워크 공격 시나리오':
+    switch (attackType) {
+      case "네트워크 공격 시나리오":
         attackData = networkAttack;
         break;
-      case 'APT 공격 시나리오':
+      case "APT 공격 시나리오":
         attackData = aptAttack;
         break;
-      case '취약점 공격 시나리오':
+      case "취약점 공격 시나리오":
         attackData = vulnAttack;
         break;
-      case '금융권 대상 공격 시나리오':
+      case "금융권 대상 공격 시나리오":
         attackData = financeAttack;
         break;
-      case '통신 시스템 공격 시나리오':
+      case "통신 시스템 공격 시나리오":
         attackData = telecomAttack;
         break;
       default:
         attackData = [];
     }
-    const $tableWrap = $('.sec4 .sec-bottom .table-wrap');
-    const $title = $tableWrap.find('.title .category');
-    const $table = $tableWrap.find('table');
-    const $contents = $tableWrap.find('.title, .sub, table');
-
-    // 기존 데이터 fadeOut
-    $contents.fadeOut(300, function() {
+  
+    const $tableWrap = $(".sec4 .sec-bottom .table-wrap");
+    const $title = $tableWrap.find(".title .category");
+    const $table = $tableWrap.find("table");
+    const $accordion = $tableWrap.find("#accordionFlushExample");
+    const isWideScreen = $(window).width() > 550;
+  
+    // 공통 업데이트
+    const updateContent = () => {
       $title.text(data[0]);
-      $table.empty();
-
-      // 4-2-2. 매칭된 데이터를 사용한 table 값 채우기
-      const headerRow = `
-        <tr>
-          <th>순위</th>
-          <th>공격 유형</th>
-          <th>설명</th>
-        </tr>
-      `;
-      
-      const dataRows = attackData.map((item) => `
-        <tr>
-          <td>${item.id}</td>
-          <td>${item.name}</td>
-          <td>${item.description}</td>
-        </tr>
-      `).join('');
-
-      $table.html(headerRow + dataRows);
-      
-      // 새로운 데이터 fadeIn
-      $contents.fadeIn(300);
+  
+      if (isWideScreen) {
+        // 4-2-2. 매칭된 데이터를 사용한 table 값 채우기 + 아코디언 비활성화
+        $accordion.hide();
+        $table.show().empty();
+  
+        const headerRow = `
+          <tr>
+            <th>순위</th>
+            <th>공격 유형</th>
+            <th>설명</th>
+          </tr>
+        `;
+        const dataRows = attackData.map((item) => `
+          <tr>
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.description}</td>
+          </tr>
+        `).join("");
+  
+        $table.html(headerRow + dataRows);
+      } else {
+        // 4-2-3. 매칭된 데이터를 사용한 아코디언 값 채우기 + table 비활성화
+        $table.hide();
+        $accordion.show().empty();
+  
+        const dataAccordionRows = attackData.map((item, idx) => `
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-heading-${item.id}">
+              <button class="accordion-button ${idx === 0 ? "" : "collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${item.id}" aria-expanded="${idx === 0}" aria-controls="flush-collapse-${item.id}"> #${item.id}. ${item.name}
+              </button>
+            </h2>
+            <div id="flush-collapse-${item.id}" class="accordion-collapse collapse ${idx === 0 ? "show" : ""}" aria-labelledby="flush-heading-${item.id}" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">${item.description}</div>
+            </div>
+          </div>`
+        ).join("");
+  
+        $accordion.html(dataAccordionRows);
+      }
+    };
+  
+    // 4-2-3. 갱신 전 fadeOut 처리
+    $tableWrap.fadeOut(300, () => {
+      updateContent();
+      $tableWrap.fadeIn(300); // 데이터 갱신 후 fadeIn
     });
-  } //activeInfoTable
-  activeInfoTable(0); // 기본값 설정
+  } //activeCategoryInfo
+  
+  // Window resize 이벤트 연결
+  $(window).on("resize", function () {
+    // requestAnimationFrame: 브라우저 내장함수로 부드러운 프레임 애니메이션 지원
+    requestAnimationFrame(() => {
+      drawPointsOnCircle(actionCategory.length);
+      activeCategoryInfo(0);
+    });
+  });
+  
+  activeCategoryInfo(0); // 기본값 설정
 
   // ===== 5. modal
   // 5-1. 모달 활성화/비활성화

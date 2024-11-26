@@ -377,6 +377,10 @@ header .menu-wrap .menu a.active {
 }
 .sec4 .sec-bottom .container .table-wrap table{
   width: 100%;
+  display: block;
+}
+.sec4 .sec-bottom .container .table-wrap #accordionFlushExample{
+  display: none;
 }
 .sec4 .sec-bottom .container .table-wrap table tr th{
   font-weight: 600;
@@ -715,12 +719,22 @@ opacity: 0.5;
   .banner .img-box{
     z-index: -1;
   }
-  .banner .text-box{
+  .banner .text-box {
     width: auto;
     max-width: 80%;
-    background-color: rgba(255,255,255,0.5);
-    border-radius: 15px;
-    padding: 30px;
+    position: absolute;
+    top: 30%;
+    left: 50px;
+    transform: translateY(-50%);
+    margin-top: -50px;
+  }
+  .banner .text-box[data-aos="fade-up-right"] {
+    transform: translate(-50px, calc(50% - 50px)) !important;
+    opacity: 0;
+  }
+  .banner .text-box[data-aos="fade-up-right"].aos-animate {
+    transform: translateY(0) !important;
+    opacity: 1;
   }
   .sec1{
     padding: 150px 30px;
@@ -778,7 +792,7 @@ opacity: 0.5;
     padding: 100px 50px;
   }
   .sec4 .sec-bottom .container{
-    min-height: 50vh;
+    min-height: 100%;
     height: fit-content;
     align-items: start;
   }
@@ -842,12 +856,31 @@ opacity: 0.5;
 
 @media (max-width: 650px) {
   .sec4{
-    background-color: rebeccapurple;
+    padding: 150px 20px;
+  }
+  .sec4 .sec-bottom .container{
+    padding: 10px;
+  }
+  .sec4 .sec-bottom .container .table-wrap{
+    height: 100%;
   }
 }
 
 @media (max-width: 550px) {
   .sec3{
     padding: 150px 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  .sec4 .sec-bottom .container .table-wrap table{
+    display: none;
+  }
+  .sec4 .sec-bottom .container .table-wrap{
+    padding: 30px 20px;
+  }
+  .sec4 .sec-bottom .container .table-wrap #accordionFlushExample{
+    width: 100%;
+    display: block;
   }
 }
