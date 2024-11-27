@@ -26,6 +26,7 @@ $(document).ready(function() {
     const activeIndex = $('.tab-btn.active').data('index');
     const findInfo = guiStepDetails.find(item => item.step == activeIndex);
   
+    activeCategoryInfo($('.tab-btn-wrap .tab-btn.active').data('index'));
     if ($(this).text() === 'En') {
       isKorean = true;
       $('.sec3 .sec-bottom .info .txt-box .title').text(findInfo.title_ko);
@@ -566,7 +567,6 @@ $(document).ready(function() {
     emailjs
     .send('service_55emqp6', 'template_73b8uwm', templateParams, 'tdb7tpSvPwnlfmihQ')
     .then(response => {
-      console.log(response);
       if(response.status === 200){
         alert('요청 완료');
       
