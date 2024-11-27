@@ -1,11 +1,13 @@
-import { actionCategory, networkAttack, aptAttack, vulnAttack, financeAttack } from '../data/purpleHoundData.js';
+import { actionCategory, networkAttack, aptAttack, vulnAttack, financeAttack, guiStepDetails } from '../data/purpleHoundData.js';
 
 $(document).ready(function() {
-  // ===== 1. Animation On Scroll 라이브러리 초기화
+  // ===== 1. 초기화
+  // 1-1. Animation On Scroll 라이브러리 
   AOS.init();
-
+  // 1-2. 언어 초기화
+  let isKorean;
   $(window).on('load', function () {
-    var isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
+    isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
     $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
       var langAttr = isKorean ? 'ko' : 'en';
       $(this).html($(this).attr(langAttr));
@@ -19,8 +21,47 @@ $(document).ready(function() {
       $('.en').show();
     }
   });
+  // 1-3. 언어 변환 클릭 이벤트 처리
+  $('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function () {
+    const activeIndex = $('.tab-btn.active').data('index');
+    const findInfo = guiStepDetails.find(item => item.step == activeIndex);
+  
+    if ($(this).text() === 'En') {
+      isKorean = true;
+      $('.sec3 .sec-bottom .info .txt-box .title').text(findInfo.title_ko);
+      $('.sec3 .sec-bottom .info .txt-box .sub').text(findInfo.description_ko);
+      $('tr th').text($(this).attr('ko'));
+  
+      // 툴팁 언어변환
+      $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
+        const koTitle = $(this).attr('ko');
+        $(this).attr('data-bs-title', koTitle);
+        const tooltipInstance = bootstrap.Tooltip.getInstance(this);
+        if (tooltipInstance) {
+          tooltipInstance.dispose();
+        }
+        new bootstrap.Tooltip(this);
+      });
+    } else {
+      isKorean = false;
+      $('.sec3 .sec-bottom .info .txt-box .title').text(findInfo.title_en);
+      $('.sec3 .sec-bottom .info .txt-box .sub').text(findInfo.description_en);
+      $('tr th').text($(this).attr('en'));
+  
+      // 툴팁 언어 변환
+      $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
+        const enTitle = $(this).attr('en');
+        $(this).attr('data-bs-title', enTitle);
+        const tooltipInstance = bootstrap.Tooltip.getInstance(this);
+        if (tooltipInstance) {
+          tooltipInstance.dispose();
+        }
+        new bootstrap.Tooltip(this);
+      });
+    }
+  });
 
-  // === 2. Swiper 초기화
+  // ===== 2. Swiper 초기화
   var swiper = new Swiper(".mySwiper.swiper-1", {
     slidesPerView: 1,
     spaceBetween: 30,
@@ -64,143 +105,83 @@ $(document).ready(function() {
   checkScroll();
   
   // ===== 3. Sec3
-  let currentTimeoutId;
-  let isInSection3 = false;
-  let isScrollEventActive = false;
+  let alreadyEntered = false;
+  let autoMoveTimeout;
 
-  // 3-1. .item-box .txt-box 내부 텍스트들에 의한 높잇값 자동화
-  const setHeight = (itemBoxHeight, txtBoxHeight) => {
-    $('.item-box').each((_, item) => {
-      const itemHeight = $(item).height();
-      if (itemHeight > itemBoxHeight) {
-        itemBoxHeight = itemHeight;
+  // 3-1. 클릭 이벤트에 따르는 img 활성화 및 비활성화
+  const activateStepGui = $currentItem => {
+    $currentItem.addClass('active').siblings('.tab-btn').removeClass('active');
+    
+    // 부트스트랩 tooltip 비활성화
+    const tooltipInstance = bootstrap.Tooltip.getInstance($currentItem[0]);
+    if (tooltipInstance) {
+      tooltipInstance.hide();
+    }
+    
+    // 활성화 단계에 따른 UI 처리
+    const activeIndex = $currentItem.data('index');
+    const $title = $('.sec3 .sec-bottom .info .txt-box .title');
+    const selectedItem = guiStepDetails.find(item => item.step === parseInt(activeIndex));
+    console.log('isKorean :::: ', isKorean)
+    
+    if (selectedItem) {
+      $title.text(isKorean ? selectedItem.title_ko : selectedItem.title_en);
+      const $sub = $('.sec3 .sec-bottom .info .txt-box .sub');
+      $sub.text(isKorean ? selectedItem.description_ko : selectedItem.description_en);
+    }
+
+    // gif 실행을 위한 경로 재설정
+    $('.sec3 .sec-bottom .info .img-box img').each(function () {
+      const imgIndex = $(this).data('index');
+      if (parseInt(imgIndex) === parseInt(activeIndex)) {
+        $(this).show();
+        const copySrc = $(this).attr('src');
+        $(this).attr('src', ''); 
+        $(this).attr('src', copySrc);
+      } else {
+        $(this).hide();
       }
     });
 
-    $('.item-box .txt-box').each((_, item) => {
-      const itemHeight = $(item).height();
-      console.log('itemHeightttttttt')
-      console.log(itemHeight)
-      if(itemHeight > txtBoxHeight){
-        txtBoxHeight = itemHeight;
-      }
-    })
-    $('.item-box').height(itemBoxHeight);
-    $('.item-box .txt-box').height(txtBoxHeight);
-
-    $('.left').height(itemBoxHeight * 3 + 40);
-
-    if($(window).width() > 1200){
-      $('.right').height(itemBoxHeight * 3 + 40);
-    } else {
-      $('.right').height($('.right img').height());
-    }
-  };
-  setHeight();
-  $(document).on('click', '.lang', setHeight);
-  $(window).resize(() => {
-    const itemBoxHeight = 0;
-    const txtBoxHeight = 0;
-    setHeight(itemBoxHeight, txtBoxHeight);
-  });
-
-  // 3-2. 활성화된 GUI 단계 확인을 위한 영역 스크롤
-  const scrollItemBox = $item => {
-    const container = $('.sec3 .sec-bottom .left');
-    const currentIndex = $item.index() + 1;
-    // 3개 항목씩 이동
-    if (currentIndex % 3 === 1) {
-      const offset = $item.position().top + container.scrollTop() - container.position().top;
-      container.animate({ scrollTop: offset }, 500);
-    }
-  } //scrollItemBox
-  const scrollImgBox = $item => {
-    const container = $('.sec3 .sec-bottom .right');
-    const offset = $item.position().top + container.scrollTop() - container.position().top;
-    container.animate({ scrollTop: offset }, 500);
-  } //scrollImgBox
-
-  // 3-3. GIF 초기화 : GIF 재생 시작 시점을 처음으로 되돌리기 위해 src 속성 재설정
-  const resetGif = index => {
-    const $activeGif = $('.sec3 .sec-bottom .right img[data-index="' + index + '"]');
-    const src = $activeGif.attr('src');
-    $activeGif.attr('src', ''); 
-    $activeGif.attr('src', src);
-    return $activeGif;
-  } //resetGif
-
-  // 3-4. 선택된 단계의 UI GIF 활성화
-  const activateStepGui = $item => {
-    $item.addClass('active').siblings('.item-box').removeClass('active');
-    scrollItemBox($item);
+    const durationTime = $('.tab-btn.active').data('duration');
+    const $currentActiveStep = $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn.active');
+    let $nextItem = $currentActiveStep.next('.tab-btn');
+    $nextItem = $nextItem.length === 0 ? $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').first() : $nextItem;
     
-    const index = $item.find('.index').length ? $item.find('.index').data('index') : $item.find('.txt-box').data('index');
-    const $newGif = resetGif(index);
-    scrollImgBox($newGif);
+    if (autoMoveTimeout) {
+      clearTimeout(autoMoveTimeout);
+    }
 
-    // GIF 파일 길이에 따른 자동 단계 이동 시간 설정
-    const $img = $('.sec3 .sec-bottom .right img[data-index="' + index + '"]');
-    const duration = $img.data('duration') || 5000;
-    moveStepWithTimeout(duration);
+    autoMoveTimeout = setTimeout(function() {
+      activateStepGui($nextItem);
+    }, durationTime + 1000);
   } //activateStepGui
 
-  // 3-5. 자동 단계 이동
-  const autoMoveStep = () => {
-    const $currentActive = $('.sec3 .sec-bottom .left .item-box.active');
-    let $nextItem = $currentActive.next('.item-box');
-    $nextItem = $nextItem.length === 0 ? $('.sec3 .sec-bottom .left .item-box').first() : $nextItem;
-    activateStepGui($nextItem);
-  } //autoMoveStep
-
-  // 3-6. 각 단계마다 지연 시간 후 자동 이동
-  const moveStepWithTimeout = duration => {
-    if (currentTimeoutId) {
-      clearTimeout(currentTimeoutId);
-    }
-    currentTimeoutId = setTimeout(autoMoveStep, duration + 1000);
-  } //moveStepWithTimeout
-
-  // 3-7. Section3 진입/이탈 체크
-  const checkSection3 = () => {
+  $(window).on('scroll', function() {
     const scrollTop = $(window).scrollTop();
     const windowHeight = $(window).height();
     const $sec3 = $('.sec3');
     const sec3Offset = $sec3.offset();
-    const isInSec3 = (scrollTop + windowHeight) >= (sec3Offset.top + 90);
+    const isInSec3 = (scrollTop + windowHeight) >= (sec3Offset.top + 90) && scrollTop < (sec3Offset.top + $sec3.height());
 
-    // 1. section3 영역이라면 activeIndex에 해당하는 GIF를 재실행해
-    if (isInSec3) {
-      // 2. 스크롤 이벤트가 비활성화 상태일 때
-      if (!isScrollEventActive) {
-        isScrollEventActive = true;
-        const activeIndex = $('.sec3 .sec-bottom .left .item-box.active').find('.index').data('index');
-        resetGif(activeIndex);
-        $('.sec3 .sec-bottom .left .item-box .index, .sec3 .sec-bottom .left .item-box .txt-box').on('click', function () {
-          activateStepGui($(this).closest('.item-box'));
-        });
-      }
-      
-      if (!isInSection3) {
-        isInSection3 = true;
-        const $firstItem = $('.sec3 .sec-bottom .left .item-box').first();
-        activateStepGui($firstItem);
-      }
-    } else {
-      if (isScrollEventActive) {
-        isScrollEventActive = false;
-        $('.sec3 .sec-bottom .left .item-box .index, .sec3 .sec-bottom .left .item-box .txt-box').off('click');
-      }
-      
-      if (isInSection3) {
-        isInSection3 = false;
-        clearTimeout(currentTimeoutId);
+    if (isInSec3 && !alreadyEntered) {
+      alreadyEntered = true;
+      activateStepGui($('.sec3 .sec-bottom .tab-btn-wrap .tab-btn.active'));
+    } else if (!isInSec3 && alreadyEntered) {
+      alreadyEntered = false;
+
+      if (autoMoveTimeout) {
+        clearTimeout(autoMoveTimeout);
       }
     }
-  } //checkSection3
+  });
 
-  // 3-8. Section3 영역 진입 확인을 위한 초기 실행 및 스크롤 이벤트 리스너 등록
-  checkSection3();
-  $(window).scroll(checkSection3);
+  $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').on('click', function() {
+    if (autoMoveTimeout) {
+      clearTimeout(autoMoveTimeout);
+    }
+    activateStepGui($(this));
+  });
 
   // ===== 4. sec4 : 카테고리별 Action 정보
   // 4-1. 원형 시각화 라인 그리기
@@ -212,21 +193,21 @@ $(document).ready(function() {
       'fas fa-coins',             // 금융 아이콘
     ];
 
-    const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
-    const $circle = $('.sec4 .sec-bottom .container .circle-wrap .circle');
+    const $circleWrap = $('.sec4 .sec-bottom .wrap-box .circle-wrap');
+    const $circle = $('.sec4 .sec-bottom .wrap-box .circle-wrap .circle');
     $circleWrap.find('.point, .tooltip').remove();
-    $circle.find('.btn').remove();
+    $circle.find('.tab-btn').remove();
     
     if($(window).width() > 1300){
       $circleWrap.css({
         width: '30%',
-        height: '100%',
+        height: 'auto',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
       });  
 
-      const size = Math.min($circleWrap.width(), $circleWrap.height()) - 50;
+      const size = $circleWrap.width() - 50
       $circle.css({
         width: size,
         height: size,
@@ -246,21 +227,9 @@ $(document).ready(function() {
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
 
-        // 4-1-2. 툴팁 생성
-        const $tooltip = $('<div class="tooltip"></div>').css({
-          position: 'absolute',
-          backgroundColor: '#333',
-          color: '#fff',
-          padding: '5px 10px',
-          borderRadius: '4px',
-          fontSize: '12px',
-          display: 'none',
-          zIndex: 100
-        }).text(actionCategory[i][0]);
-
-        // 4-1-3. 포인트 생성
+        // 4-1-2. 포인트 생성
         const $point = $(
-          `<div class="point" data-index="${i}">
+          `<div class="point" data-index="${i}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="${actionCategory[i][isKorean ? 'title_ko' : 'title_en']}" ko="${actionCategory[i].title_ko}" en="${actionCategory[i].title_en}" >
             <i class="${iconClasses[i]} icon ${i === 0 ? 'active' : ''}"></i>
           </div>`
         ).css({
@@ -280,22 +249,17 @@ $(document).ready(function() {
           alignItems: 'center'
         });
 
-        // 4-1-4. 포인트 hover 이벤트 핸들러 추가
-        $point.hover(
-          function(e) {
-            $tooltip.css({
-              left: e.pageX + 10 + 'px',
-              top: e.pageY - 20 + 'px',
-              display: 'block'
-            });
-          },
-          function() {
-            $tooltip.css('display', 'none');
-          }
-        );
-        // 4-1-5. circle-wrap에 포인트 및 툴팁 추가
+        // 4-1-3. circle-wrap에 포인트 추가
         $circleWrap.append($point);
-        $circleWrap.append($tooltip);
+
+        // 4-1-4. 포인트 mouseenter 이벤트 핸들러 추가
+        new bootstrap.Tooltip($point[0]);
+        $point.on('mouseenter', function() {
+          const tooltipText = isKorean ? $(this).attr('ko') : $(this).attr('en');
+          $(this).attr('data-bs-title', tooltipText);
+          const tooltip = bootstrap.Tooltip.getInstance(this);
+          tooltip.setContent({ '.tooltip-inner': tooltipText });
+        });
       }
 
       // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
@@ -349,19 +313,19 @@ $(document).ready(function() {
       for (let i = 0; i < numPoints; i++) {
         // .circle-wrap .circle 요소 내부에 탭 버튼 생성
         const $tabBtn = $(
-          `<button class="btn ${i === 0 ? 'active' : ''}" data-index="${i}">
+          `<button class="tab-btn ${i === 0 ? 'active' : ''}" data-index="${i}">
             <i class="${iconClasses[i]} icon"></i>
           </button>`
         );
-        // 탭버튼 및 툴팁 추가
+        // 탭버튼 추가
         $circle.append($tabBtn);
       }
 
       // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
-      $('.btn').on('click', function() {
+      $('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .tab-btn').on('click', function() {
         const clickedIndex = $(this).data('index');
         
-        $(this).addClass('active').siblings('.btn').removeClass('active');
+        $(this).addClass('active').siblings('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .tab-btn').removeClass('active');
         activeCategoryInfo(clickedIndex);
       });
     }
@@ -371,22 +335,21 @@ $(document).ready(function() {
   // 4-2. Click 이벤트에 따른 카테고리 정보 활성화
   const activeCategoryInfo = (index) => {
     const data = actionCategory[index];
-    const attackType = data[0];
+    const attackType = index;
     let attackData;
-    var isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
   
     // 4-2-1. attackType에 따라 해당하는 데이터 매칭
     switch (attackType) {
-      case "네트워크 공격 시나리오":
+      case 0:
         attackData = networkAttack;
         break;
-      case "APT 공격 시나리오":
+      case 1:
         attackData = aptAttack;
         break;
-      case "취약점 공격 시나리오":
+      case 2:
         attackData = vulnAttack;
         break;
-      case "금융권 대상 공격 시나리오":
+      case 3:
         attackData = financeAttack;
         break;
       default:
@@ -401,7 +364,9 @@ $(document).ready(function() {
   
     // 공통 업데이트
     const updateContent = () => {
-      $title.text(data[0]);
+      $title.attr('ko', data.title_ko)
+      $title.attr('en', data.title_en)
+      $title.text(data[isKorean ? 'title_ko' : 'title_en']);
   
       if (isWideScreen) {
         // 4-2-2. 매칭된 데이터를 사용한 table 값 채우기 + 아코디언 비활성화
@@ -410,9 +375,9 @@ $(document).ready(function() {
   
         const headerRow = `
           <tr>
-            <th ko="순위" en="Rank">순위</th>
-            <th ko="공격 유형" en="Attack Type">공격 유형</th>
-            <th ko="설명" en="Description">설명</th>
+            <th ko="순위" en="Rank">${isKorean ? '순위' : 'Rank'}</th>
+            <th ko="공격 유형" en="Attack Type">${isKorean ? '공격 유형' : 'Attack Type'}</th>
+            <th ko="설명" en="Description">${isKorean ? '설명' : 'Description'}</th>
           </tr>
         `;
         const dataRows = attackData.map((item) => `
@@ -567,15 +532,13 @@ $(document).ready(function() {
     customDomainInput.val(selectEle);
   }
   inputDomain();
-  // select 요소 변경 시 inputDomain 함수 호출
   $('#email-domain').on('change', inputDomain);
   $('#custom-email-domain').on('input', function() {
     $('#email-domain').val('');
   });  
 
-  // 클릭 이벤트 핸들러
+  // 5-4. 요청 버튼 클릭 이벤트
   $('#submit').click(function () {
-    // 필수 입력값 및 유효성 검증
     if (!validateRequiredFields() || !validateInput()) {
       return;
     }
@@ -588,16 +551,18 @@ $(document).ready(function() {
       company: $('#company').val(),
     };
 
-    // EmailJS API 호출
     emailjs
     .send('service_55emqp6', 'template_73b8uwm', templateParams, 'tdb7tpSvPwnlfmihQ')
     .then(response => {
-      alert('요청이 완료되었습니다. 메일을 확인해주세요.');
+      console.log(response);
+      if(response.status === 200){
+        alert('요청 완료');
       
-      emailjs.send('service_9al2zlq', 'template_qp6tcdg', {
-        ...templateParams,
-        service: 'PurpleHound'
-      }, 'tdb7tpSvPwnlfmihQ')
+        emailjs.send('service_9al2zlq', 'template_qp6tcdg', {
+          ...templateParams,
+          service: 'PurpleHound'
+        }, 'tdb7tpSvPwnlfmihQ')
+      }
     })
     .catch(err => {
       console.error('EmailJS error:', err);

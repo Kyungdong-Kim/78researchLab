@@ -1,9 +1,21 @@
 // Action 대표 카테고리 리스트
 export const actionCategory = [
-  ['네트워크 공격 시나리오', 20, {name: 'networkAttack'}],
-  ['APT 공격 시나리오', 20, {name: 'aptAttack'}], 
-  ['취약점 공격 시나리오', 20, {name: 'vulnAttack'}], 
-  ['금융권 대상 공격 시나리오', 20, {name: 'financeAttack'}],
+  {
+    title_ko: '네트워크 공격 시나리오',
+    title_en: 'Network Attack Scenarios'
+  },
+  {
+    title_ko: 'APT 공격 시나리오',
+    title_en: 'APT Attack Scenarios'
+  },
+  {
+    title_ko: '취약점 공격 시나리오',
+    title_en: 'Vulnerability Attack Scenarios'
+  },
+  {
+    title_ko: '금융권 대상 공격 시나리오',
+    title_en: 'Financial Sector Attack Scenarios'
+  }
 ];
 
 // 카테고리별 세부 내용 리스트
@@ -157,4 +169,50 @@ export const financeAttack = [
     name_en: 'ATM Skimming',
     description_en: 'An attack that installs physical devices on ATMs to capture card information and PINs.'
   }
+];
+
+// GUI 단계별 설명
+export const guiStepDetails = [
+  {
+    step: 1,
+    title_ko: '모든 데이터의 일원화된 뷰 및 저장 기능 제공',
+    title_en: 'Unified View and Storage Functionality for All Data',
+    description_ko: '전체적인 데이터를 한눈에 확인하고, 필요한 정보를 손쉽게 저장할 수 있도록 기본보고서를 지원합니다.',
+    description_en: 'Provides comprehensive reports to easily view overall data at a glance and store necessary information effortlessly.',
+  },
+  {
+    step: 2,
+    title_ko: '에이전트 상태의 직관적인 시각화',
+    title_en: 'Intuitive Visualization of Agent Status',
+    description_ko: '에이전트와 그룹 정보를 직관적으로 확인하며, 효율적으로 관리 및 실행할 수 있는 UI를 제공합니다.',
+    description_en: 'Provides a UI that allows intuitive monitoring of agent and group information, enabling efficient management and execution.',
+  },
+  {
+    step: 3,
+    title_ko: '시뮬레이션 실행 및 예약',
+    title_en: 'Simulation Execution and Scheduling',
+    description_ko: '특정 에이전트 또는 그룹에 대한 시뮬레이션을 선택하여 즉시 실행하거나 예약할 수 있습니다. 모의 해킹과 달리 필요한 환경을 직접 구축하여 취약점을 테스트하는 기능을 제공합니다.',
+    description_en: 'Allows you to select and execute simulations immediately or schedule them for specific agents or groups. Unlike traditional penetration testing, this feature enables you to build the required environment directly to test vulnerabilities.',
+  },
+  {
+    step: 4,
+    title_ko: '직관적인 실행 결과 확인',
+    title_en: 'Intuitive Execution Results Monitoring',
+    description_ko: '실행 중인 시뮬레이션의 각 단계와 상태를 직관적으로 확인 가능합니다. BreakPoint, Resume, Suspend, Step, Abort의 세밀한 제어 기능을 제공하여 시뮬레이션 진행 과정을 통제할 수 있습니다.',
+    description_en: 'Easily monitor each stage and status of running simulations with an intuitive interface. Provides detailed control features such as BreakPoint, Resume, Suspend, Step, and Abort to manage the simulation process effectively.',
+  },
+  {
+    step: 5,
+    title_ko: '간편한 공격 시나리오 커스터마이징',
+    title_en: 'Easy Attack Scenario Customization',
+    description_ko: '기본 제공되는 공격 시나리오를 바탕으로 간편하게 수정 및 추가할 수 있으며, 새로운 공격 시나리오를 직접 생성하여 맞춤 구성할 수 있습니다.',
+    description_en: 'Easily modify and add to the provided default attack scenarios, or create new attack scenarios to customize them to your needs.',
+  },
+  {
+    step: 6,
+    title_ko: '공격 시나리오 정보의 종합 제공',
+    title_en: 'Comprehensive Provision of Attack Scenario Information',
+    description_ko: '사용자가 커스터마이징한 공격 시나리오뿐만 아니라 PurpleHound에서 기본 제공하는 최신 공격 시나리오 목록을 사용할 수 있습니다.',
+    description_en: 'In addition to user-customized attack scenarios, you can also access the latest attack scenario list provided by PurpleHound.',
+  },
 ];
