@@ -10,13 +10,8 @@ $(document).ready(function () {
       $('.sec2 .processBox .ko').hide();
       $('.sec2 .processBox .en').show();
       // purpleHound
-      $('.sec2 .processBox .ko').hide();
-      $('.sec2 .processBox .en').show();
-      $('.sec4 .sec-bottom .btnInfo').html($('.sec4 .sec-bottom .buttonBox input[type="radio"]:checked').attr('en'));
-      $('.sec4 .sec-bottom .imgBox .img#img1 .ko').hide();
-      $('.sec4 .sec-bottom .imgBox .img#img1 .en').show();
-      $('.sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox .ko').hide();
-      $('.sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox .en').show();
+      $('.ko').hide();
+      $('.en').show();
       // aboutUs
       $('.tabs .tab .core-value .value .card .valueName').hide();
 			localStorage.setItem('lang', 'En');
@@ -29,13 +24,8 @@ $(document).ready(function () {
       $('.sec2 .processBox .ko').show();
       $('.sec2 .processBox .en').hide();
       // purpleHound
-      $('.sec2 .processBox .ko').show();
-      $('.sec2 .processBox .en').hide();
-      $('.sec4 .sec-bottom .btnInfo').html($('.sec4 .sec-bottom .buttonBox input[type="radio"]:checked').attr('ko'));
-      $('.sec4 .sec-bottom .imgBox .img#img1 .ko').show();
-      $('.sec4 .sec-bottom .imgBox .img#img1 .en').hide();
-      $('.sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox .ko').show();
-      $('.sec2 .sec-bottom .tab-wrap .tab.active#tab1 .imgBox .en').hide();
+      $('.ko').show();
+      $('.en').hide();
       // aboutUs
       $('.tabs .tab .core-value .value .card .valueName').show();
 			localStorage.setItem('lang', 'Ko');
