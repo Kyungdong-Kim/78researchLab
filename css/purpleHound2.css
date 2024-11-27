@@ -96,6 +96,7 @@ header .menu-wrap .menu a.active {
 .sec .sec-bottom{
   width: 100%;
   height: calc(80% - 30px);
+  min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,7 +111,7 @@ header .menu-wrap .menu a.active {
 }
 .sec1 .sec-bottom img{
   width: 100%;
-  height: 90%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -154,9 +155,9 @@ header .menu-wrap .menu a.active {
   margin-top: 20px;
   width: 80%;
   height: fit-content;
+  align-items: start;
 }
 .sec3 .sec-bottom .tab-btn-wrap{
-  padding-top: 10px;
   width: 80px;
   height: 100%;
   display: flex;
@@ -167,7 +168,7 @@ header .menu-wrap .menu a.active {
 .sec3 .sec-bottom .tab-btn-wrap .tab-btn{
   width: 100%;
   height: 40px;
-  margin: 5px 0;
+  margin-top: 10px;
   color: lightgray;
   border-left: 3px solid transparent;
   transition: all 0.3s ease;
@@ -186,8 +187,9 @@ header .menu-wrap .menu a.active {
 .sec3 .sec-bottom .info{
   width: 100%;
   height: fit-content;
+  min-height: 400px;
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 50px;
+  padding: 40px;
   border-radius: 5px;
   z-index: 10;
   display: flex;
@@ -200,9 +202,16 @@ header .menu-wrap .menu a.active {
   height: fit-content;
 }
 .sec3 .sec-bottom .info .txt-box .title{
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  margin-bottom: 0;
+}
+.sec3 .sec-bottom .info .txt-box .title .patent-tech{
+  font-size: 0.8rem;
+  border: 2px solid #5F4B8B;
+  color: #5F4B8B;
+  background-color: #FFFFFF;
+  padding: 5px 10px;
+  border-radius: 15px;
 }
 .sec3 .sec-bottom .info .txt-box .sub{
   font-size: 1rem;
@@ -211,7 +220,7 @@ header .menu-wrap .menu a.active {
 .sec3 .sec-bottom .info .img-box{
   width: 100%;
   height: 100%;
-  padding: 30px;
+  /* padding: 30px; */
 }
 .sec3 .sec-bottom .info .img-box img{
   display: none;
@@ -408,6 +417,7 @@ header .menu-wrap .menu a.active {
 	align-items: center;
 	flex-direction: column;
 	position: relative;
+  padding: 20px;
 }
 .modal.active .input-wrap .imgBox{
 	position: absolute;
@@ -451,13 +461,14 @@ header .menu-wrap .menu a.active {
 .modal.active .input-wrap .input-bottom{
 	width: 100%;
 	height: calc(100% - 150px);
+  min-height: fit-content;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
   padding-top: 30px;
 }
-.modal.active .input-wrap .input-bottom .input-wrap{
+.modal.active .input-wrap .input-bottom .input-box{
   width: 90%;
   height: 50px;
   position: relative;
@@ -465,21 +476,22 @@ header .menu-wrap .menu a.active {
   border-radius: 5px;
   margin: 10px 0;
 }
-.modal.active .input-wrap .input-bottom .input-wrap p{
+.modal.active .input-wrap .input-bottom .input-box p{
   position: absolute;
   left: 20px;
   top: -10px;
   padding: 0 15px;
   background-color: #FFFFFF;
 }
-.modal.active .input-wrap .input-bottom .input-wrap input {
+.modal.active .input-wrap .input-bottom .input-box input{
   outline: none;
   width: 90%;
   height: 100%;
   border: none;
+  padding: 0 10px;
   font-size: 1rem;
 }
-.modal.active .input-wrap .input-bottom .input-wrap select {
+.modal.active .input-wrap .input-bottom .input-box select {
   outline: none;
   width: 90%;
   margin: 10px 0;
@@ -490,40 +502,40 @@ header .menu-wrap .menu a.active {
   background-color: transparent;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
-.modal.active .input-wrap .input-bottom .input-wrap .phone-number-inputs {
+.modal.active .input-wrap .input-bottom .input-box .phone-number-inputs {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
-.modal.active .input-wrap .input-bottom .input-wrap .phone-number-inputs input {
+.modal.active .input-wrap .input-bottom .input-box .phone-number-inputs input {
   padding-left: 20px;
   width: 30%;
   height: 100%;
   border-radius: 5px;
 }
-.modal.active .input-wrap .input-bottom .input-wrap .phone-number-inputs input::placeholder{
+.modal.active .input-wrap .input-bottom .input-box .phone-number-inputs input::placeholder{
   color: rgba(0, 0, 0, 0.3);
 }
-.modal.active .input-wrap .input-bottom .input-wrap .email-inputs {
+.modal.active .input-wrap .input-bottom .input-box .email-inputs {
   width: 90%;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.modal.active .input-wrap .input-bottom .input-wrap .email-inputs input {
+.modal.active .input-wrap .input-bottom .input-box .email-inputs input {
   width: 45%;
   height: 100%;
   padding-left: 10px;
 }
-.modal.active .input-wrap .input-bottom .input-wrap .email-inputs select {
+.modal.active .input-wrap .input-bottom .input-box .email-inputs select {
   width: 45%;
   padding-left: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-.modal.active .input-wrap .input-bottom .input-wrap .email-inputs #email-custom-domain {
+.modal.active .input-wrap .input-bottom .input-box .email-inputs #email-custom-domain {
   width: 150px;
   padding-left: 10px;
   border-radius: 5px;
@@ -539,7 +551,7 @@ header .menu-wrap .menu a.active {
   cursor: pointer;
 }
 .modal.active .input-wrap .input-bottom #submit{
-	width: 70px;
+	width: fit-content;
 	padding: 5px 10px;
 	background-color: rgba(0, 0, 0, 0.7);
 	color: #fff;
@@ -653,7 +665,7 @@ opacity: 0.5;
   }
   .sec1 .sec-bottom{
     border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 0 10px;
+    padding: 10px;
   }
 }
 
@@ -661,12 +673,12 @@ opacity: 0.5;
   .sec{
     padding: 150px 50px;
   }
-  .sec3 .sec-bottom{
-    width: 100%;
-  }
   .sec2 .sec-bottom .swiper-button-prev,
   .sec2 .sec-bottom .swiper-button-next{
     display: none;
+  }
+  .sec3 .sec-bottom{
+    width: 100%;
   }
   .sec4 .sec-bottom .wrap-box{
     min-height: 100%;
@@ -695,7 +707,6 @@ opacity: 0.5;
   .banner .img-box{
     display: none;
   }
-
   .sec4 .sec-bottom .wrap-box .table-wrap table tr th:first-child,
   .sec4 .sec-bottom .wrap-box .table-wrap table tr td:first-child{
     display: none;
@@ -705,6 +716,9 @@ opacity: 0.5;
 @media (max-width: 810px) {
   html, body{
     font-size: 14px;
+  }
+  .sec{
+    padding: 150px 50px;
   }
   .sec3 .sec-bottom .info{
     padding: 30px;
@@ -732,7 +746,6 @@ opacity: 0.5;
   }
   .modal.active .input-wrap{
     width: 90vw;
-    /* height: 70vh; */
     height: fit-content;
   }
 }
@@ -741,6 +754,9 @@ opacity: 0.5;
   .sec2 .sec-top{
     height: fit-content;
     margin-bottom: 10px;
+  }
+  .sec3 .sec-bottom .tab-btn-wrap .tab-btn{
+    height: 30px;
   }
   .sec4{
     padding: 150px 20px;
@@ -772,7 +788,20 @@ opacity: 0.5;
   }
 }
 
-@media (max-height: 750px) {
+@media (max-width: 450px) {
+  .sec{
+    height: fit-content;
+    padding: 50px 10px;
+  }
+  .sec .sec-bottom{
+    height: fit-content;
+  }
+  .sec2 .sec-bottom{
+    margin: 0;
+  }
+}
+
+/* @media (max-height: 750px) {
   .modal.active .input-wrap{
     height: fit-content;
     padding: 20px 0;
@@ -786,27 +815,4 @@ opacity: 0.5;
   .modal.active .input-wrap{
     width: 95vw;
   }
-}
-
-@media (max-width: 450px) {
-  .sec{
-    height: fit-content;
-    min-height: 50vh;
-    padding: 50px 10px;
-  }
-  .sec1 .sec-top{
-    margin-bottom: 30px;
-  }
-  .sec .sec-bottom{
-    min-height: 60vh;
-    height: fit-content;
-  }
-  .sec1 .sec-bottom{
-    min-height: 30vh;
-    height: fit-content;
-  }
-
-  .sec2 .sec-bottom{
-    margin: 0;
-  }
-}
+} */

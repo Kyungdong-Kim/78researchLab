@@ -196,8 +196,8 @@ export const guiStepDetails = [
   },
   {
     step: 4,
-    title_ko: '직관적인 실행 결과 확인',
-    title_en: 'Intuitive Execution Results Monitoring',
+    title_ko: '직관적인 실행 결과 확인 <span class="patent-tech">특허 출원 기술</span>',
+    title_en: 'Intuitive Execution Results Monitoring <span class="patent-tech">Patent application technology</span>',
     description_ko: '실행 중인 시뮬레이션의 각 단계와 상태를 직관적으로 확인 가능합니다. BreakPoint, Resume, Suspend, Step, Abort의 세밀한 제어 기능을 제공하여 시뮬레이션 진행 과정을 통제할 수 있습니다.',
     description_en: 'Easily monitor each stage and status of running simulations with an intuitive interface. Provides detailed control features such as BreakPoint, Resume, Suspend, Step, and Abort to manage the simulation process effectively.',
   },

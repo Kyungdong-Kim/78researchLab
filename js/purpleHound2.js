@@ -9,7 +9,7 @@ $(document).ready(function() {
   $(window).on('load', function () {
     isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
     $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
-      var langAttr = isKorean ? 'ko' : 'en';
+      const langAttr = isKorean ? 'ko' : 'en';
       $(this).html($(this).attr(langAttr));
     });
 
@@ -122,10 +122,9 @@ $(document).ready(function() {
     const activeIndex = $currentItem.data('index');
     const $title = $('.sec3 .sec-bottom .info .txt-box .title');
     const selectedItem = guiStepDetails.find(item => item.step === parseInt(activeIndex));
-    console.log('isKorean :::: ', isKorean)
     
     if (selectedItem) {
-      $title.text(isKorean ? selectedItem.title_ko : selectedItem.title_en);
+      $title.html(isKorean ? selectedItem.title_ko : selectedItem.title_en);
       const $sub = $('.sec3 .sec-bottom .info .txt-box .sub');
       $sub.text(isKorean ? selectedItem.description_ko : selectedItem.description_en);
     }
@@ -313,12 +312,23 @@ $(document).ready(function() {
       for (let i = 0; i < numPoints; i++) {
         // .circle-wrap .circle 요소 내부에 탭 버튼 생성
         const $tabBtn = $(
-          `<button class="tab-btn ${i === 0 ? 'active' : ''}" data-index="${i}">
+          `<button class="tab-btn ${i === 0 ? 'active' : ''}" data-index="${i}"
+             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="${actionCategory[i][isKorean ? 'title_ko' : 'title_en']}" ko="${actionCategory[i].title_ko}" en="${actionCategory[i].title_en}">
             <i class="${iconClasses[i]} icon"></i>
           </button>`
         );
+
         // 탭버튼 추가
         $circle.append($tabBtn);
+
+        // 4-1-4. 포인트 mouseenter 이벤트 핸들러 추가
+        new bootstrap.Tooltip($tabBtn[0]);
+        $tabBtn.on('mouseenter', function() {
+          const tooltipText = isKorean ? $(this).attr('ko') : $(this).attr('en');
+          $(this).attr('data-bs-title', tooltipText);
+          const tooltip = bootstrap.Tooltip.getInstance(this);
+          tooltip.setContent({ '.tooltip-inner': tooltipText });
+        });
       }
 
       // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
