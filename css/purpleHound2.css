@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+*{
+  word-break: break-all;
+}
+
 /* 0. header */
 header {
   width: 100%;
@@ -26,6 +30,7 @@ header .menu-wrap .menu a.active {
 .banner {
   width: 100%;
   height: 100vh;
+  min-height: fit-content;
   position: relative;
 }
 .banner .mobile-img{
@@ -58,6 +63,7 @@ header .menu-wrap .menu a.active {
 .sec{
   width: 100%;
   height: 100vh;
+  min-height: fit-content;
   padding: 100px 200px;
   display: flex;
   flex-direction: column;
@@ -109,39 +115,39 @@ header .menu-wrap .menu a.active {
 .sec2 .sec-bottom{
   overflow: hidden;
 }
-.sec2 .sec-bottom .slider{
+.sec2 .sec-bottom .slider.swiper-1{
   width: 100%;
   height: 100%;
   padding: 20px 100px 0 100px;
 }
-.sec2 .sec-bottom .slider .inner,
-.sec2 .sec-bottom .slider .swiper-wrapper,
-.sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide,
-.sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide img{
+.sec2 .sec-bottom .slider.swiper-1 .inner,
+.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper,
+.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide,
+.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide img{
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-.sec2 .sec-bottom .slider .swiper-wrapper{
+.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper{
   height: calc(100% - 50px);
   cursor: grab;
 }
-.sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide.swiper-slide-active{
+.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-active{
   background-color: #FFFFFF;
   height: 100%;
 }
-.sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide.swiper-slide-next,
-.sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide.swiper-slide-prev{
+.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-next,
+.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-prev{
   background-color: #FFFFFF;
   filter: brightness(0.6);
   z-index: -1;
   height: 90%;
   margin: auto 0;
 }
-.sec2 .sec-bottom .slider .swiper-pagination .swiper-pagination-bullet{
+.sec2 .sec-bottom .slider.swiper-1 .swiper-pagination .swiper-pagination-bullet{
   background-color: #8C8C8C;
 }
-.sec2 .sec-bottom .slider .swiper-pagination .swiper-pagination-bullet-active{
+.sec2 .sec-bottom .slider.swiper-1 .swiper-pagination .swiper-pagination-bullet-active{
   background-color: #5F488CCF;
 }
 
@@ -149,17 +155,21 @@ header .menu-wrap .menu a.active {
 .sec3 .sec-bottom{
   margin-top: 20px;
 }
+.sec3 .sec-bottom .vertical-swiper{
+  display: none;
+}
 .sec3 .sec-bottom .left{
   width: 40%;
   height: 100%;
   overflow: hidden;
+  display: block;
 }
 .sec3 .sec-bottom .left .item-box{
   position: relative;
   margin: 10px;
   width: 100%;
   height: calc(33% - 10px);
-  min-height: 100px;
+  min-height: 50px;
   position: relative;
 }
 .sec3 .sec-bottom .left .item-box::before{
@@ -249,12 +259,34 @@ header .menu-wrap .menu a.active {
   height: 100%;
   background-color: #F0F0F0;
   overflow: hidden;
+  display: block;
 }
 .sec3 .sec-bottom .right img{
   width: 100%;
   height: 100%;
   object-fit: contain;
   padding: 20px 50px;
+}
+
+.sec3 .swiper.vertical-swiper{
+  width: 100%;
+  height: 100%;
+}
+.sec3 .swiper.vertical-swiper .swiper-slide {
+  text-align: center;
+  font-size: 1rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rebeccapurple;
+}
+.sec3 .swiper.vertical-swiper .swiper-slide img {
+  display: block;
+  width: calc(100% - 100px);
+  height: 100%;
+  object-fit: contain;
 }
 
 /* #4. section 4 */
@@ -321,6 +353,7 @@ header .menu-wrap .menu a.active {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .sec4 .sec-bottom .container .circle-wrap .circle{
   height: 95%;
@@ -407,6 +440,11 @@ header .menu-wrap .menu a.active {
   background-color: rgba(0, 0, 0, 1);
   color: white;
 }
+.sec4 .sales-btn p{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
 
 /* #5. modal */
 .modal{
@@ -415,6 +453,7 @@ header .menu-wrap .menu a.active {
 .modal.active{
 	width: 100%;
 	height: 100vh;
+  min-height: fit-content;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -695,6 +734,7 @@ opacity: 0.5;
   .sec1{
     padding: 150px 30px;
     height: 80vh;
+    min-height: fit-content;
   }
   .sec1 .sec-bottom{
     height: 80%;
@@ -707,10 +747,11 @@ opacity: 0.5;
   .sec3{
     padding: 100px;
   }
-  .sec3 .sec-bottom{
+  /* .sec3 .sec-bottom{
     flex-direction: column;
     justify-content: space-between;
     height: 80vh;
+    min-height: fit-content;
   }
   .sec3 .sec-bottom .left{
     width: 100%;
@@ -727,6 +768,14 @@ opacity: 0.5;
   .sec3 .sec-bottom .right{
     width: 100%;
     height: 50%;
+  } */
+  .sec3 .sec-bottom .left,
+  .sec3 .sec-bottom .right{
+  display: none;
+  }
+
+  .sec3 .sec-bottom .vertical-swiper{
+    display: block;
   }
 }
 
@@ -734,6 +783,7 @@ opacity: 0.5;
   .sec2{
     padding: 50px 10px;
     height: 60vh;
+    min-height: fit-content;
   }
   .sec2 .sec-bottom{
     height: 100%;
@@ -783,20 +833,21 @@ opacity: 0.5;
   .sec2 .sec-bottom{
     height: fit-content;
   }
-  .sec2 .sec-bottom .slider{
+  .sec2 .sec-bottom .slider.swiper-1{
     height: 100%;
     padding: 0 50px 50px 50px;
   }
-  .sec2 .sec-bottom .slider .inner,
-  .sec2 .sec-bottom .slider .swiper-wrapper,
-  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide,
-  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide img{
+  .sec2 .sec-bottom .slider.swiper-1 .inner,
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper,
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide,
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide img{
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
   .sec3{
-    height: 120vh;
+    height: 100vh;
+    min-height: fit-content;
     padding: 150px 50px;
   }
   .sec3 .sec-bottom{
@@ -911,29 +962,31 @@ opacity: 0.5;
   }
   .sec1 .sec-bottom{
     min-height: 30vh;
+    height: fit-content;
   }
   .sec2 .sec-bottom{
     margin: 0;
+    height: fit-content;
     min-height: 30vh;
     padding: 0;
   }
-  .sec2 .sec-bottom .slider{
+  .sec2 .sec-bottom .slider.swiper-1{
     width: 100%;
     height: 20vh;
     padding: 20px 100px 0 100px;
   }
-  .sec2 .sec-bottom .slider .inner,
-  .sec2 .sec-bottom .slider .swiper-wrapper,
-  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide,
-  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide img{
+  .sec2 .sec-bottom .slider.swiper-1 .inner,
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper,
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide,
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide img{
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-  .sec2 .sec-bottom .slider .swiper-wrapper{
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper{
     height: calc(100% - 50px);
   }
-  .sec2 .sec-bottom .slider .swiper-wrapper .swiper-slide.swiper-slide-active{
+  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-active{
     background-color: #FFFFFF;
     height: 100%;
   }

@@ -1,11 +1,27 @@
-import { actionCategory, networkAttack, aptAttack, vulnAttack, financeAttack, telecomAttack } from '../data/purpleHoundData.js';
+import { actionCategory, networkAttack, aptAttack, vulnAttack, financeAttack } from '../data/purpleHoundData.js';
 
 $(document).ready(function() {
   // ===== 1. Animation On Scroll 라이브러리 초기화
   AOS.init();
 
+  $(window).on('load', function () {
+    var isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
+    $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
+      var langAttr = isKorean ? 'ko' : 'en';
+      $(this).html($(this).attr(langAttr));
+    });
+
+    if (isKorean) {
+      $('.ko').show();
+      $('.en').hide();
+    } else {
+      $('.ko').hide();
+      $('.en').show();
+    }
+  });
+
   // === 2. Swiper 초기화
-  const swiper = new Swiper(".mySwiper", {
+  const swiper = new Swiper(".mySwiper.swiper-1", {
     slidesPerView: 1,
     spaceBetween: 30,
     speed: 800,
@@ -146,6 +162,32 @@ $(document).ready(function() {
   checkSection3();
   $(window).scroll(checkSection3);
 
+  // 3-8. vertical-swiper 추가
+  new Swiper(".mySwiper.vertical-swiper", {
+    direction: "vertical",
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    mousewheel: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    on: {
+      slideChange: function () {
+        const activeSlide = this.slides[this.activeIndex];
+        const img = activeSlide.querySelector('img');
+        const duration = img ? parseInt(img.getAttribute('data-duration'), 10) : 5000;
+        this.params.autoplay.delay = duration;
+        this.autoplay.stop();
+        this.autoplay.start();
+      },
+    },
+  });
 
   // ===== 4. sec4 : 카테고리별 Action 정보
   // 4-1. 원형 시각화 라인 그리기
@@ -155,7 +197,6 @@ $(document).ready(function() {
       'fas fa-building',          // APT 아이콘
       'fas fa-microchip',         // IPC 아이콘
       'fas fa-coins',             // 금융 아이콘
-      'fas fa-mobile-alt'         // 통신 아이콘
     ];
 
     const $circleWrap = $('.sec4 .sec-bottom .container .circle-wrap');
@@ -188,7 +229,7 @@ $(document).ready(function() {
       radius = radius - 20;
       // 4-1-1. 포인트 생성 및 배치
       for (let i = 0; i < numPoints; i++) {
-        const angle = (2 * Math.PI / numPoints) * i;
+        const angle = (2 * Math.PI / (numPoints - 1)) * i;
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
 
@@ -217,8 +258,9 @@ $(document).ready(function() {
           boxSizing: 'border-box',
           borderRadius: '50%',
           cursor: 'pointer',
-          left: i === 0 ? (x - 45) + 'px' : (x - 25) + 'px',
-          top: i === 0 ? (y - 45) + 'px' : (y - 25) + 'px',
+          left: i === 0 ? '50%' : (x - 25) + 'px',
+          top: i === 0 ? (y - 50) + 'px' : (y - 25) + 'px',
+          transform: i === 0 ? 'translateX(-50%)' : 'none',
           transition: 'all 0.5s ease',
           display: 'flex',
           justifyContent: 'center',
@@ -253,15 +295,16 @@ $(document).ready(function() {
         
         points.each(function(i) {
           const newIndex = (i - clickedIndex + numPoints) % numPoints;
-          const angle = (2 * Math.PI / numPoints) * newIndex;
+          const angle = (2 * Math.PI / (numPoints - 1)) * newIndex;
           const x = centerX + radius * Math.cos(angle);
           const y = centerY + radius * Math.sin(angle);
           
           $(this).css({
-            width: i === clickedIndex ? '100px' : '70px',
-            height: i === clickedIndex ? '100px' : '70px',
-            left: i === clickedIndex ? (x - 45) + 'px' : (x - 25) + 'px',
-            top: i === clickedIndex ? (y - 45) + 'px' : (y - 25) + 'px'
+            width: i === clickedIndex ? '100px' : '50px',
+            height: i === clickedIndex ? '100px' : '50px',
+            left: i === clickedIndex ? '50%' : (x - 25) + 'px',
+            top: i === clickedIndex ? (y - 50) + 'px' : (y - 25) + 'px',
+            transform: i === clickedIndex ? 'translateX(-50%)' : 'none'
           });
         });
     
@@ -317,6 +360,7 @@ $(document).ready(function() {
     const data = actionCategory[index];
     const attackType = data[0];
     let attackData;
+    var isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
   
     // 4-2-1. attackType에 따라 해당하는 데이터 매칭
     switch (attackType) {
@@ -331,9 +375,6 @@ $(document).ready(function() {
         break;
       case "금융권 대상 공격 시나리오":
         attackData = financeAttack;
-        break;
-      case "통신 시스템 공격 시나리오":
-        attackData = telecomAttack;
         break;
       default:
         attackData = [];
@@ -356,16 +397,16 @@ $(document).ready(function() {
   
         const headerRow = `
           <tr>
-            <th>순위</th>
-            <th>공격 유형</th>
-            <th>설명</th>
+            <th ko="순위" en="Rank">순위</th>
+            <th ko="공격 유형" en="Attack Type">공격 유형</th>
+            <th ko="설명" en="Description">설명</th>
           </tr>
         `;
         const dataRows = attackData.map((item) => `
           <tr>
             <td>${item.id}</td>
-            <td>${item.name}</td>
-            <td>${item.description}</td>
+            <td ko="${item.name_ko}" en="${item.name_en}">${isKorean ? item.name_ko : item.name_en}</td>
+            <td ko="${item.description_ko}" en="${item.description_en}">${isKorean ? item.description_ko : item.description_en}</td>
           </tr>
         `).join("");
   
@@ -378,11 +419,11 @@ $(document).ready(function() {
         const dataAccordionRows = attackData.map((item, idx) => `
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading-${item.id}">
-              <button class="accordion-button ${idx === 0 ? "" : "collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${item.id}" aria-expanded="${idx === 0}" aria-controls="flush-collapse-${item.id}"> #${item.id}. ${item.name}
+              <button class="accordion-button ${idx === 0 ? "" : "collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${item.id}" aria-expanded="${idx === 0}" aria-controls="flush-collapse-${item.id}" ko="${item.name_ko} en="${item.name_en}"> #${item.id}. ${isKorean ? item.name_ko : item.name_en}
               </button>
             </h2>
             <div id="flush-collapse-${item.id}" class="accordion-collapse collapse ${idx === 0 ? "show" : ""}" aria-labelledby="flush-heading-${item.id}" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">${item.description}</div>
+              <div class="accordion-body" ko="${item.description_ko}" en="${item.description_en}">${isKorean ? item.description_ko : item.description_en}</div>
             </div>
           </div>`
         ).join("");
