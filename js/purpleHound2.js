@@ -30,6 +30,7 @@ $(document).ready(function() {
       isKorean = true;
       $('.sec3 .sec-bottom .info .txt-box .title').text(findInfo.title_ko);
       $('.sec3 .sec-bottom .info .txt-box .sub').text(findInfo.description_ko);
+      $('.sales-btn').text($('.sales-btn').attr('ko'));
       $('tr th').text($(this).attr('ko'));
   
       // 툴팁 언어변환
@@ -46,6 +47,7 @@ $(document).ready(function() {
       isKorean = false;
       $('.sec3 .sec-bottom .info .txt-box .title').text(findInfo.title_en);
       $('.sec3 .sec-bottom .info .txt-box .sub').text(findInfo.description_en);
+      $('.sales-btn').text($('.sales-btn').attr('en'));
       $('tr th').text($(this).attr('en'));
   
       // 툴팁 언어 변환
