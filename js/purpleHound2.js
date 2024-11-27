@@ -21,21 +21,25 @@ $(document).ready(function() {
   });
 
   // === 2. Swiper 초기화
-  const swiper = new Swiper(".mySwiper.swiper-1", {
+  var swiper = new Swiper(".mySwiper.swiper-1", {
     slidesPerView: 1,
     spaceBetween: 30,
+    loop: true,
     speed: 800,
-    effect: "slide",
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      type: 'bullets'
+    },
     autoplay: {
       delay: 5000,
       disableOnInteraction: false,
     },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      type: "bullets",
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
-  });
+  })
 
   const checkScroll = () => {
     const sec2 = document.querySelector(".sec2");
@@ -64,7 +68,43 @@ $(document).ready(function() {
   let isInSection3 = false;
   let isScrollEventActive = false;
 
-  // 3-1. 활성화된 GUI 단계 확인을 위한 영역 스크롤
+  // 3-1. .item-box .txt-box 내부 텍스트들에 의한 높잇값 자동화
+  const setHeight = (itemBoxHeight, txtBoxHeight) => {
+    $('.item-box').each((_, item) => {
+      const itemHeight = $(item).height();
+      if (itemHeight > itemBoxHeight) {
+        itemBoxHeight = itemHeight;
+      }
+    });
+
+    $('.item-box .txt-box').each((_, item) => {
+      const itemHeight = $(item).height();
+      console.log('itemHeightttttttt')
+      console.log(itemHeight)
+      if(itemHeight > txtBoxHeight){
+        txtBoxHeight = itemHeight;
+      }
+    })
+    $('.item-box').height(itemBoxHeight);
+    $('.item-box .txt-box').height(txtBoxHeight);
+
+    $('.left').height(itemBoxHeight * 3 + 40);
+
+    if($(window).width() > 1200){
+      $('.right').height(itemBoxHeight * 3 + 40);
+    } else {
+      $('.right').height($('.right img').height());
+    }
+  };
+  setHeight();
+  $(document).on('click', '.lang', setHeight);
+  $(window).resize(() => {
+    const itemBoxHeight = 0;
+    const txtBoxHeight = 0;
+    setHeight(itemBoxHeight, txtBoxHeight);
+  });
+
+  // 3-2. 활성화된 GUI 단계 확인을 위한 영역 스크롤
   const scrollItemBox = $item => {
     const container = $('.sec3 .sec-bottom .left');
     const currentIndex = $item.index() + 1;
@@ -80,7 +120,7 @@ $(document).ready(function() {
     container.animate({ scrollTop: offset }, 500);
   } //scrollImgBox
 
-  // 3-2. GIF 초기화 : GIF 재생 시작 시점을 처음으로 되돌리기 위해 src 속성 재설정
+  // 3-3. GIF 초기화 : GIF 재생 시작 시점을 처음으로 되돌리기 위해 src 속성 재설정
   const resetGif = index => {
     const $activeGif = $('.sec3 .sec-bottom .right img[data-index="' + index + '"]');
     const src = $activeGif.attr('src');
@@ -89,7 +129,7 @@ $(document).ready(function() {
     return $activeGif;
   } //resetGif
 
-  // 3-3. 선택된 단계의 UI GIF 활성화
+  // 3-4. 선택된 단계의 UI GIF 활성화
   const activateStepGui = $item => {
     $item.addClass('active').siblings('.item-box').removeClass('active');
     scrollItemBox($item);
@@ -104,7 +144,7 @@ $(document).ready(function() {
     moveStepWithTimeout(duration);
   } //activateStepGui
 
-  // 3-4. 자동 단계 이동
+  // 3-5. 자동 단계 이동
   const autoMoveStep = () => {
     const $currentActive = $('.sec3 .sec-bottom .left .item-box.active');
     let $nextItem = $currentActive.next('.item-box');
@@ -112,7 +152,7 @@ $(document).ready(function() {
     activateStepGui($nextItem);
   } //autoMoveStep
 
-  // 3-5. 각 단계마다 지연 시간 후 자동 이동
+  // 3-6. 각 단계마다 지연 시간 후 자동 이동
   const moveStepWithTimeout = duration => {
     if (currentTimeoutId) {
       clearTimeout(currentTimeoutId);
@@ -120,7 +160,7 @@ $(document).ready(function() {
     currentTimeoutId = setTimeout(autoMoveStep, duration + 1000);
   } //moveStepWithTimeout
 
-  // 3-6. Section3 진입/이탈 체크
+  // 3-7. Section3 진입/이탈 체크
   const checkSection3 = () => {
     const scrollTop = $(window).scrollTop();
     const windowHeight = $(window).height();
@@ -158,36 +198,9 @@ $(document).ready(function() {
     }
   } //checkSection3
 
-  // 3-7. Section3 영역 진입 확인을 위한 초기 실행 및 스크롤 이벤트 리스너 등록
+  // 3-8. Section3 영역 진입 확인을 위한 초기 실행 및 스크롤 이벤트 리스너 등록
   checkSection3();
   $(window).scroll(checkSection3);
-
-  // 3-8. vertical-swiper 추가
-  new Swiper(".mySwiper.vertical-swiper", {
-    direction: "vertical",
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 30,
-    mousewheel: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    on: {
-      slideChange: function () {
-        const activeSlide = this.slides[this.activeIndex];
-        const img = activeSlide.querySelector('img');
-        const duration = img ? parseInt(img.getAttribute('data-duration'), 10) : 5000;
-        this.params.autoplay.delay = duration;
-        this.autoplay.stop();
-        this.autoplay.start();
-      },
-    },
-  });
 
   // ===== 4. sec4 : 카테고리별 Action 정보
   // 4-1. 원형 시각화 라인 그리기

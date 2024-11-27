@@ -113,42 +113,37 @@ header .menu-wrap .menu a.active {
 
 /* 3. section 2 */
 .sec2 .sec-bottom{
-  overflow: hidden;
-}
-.sec2 .sec-bottom .slider.swiper-1{
+  height: fit-content;
   width: 100%;
-  height: 100%;
-  padding: 20px 100px 0 100px;
+  margin-top: 30px;
+  position: relative;
 }
-.sec2 .sec-bottom .slider.swiper-1 .inner,
-.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper,
-.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide,
-.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.sec2 .sec-bottom .swiper-button-prev,
+.sec2 .sec-bottom .swiper-button-next {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: lightgray;
+  transition: color 0.3s;
 }
-.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper{
-  height: calc(100% - 50px);
-  cursor: grab;
+.sec2 .sec-bottom .swiper-button-prev {
+  left: -50px;
 }
-.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-active{
-  background-color: #FFFFFF;
-  height: 100%;
+.sec2 .sec-bottom .swiper-button-next {
+  right: -50px;
 }
-.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-next,
-.sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-prev{
-  background-color: #FFFFFF;
-  filter: brightness(0.6);
-  z-index: -1;
-  height: 90%;
-  margin: auto 0;
+.sec2 .sec-bottom .swiper-button-prev:hover,
+.sec2 .sec-bottom .swiper-button-next:hover {
+  color: black;
 }
-.sec2 .sec-bottom .slider.swiper-1 .swiper-pagination .swiper-pagination-bullet{
-  background-color: #8C8C8C;
+.sec2 .sec-bottom .swiper-pagination-bullet {
+  background-color: gray;
+  transition: background-color 0.3s;
 }
-.sec2 .sec-bottom .slider.swiper-1 .swiper-pagination .swiper-pagination-bullet-active{
-  background-color: #5F488CCF;
+.sec2 .sec-bottom .swiper-pagination-bullet-active {
+  background-color: black;
 }
 
 /* #3. section 3 */
@@ -266,27 +261,6 @@ header .menu-wrap .menu a.active {
   height: 100%;
   object-fit: contain;
   padding: 20px 50px;
-}
-
-.sec3 .swiper.vertical-swiper{
-  width: 100%;
-  height: 100%;
-}
-.sec3 .swiper.vertical-swiper .swiper-slide {
-  text-align: center;
-  font-size: 1rem;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rebeccapurple;
-}
-.sec3 .swiper.vertical-swiper .swiper-slide img {
-  display: block;
-  width: calc(100% - 100px);
-  height: 100%;
-  object-fit: contain;
 }
 
 /* #4. section 4 */
@@ -629,6 +603,9 @@ opacity: 0.5;
   html,body{
     font-size: 16px;
   }
+  .banner .img-box img{
+    object-fit: contain;
+  }
 }
 
 @media (max-width: 1560px) {
@@ -651,8 +628,7 @@ opacity: 0.5;
 
 @media (max-width: 1400px) {
   .sec2 .sec-bottom{
-    height: 70%;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .sec3 .sec-bottom .left {
     width: 50%;
@@ -780,14 +756,6 @@ opacity: 0.5;
 }
 
 @media(max-width: 990px){
-  .sec2{
-    padding: 50px 10px;
-    height: 60vh;
-    min-height: fit-content;
-  }
-  .sec2 .sec-bottom{
-    height: 100%;
-  }
   .sec3 .sec-bottom .left{
     height: 55%
   }
@@ -829,21 +797,6 @@ opacity: 0.5;
 @media (max-width: 810px) {
   html, body{
     font-size: 14px;
-  }
-  .sec2 .sec-bottom{
-    height: fit-content;
-  }
-  .sec2 .sec-bottom .slider.swiper-1{
-    height: 100%;
-    padding: 0 50px 50px 50px;
-  }
-  .sec2 .sec-bottom .slider.swiper-1 .inner,
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper,
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide,
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
   .sec3{
     height: 100vh;
@@ -898,6 +851,10 @@ opacity: 0.5;
 }
 
 @media (max-width: 650px) {
+  .sec2 .sec-top{
+    height: fit-content;
+    margin-bottom: 10px;
+  }
   .sec4{
     padding: 150px 20px;
   }
@@ -964,31 +921,9 @@ opacity: 0.5;
     min-height: 30vh;
     height: fit-content;
   }
+
   .sec2 .sec-bottom{
     margin: 0;
-    height: fit-content;
-    min-height: 30vh;
-    padding: 0;
-  }
-  .sec2 .sec-bottom .slider.swiper-1{
-    width: 100%;
-    height: 20vh;
-    padding: 20px 100px 0 100px;
-  }
-  .sec2 .sec-bottom .slider.swiper-1 .inner,
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper,
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide,
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper{
-    height: calc(100% - 50px);
-  }
-  .sec2 .sec-bottom .slider.swiper-1 .swiper-wrapper .swiper-slide.swiper-slide-active{
-    background-color: #FFFFFF;
-    height: 100%;
   }
 
   .sec3 .sec-bottom{

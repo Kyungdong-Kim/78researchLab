@@ -254,6 +254,9 @@ footer .copyrights{
   font-size: 0.8rem;
   font-weight: 100;
 }
+.en{
+  display: none;
+}
 
 @media (max-width : 800px) {
   footer .footer-top .snsBox{
