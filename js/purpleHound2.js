@@ -6,21 +6,19 @@ $(document).ready(function() {
   AOS.init();
   // 1-2. 언어 초기화
   let isKorean;
-  $(window).on('load', function () {
-    isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
-    $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
-      const langAttr = isKorean ? 'ko' : 'en';
-      $(this).html($(this).attr(langAttr));
-    });
-
-    if (isKorean) {
-      $('.ko').show();
-      $('.en').hide();
-    } else {
-      $('.ko').hide();
-      $('.en').show();
-    }
+  isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
+  $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
+    const langAttr = isKorean ? 'ko' : 'en';
+    $(this).html($(this).attr(langAttr));
   });
+
+  if (isKorean) {
+    $('.ko').show();
+    $('.en').hide();
+  } else {
+    $('.ko').hide();
+    $('.en').show();
+  }
   // 1-3. 언어 변환 클릭 이벤트 처리
   $('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function () {
     const activeIndex = $('.tab-btn.active').data('index');
@@ -29,10 +27,10 @@ $(document).ready(function() {
     activeCategoryInfo($('.tab-btn-wrap .tab-btn.active').data('index'));
     if ($(this).text() === 'En') {
       isKorean = true;
-      $('.sec3 .sec-bottom .info .txt-box .title').text(findInfo.title_ko);
-      $('.sec3 .sec-bottom .info .txt-box .sub').text(findInfo.description_ko);
-      $('.sales-btn').text($('.sales-btn').attr('ko'));
-      $('tr th').text($(this).attr('ko'));
+      $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_ko);
+      $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_ko);
+      $('.sales-btn').html($('.sales-btn').attr('ko'));
+      $('tr th').html($(this).attr('ko'));
   
       // 툴팁 언어변환
       $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
@@ -46,10 +44,10 @@ $(document).ready(function() {
       });
     } else {
       isKorean = false;
-      $('.sec3 .sec-bottom .info .txt-box .title').text(findInfo.title_en);
-      $('.sec3 .sec-bottom .info .txt-box .sub').text(findInfo.description_en);
-      $('.sales-btn').text($('.sales-btn').attr('en'));
-      $('tr th').text($(this).attr('en'));
+      $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_en);
+      $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_en);
+      $('.sales-btn').html($('.sales-btn').attr('en'));
+      $('tr th').html($(this).attr('en'));
   
       // 툴팁 언어 변환
       $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
@@ -88,8 +86,7 @@ $(document).ready(function() {
   const checkScroll = () => {
     const sec2 = document.querySelector(".sec2");
     const sec2Rect = sec2.getBoundingClientRect();
-    const sec2InView =
-      sec2Rect.top < window.innerHeight && sec2Rect.bottom > 0;
+    const sec2InView = sec2Rect.top < window.innerHeight && sec2Rect.bottom > 0;
 
     if (sec2InView) {
       // 2-1. .sec2가 viewport 내에 있을 경우 autoplay 시작
@@ -103,8 +100,6 @@ $(document).ready(function() {
       }
     }
   } //checkScroll
-
-  window.addEventListener("scroll", checkScroll);
   checkScroll();
   
   // ===== 3. Sec3
@@ -129,7 +124,7 @@ $(document).ready(function() {
     if (selectedItem) {
       $title.html(isKorean ? selectedItem.title_ko : selectedItem.title_en);
       const $sub = $('.sec3 .sec-bottom .info .txt-box .sub');
-      $sub.text(isKorean ? selectedItem.description_ko : selectedItem.description_en);
+      $sub.html(isKorean ? selectedItem.description_ko : selectedItem.description_en);
     }
 
     // gif 실행을 위한 경로 재설정
@@ -158,25 +153,6 @@ $(document).ready(function() {
       activateStepGui($nextItem);
     }, durationTime + 1000);
   } //activateStepGui
-
-  $(window).on('scroll', function() {
-    const scrollTop = $(window).scrollTop();
-    const windowHeight = $(window).height();
-    const $sec3 = $('.sec3');
-    const sec3Offset = $sec3.offset();
-    const isInSec3 = (scrollTop + windowHeight) >= (sec3Offset.top + 90) && scrollTop < (sec3Offset.top + $sec3.height());
-
-    if (isInSec3 && !alreadyEntered) {
-      alreadyEntered = true;
-      activateStepGui($('.sec3 .sec-bottom .tab-btn-wrap .tab-btn.active'));
-    } else if (!isInSec3 && alreadyEntered) {
-      alreadyEntered = false;
-
-      if (autoMoveTimeout) {
-        clearTimeout(autoMoveTimeout);
-      }
-    }
-  });
 
   $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').on('click', function() {
     if (autoMoveTimeout) {
@@ -379,7 +355,7 @@ $(document).ready(function() {
     const updateContent = () => {
       $title.attr('ko', data.title_ko)
       $title.attr('en', data.title_en)
-      $title.text(data[isKorean ? 'title_ko' : 'title_en']);
+      $title.html(data[isKorean ? 'title_ko' : 'title_en']);
   
       if (isWideScreen) {
         // 4-2-2. 매칭된 데이터를 사용한 table 값 채우기 + 아코디언 비활성화
@@ -429,15 +405,6 @@ $(document).ready(function() {
       $tableWrap.fadeIn(300); // 데이터 갱신 후 fadeIn
     });
   } //activeCategoryInfo
-  
-  // Window resize 이벤트 연결
-  $(window).on("resize", function () {
-    // requestAnimationFrame: 브라우저 내장함수로 부드러운 프레임 애니메이션 지원
-    requestAnimationFrame(() => {
-      drawPointsOnCircle(actionCategory.length);
-      activeCategoryInfo(0);
-    });
-  });
   
   activeCategoryInfo(0); // 기본값 설정
 
@@ -564,23 +531,61 @@ $(document).ready(function() {
       company: $('#company').val(),
     };
 
-    emailjs
-    .send('service_55emqp6', 'template_73b8uwm', templateParams, 'tdb7tpSvPwnlfmihQ')
-    .then(response => {
-      if(response.status === 200){
-        alert('요청 완료');
-      
-        emailjs.send('service_9al2zlq', 'template_qp6tcdg', {
-          ...templateParams,
-          service: 'PurpleHound'
-        }, 'tdb7tpSvPwnlfmihQ')
+    const sendEmail = async () => {
+      const serviceId ='service_55emqp6';
+      const templateId = isKorean ? 'template_73b8uwm' : 'template_02mg1na';
+      const salesServiceId = 'service_9al2zlq';
+      const salesTemplateId = 'template_qp6tcdg';
+    
+      try {
+        const res = await emailjs.send(serviceId, templateId, templateParams, 'tdb7tpSvPwnlfmihQ');
+        if (res.status === 200) {
+          closeModal();
+          const salesRes = await emailjs.send(salesServiceId, salesTemplateId, {
+            ...templateParams,
+            service: 'PurpleHound',
+          }, 'tdb7tpSvPwnlfmihQ');
+    
+          if (salesRes.status !== 200) {
+            console.log('EmailJS Error: to sales');
+          }
+        }
+      } catch (error) {
+        console.error('EmailJS error:', error);
       }
-    })
-    .catch(err => {
-      console.error('EmailJS error:', err);
-    })
-    .finally(() => {
-      closeModal();
+    } //sendEmail
+    sendEmail();
+  });
+
+  // ===== 6. 공용 이벤트 처리
+  // 6-1. 스크롤 이벤트
+  window.addEventListener("scroll", function () {
+    checkScroll();
+  
+    const scrollTop = $(window).scrollTop();
+    const windowHeight = $(window).height();
+    const $sec3 = $('.sec3');
+    const sec3Offset = $sec3.offset();
+    const isInSec3 = (scrollTop + windowHeight) >= (sec3Offset.top + 90) && scrollTop < (sec3Offset.top + $sec3.height());
+  
+    if (isInSec3 && !alreadyEntered) {
+      alreadyEntered = true;
+      activateStepGui($('.sec3 .sec-bottom .tab-btn-wrap .tab-btn.active'));
+    } else if (!isInSec3 && alreadyEntered) {
+      alreadyEntered = false;
+  
+      if (autoMoveTimeout) {
+        clearTimeout(autoMoveTimeout);
+      }
+    }
+  });
+
+  // 6-2. resize 이벤트
+  $(window).on("resize", function () {
+    // requestAnimationFrame: 브라우저 내장함수로 부드러운 프레임 애니메이션 지원
+    requestAnimationFrame(() => {
+      drawPointsOnCircle(actionCategory.length);
+      activeCategoryInfo(0);
     });
   });
 });
