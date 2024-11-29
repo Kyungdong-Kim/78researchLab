@@ -556,6 +556,8 @@ $(document).ready(function() {
         }
       } catch (error) {
         console.error('EmailJS error:', error);
+        alert('요청에 실패하였습니다. 잠시 후 다시 시도해주세요.');
+        $('#submit').css({ cursor: 'pointer', opacity: 1 })
       }
     } //sendEmail
     sendEmail();
