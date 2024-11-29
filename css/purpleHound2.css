@@ -379,7 +379,7 @@ header .menu-wrap .menu a.active {
 }
 .sec4 .sales-btn{
   font-size: 1.3rem;
-  width: fit-content;
+  width: 500px;
   height: fit-content;
   border-radius: 10px;
   cursor: pointer;
@@ -768,6 +768,10 @@ opacity: 0.5;
   }
   .sec4 .sec-bottom .wrap-box .table-wrap{
     height: 100%;
+  }
+  .sec4 .sales-btn{
+    width: 100%;
+    border-radius: 3px;
   }
 }
 
