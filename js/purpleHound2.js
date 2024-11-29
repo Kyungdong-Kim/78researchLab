@@ -423,6 +423,7 @@ $(document).ready(function() {
     $('#email-domain').val('');
     $('#agree').prop('checked', false)
     $('#agree label').css({ fontWeight: 'normal' });
+    $('#submit').css({ cursor: 'pointer', opacity: 1 })
   } //closeModal
   $('.modal .input-wrap .closeBtn').click(closeModal);
 
@@ -439,7 +440,7 @@ $(document).ready(function() {
     }
 
     // 이메일 검증
-    if (!$('#email').val() || !$('#email-domain').val()) {
+    if (!$('#email').val() || !$('#custom-email-domain').val()) {
       $('#email').closest('.input-wrap').css({ border: '2px solid #5F4B8Ba8' });
       isValid = false;
     } else {
@@ -481,7 +482,7 @@ $(document).ready(function() {
   // 5-3. 입력값 유효성 검증
   const validateInput = () => {
     // Email 검증
-    const email = `${$('#email').val()}@${$('#email-domain').val()}`;
+    const email = `${$('#email').val()}@${$('#custom-email-domain').val()}`;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
@@ -523,10 +524,12 @@ $(document).ready(function() {
       return;
     }
 
+    $(this).css({ cursor: 'not-allowed', opacity: 0.5 })
+
     // EmailJS 전송 파라미터 설정
     const templateParams = {
       name: $('#name').val(),
-      email: `${$('#email').val()}@${$('#email-domain').val()}`,
+      email: `${$('#email').val()}@${$('#custom-email-domain').val()}`,
       phone: `${$('#phone-part1').val()}-${$('#phone-part2').val()}-${$('#phone-part3').val()}`,
       company: $('#company').val(),
     };
@@ -541,6 +544,7 @@ $(document).ready(function() {
         const res = await emailjs.send(serviceId, templateId, templateParams, 'tdb7tpSvPwnlfmihQ');
         if (res.status === 200) {
           closeModal();
+          alert('요청이 완료되었습니다.');
           const salesRes = await emailjs.send(salesServiceId, salesTemplateId, {
             ...templateParams,
             service: 'PurpleHound',
