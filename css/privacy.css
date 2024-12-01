@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-*{
-  word-break: break-all;
-}
-
 header .menu-wrap .menu{
   color: #000000;
 }

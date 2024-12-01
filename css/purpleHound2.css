@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-*{
-  word-break: break-all;
-}
-
 /* 0. header */
 header {
   width: 100%;
@@ -500,22 +496,13 @@ header .menu-wrap .menu a.active {
 }
 .modal.active .input-wrap .input-bottom .input-box input{
   outline: none;
-  width: 90%;
+  width: 100%;
   height: 100%;
   border: none;
-  padding: 0 10px;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 10px;
   font-size: 1rem;
-}
-.modal.active .input-wrap .input-bottom .input-box select {
-  outline: none;
-  width: 90%;
-  margin: 10px 0;
-  padding-left: 15px;
-  height: 30px;
-  border: none;
-  z-index: 99;
-  background-color: transparent;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 .modal.active .input-wrap .input-bottom .input-box .phone-number-inputs {
   display: flex;
@@ -535,19 +522,19 @@ header .menu-wrap .menu a.active {
 .modal.active .input-wrap .input-bottom .input-box .email-inputs {
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .modal.active .input-wrap .input-bottom .input-box .email-inputs input {
-  width: 45%;
+  width: 30%;
   height: 100%;
   padding-left: 10px;
 }
 .modal.active .input-wrap .input-bottom .input-box .email-inputs select {
-  width: 45%;
-  padding-left: 10px;
+  width: 30%;
+  height: 70%;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
@@ -713,6 +700,26 @@ opacity: 0.5;
 }
 
 @media (max-width: 950px) {
+  .sec .sec-top p.title{
+    font-size: 1.3rem;
+  }
+  .sec .sec-top p.sub,
+  .sec3 .sec-bottom .info .txt-box .title{
+    font-size: 1rem;
+  }
+  .sec4 .sec-bottom .box-wrap .count-box .count{
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  .sec4 .sec-bottom .box-wrap .count-box .count span{
+    font-size: 1.6rem;
+  }
+  .sec4 .sec-bottom .wrap-box .table-wrap .title{
+    font-size: 1.1rem;
+  }
+  .sec4 .sales-btn{
+    font-size: 1.1rem;
+  }
   .banner {
     width: 100%;
     height: fit-content;
