@@ -198,6 +198,7 @@ header .menu-wrap .menu a.active {
 .sec3 .sec-bottom .info{
   width: calc(100% - 120px);
   height: fit-content;
+  min-height: 500px;
   background-color: rgba(0, 0, 0, 0.05);
   padding: 50px 100px;
   border-radius: 5px;
@@ -206,6 +207,7 @@ header .menu-wrap .menu a.active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 .sec3 .sec-bottom .info .txt-box{
   width: 100%;
@@ -220,7 +222,7 @@ header .menu-wrap .menu a.active {
   border: 2px solid #5F4B8B;
   color: #5F4B8B;
   background-color: #FFFFFF;
-  padding: 5px 10px;
+  padding: 0 5px;
   border-radius: 15px;
 }
 .sec3 .sec-bottom .info .txt-box .sub{
@@ -680,6 +682,9 @@ opacity: 0.5;
   .sec1 .sec-bottom{
     padding: 10px;
   }
+  .sec3 .sec-bottom .info{
+    padding: 50px;
+  }
 }
 
 @media(max-width: 990px){
@@ -701,6 +706,9 @@ opacity: 0.5;
   .sec4 .sec-bottom .wrap-box .table-wrap{
     padding: 50px;
     justify-content: start;
+  }
+  .sec3 .sec-bottom .custom-btn-wrap{
+    margin-top: 10px;
   }
 }
 
@@ -757,6 +765,12 @@ opacity: 0.5;
   .sec1 .sec-top{
     margin-bottom: 10px;
   }
+  .sec3 .sec-bottom .info{
+    min-height: 300px;
+  }
+  .sec3 .sec-bottom .custom-btn-wrap .custom-btn{
+    height: 30px;
+  }
   .modal.active .input-wrap{
     width: 90vw;
     height: fit-content;
@@ -767,9 +781,6 @@ opacity: 0.5;
   .sec2 .sec-top{
     height: fit-content;
     margin-bottom: 10px;
-  }
-  .sec3 .sec-bottom .custom-btn-wrap .custom-btn{
-    height: 30px;
   }
   .sec4{
     padding: 150px 20px;
@@ -789,6 +800,15 @@ opacity: 0.5;
 @media (max-width: 550px) {
   html, body{
     font-size: 11px;
+  }
+  .sec3 .sec-bottom .info .txt-box .title{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+  .sec3 .sec-bottom .info .txt-box .title .patent-tech{
+    margin-left: auto;
   }
   .sec4 .sec-bottom .wrap-box .table-wrap table{
     display: none;

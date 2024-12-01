@@ -42,6 +42,23 @@ $(document).ready(function() {
         }
         new bootstrap.Tooltip(this);
       });
+      // 아코디언 언어 변환
+      $('.accordion-item').each(function(index) { 
+        const $title = $(this).find('.accordion-button');
+        const $description = $(this).find('.accordion-body');
+        $title.html($title.attr('ko'));
+        $description.html($description.attr('ko'));
+          const collapseInstance = bootstrap.Collapse.getInstance(this);
+        if (collapseInstance) {
+          collapseInstance.dispose();
+        }
+        new bootstrap.Collapse(this, {
+          toggle: false
+        });
+        if (index === 0) {
+          $(this).find('.accordion-collapse').collapse('show');
+        }
+      });
     } else {
       isKorean = false;
       $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_en);
@@ -59,6 +76,23 @@ $(document).ready(function() {
           tooltipInstance.dispose();
         }
         new bootstrap.Tooltip(this);
+      });
+      // 아코디언 언어 변환
+      $('.accordion-item').each(function(index) { 
+        const $title = $(this).find('.accordion-button');
+        const $description = $(this).find('.accordion-body');
+        $title.html($title.attr('en'));
+        $description.html($description.attr('en'));
+          const collapseInstance = bootstrap.Collapse.getInstance(this);
+        if (collapseInstance) {
+          collapseInstance.dispose();
+        }
+        new bootstrap.Collapse(this, {
+          toggle: false
+        });
+        if (index === 0) {
+          $(this).find('.accordion-collapse').collapse('show');
+        }
       });
     }
   });
@@ -405,7 +439,7 @@ $(document).ready(function() {
         const dataAccordionRows = attackData.map((item, idx) => `
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading-${item.id}">
-              <button class="accordion-button ${idx === 0 ? "" : "collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${item.id}" aria-expanded="${idx === 0}" aria-controls="flush-collapse-${item.id}" ko="${item.name_ko} en="${item.name_en}"> #${item.id}. ${isKorean ? item.name_ko : item.name_en}
+              <button class="accordion-button ${idx === 0 ? "" : "collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${item.id}" aria-expanded="${idx === 0}" aria-controls="flush-collapse-${item.id}" ko="#${item.id}. ${item.name_ko}" en="#${item.id}. ${item.name_en}">#${item.id}. ${isKorean ? item.name_ko : item.name_en}
               </button>
             </h2>
             <div id="flush-collapse-${item.id}" class="accordion-collapse collapse ${idx === 0 ? "show" : ""}" aria-labelledby="flush-heading-${item.id}" data-bs-parent="#accordionFlushExample">
