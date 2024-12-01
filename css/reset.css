@@ -200,12 +200,16 @@ footer .footer-top .txtBox p{
   padding: 0 20px;
   position: relative;
 }
-footer .footer-top .txtBox p:nth-child(-n+3)::after{
+footer .footer-top .txtBox p:nth-child(-n+4)::after{
   content: '|';
   position: absolute;
   right: 0;
   top: 0;
   color: #e5e5e5a4;
+}
+footer .footer-top .txtBox p a:hover{
+  color: inherit;
+  text-decoration: underline;
 }
 footer .footer-top .snsBox{
   width: 300px;
