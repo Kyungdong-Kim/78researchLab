@@ -23,7 +23,7 @@ export const networkAttack = [
   {
     id: 1,
     name_ko: 'ARP Spoofing 공격',
-    description_ko: 'ARP Spoofing은 ARP 프로토콜을 이용하여 네트워크 장비의 MAC 주소를 속여 네트워크 트래픽을 목표 장비로 유하는 공격입니다.',
+    description_ko: 'ARP Spoofing은 ARP 프로토콜을 이용하여 네트워크 장비의 MAC 주소를 속여 네트워크 트래픽을 목표 장비로 유도하는 공격입니다.',
     name_en: 'ARP Spoofing Attack',
     description_en: "ARP Spoofing uses the ARP protocol to deceive network devices' MAC addresses, redirecting network traffic to a target device."
   },

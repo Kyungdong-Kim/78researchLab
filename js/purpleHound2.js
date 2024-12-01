@@ -24,13 +24,13 @@ $(document).ready(function() {
     const activeIndex = $('.tab-btn.active').data('index');
     const findInfo = guiStepDetails.find(item => item.step == activeIndex);
   
-    activeCategoryInfo($('.tab-btn-wrap .tab-btn.active').data('index'));
     if ($(this).text() === 'En') {
       isKorean = true;
       $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_ko);
       $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_ko);
       $('.sales-btn').html($('.sales-btn').attr('ko'));
       $('tr th').html($(this).attr('ko'));
+      $('tr td').html($(this).attr('ko'));
   
       // 툴팁 언어변환
       $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
@@ -48,6 +48,7 @@ $(document).ready(function() {
       $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_en);
       $('.sales-btn').html($('.sales-btn').attr('en'));
       $('tr th').html($(this).attr('en'));
+      $('tr td').html($(this).attr('en'));
   
       // 툴팁 언어 변환
       $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
@@ -176,7 +177,7 @@ $(document).ready(function() {
     $circleWrap.find('.point, .tooltip').remove();
     $circle.find('.tab-btn').remove();
     
-    if($(window).width() > 1300){
+    if($(window).width() >= 1300){
       $circleWrap.css({
         width: '30%',
         height: 'auto',
@@ -201,26 +202,25 @@ $(document).ready(function() {
       radius = radius - 20;
       // 4-1-1. 포인트 생성 및 배치
       for (let i = 0; i < numPoints; i++) {
-        const angle = (2 * Math.PI / (numPoints - 1)) * i;
+        const angle = (2 * Math.PI / numPoints) * i;
         const x = centerX + radius * Math.cos(angle);
         const y = centerY + radius * Math.sin(angle);
 
         // 4-1-2. 포인트 생성
         const $point = $(
           `<div class="point" data-index="${i}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="${actionCategory[i][isKorean ? 'title_ko' : 'title_en']}" ko="${actionCategory[i].title_ko}" en="${actionCategory[i].title_en}" >
-            <i class="${iconClasses[i]} icon ${i === 0 ? 'active' : ''}"></i>
+            <i class="${iconClasses[i]} icon"></i>
           </div>`
         ).css({
           position: 'absolute',
-          width: i === 0 ? '100px' : '50px',
-          height: i === 0 ? '100px' : '50px',
+          width: '50px',
+          height: '50px',
           backgroundColor: '#9f94b3',
           boxSizing: 'border-box',
           borderRadius: '50%',
           cursor: 'pointer',
-          left: i === 0 ? '50%' : (x - 25) + 'px',
-          top: i === 0 ? (y - 50) + 'px' : (y - 25) + 'px',
-          transform: i === 0 ? 'translateX(-50%)' : 'none',
+          left: (x - 25) + 'px',
+          top: (y - 25) + 'px',
           transition: 'all 0.5s ease',
           display: 'flex',
           justifyContent: 'center',
@@ -228,7 +228,25 @@ $(document).ready(function() {
         });
 
         // 4-1-3. circle-wrap에 포인트 추가
-        $circleWrap.append($point);
+        if(i === 0){
+          const $clonedActivePoint = $point.clone();
+          $circleWrap.append($clonedActivePoint);
+
+          setTimeout(() => {
+            $clonedActivePoint.css({
+              width: "100px",
+              height: "100px",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)"
+            });
+            $clonedActivePoint.addClass('centerPoint');
+          }, 100);
+          $circleWrap.append($point);
+        } else {
+          $circleWrap.append($point);
+        }
 
         // 4-1-4. 포인트 mouseenter 이벤트 핸들러 추가
         new bootstrap.Tooltip($point[0]);
@@ -242,28 +260,28 @@ $(document).ready(function() {
 
       // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
       $('.point').on('click', function() {
+        const activeIndex = $('.centerPoint').data('index');
         const clickedIndex = $(this).data('index');
-        const points = $('.point');
-        
-        $('.point .icon').removeClass('active');
-        $(this).find('.icon').addClass('active');
-        
-        points.each(function(i) {
-          const newIndex = (i - clickedIndex + numPoints) % numPoints;
-          const angle = (2 * Math.PI / (numPoints - 1)) * newIndex;
-          const x = centerX + radius * Math.cos(angle);
-          const y = centerY + radius * Math.sin(angle);
-          
-          $(this).css({
-            width: i === clickedIndex ? '100px' : '50px',
-            height: i === clickedIndex ? '100px' : '50px',
-            left: i === clickedIndex ? '50%' : (x - 25) + 'px',
-            top: i === clickedIndex ? (y - 50) + 'px' : (y - 25) + 'px',
-            transform: i === clickedIndex ? 'translateX(-50%)' : 'none'
-          });
-        });
-    
-        activeCategoryInfo(clickedIndex);
+
+        if(activeIndex !== clickedIndex){
+          $('.centerPoint').remove();
+          const $clonedNewPoint = $(this).clone();
+          $circleWrap.append($clonedNewPoint);
+  
+          setTimeout(() => {
+            $clonedNewPoint.css({
+              width: "100px",
+              height: "100px",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)"
+            });
+            $clonedNewPoint.addClass('centerPoint');
+          }, 100);
+      
+          activeCategoryInfo(clickedIndex, true);
+        }
       });
     } else {
       $circleWrap.css({
@@ -313,7 +331,7 @@ $(document).ready(function() {
       // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
       $('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .tab-btn').on('click', function() {
         const clickedIndex = $(this).data('index');
-        
+
         $(this).addClass('active').siblings('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .tab-btn').removeClass('active');
         activeCategoryInfo(clickedIndex);
       });
@@ -322,7 +340,7 @@ $(document).ready(function() {
   drawPointsOnCircle(actionCategory.length);
   
   // 4-2. Click 이벤트에 따른 카테고리 정보 활성화
-  const activeCategoryInfo = (index) => {
+  const activeCategoryInfo = (index, activeFadeIn = false) => {
     const data = actionCategory[index];
     const attackType = index;
     let attackData;
@@ -347,7 +365,7 @@ $(document).ready(function() {
   
     const $tableWrap = $(".sec4 .sec-bottom .table-wrap");
     const $title = $tableWrap.find(".title .category");
-    const $table = $tableWrap.find("table");
+    const $table = $tableWrap.find("table tbody");
     const $accordion = $tableWrap.find("#accordionFlushExample");
     const isWideScreen = $(window).width() > 550;
   
@@ -360,15 +378,8 @@ $(document).ready(function() {
       if (isWideScreen) {
         // 4-2-2. 매칭된 데이터를 사용한 table 값 채우기 + 아코디언 비활성화
         $accordion.hide();
-        $table.show().empty();
-  
-        const headerRow = `
-          <tr>
-            <th ko="순위" en="Rank">${isKorean ? '순위' : 'Rank'}</th>
-            <th ko="공격 유형" en="Attack Type">${isKorean ? '공격 유형' : 'Attack Type'}</th>
-            <th ko="설명" en="Description">${isKorean ? '설명' : 'Description'}</th>
-          </tr>
-        `;
+        $table.show();
+
         const dataRows = attackData.map((item) => `
           <tr>
             <td>${item.id}</td>
@@ -377,7 +388,7 @@ $(document).ready(function() {
           </tr>
         `).join("");
   
-        $table.html(headerRow + dataRows);
+        $table.html(dataRows);
       } else {
         // 4-2-3. 매칭된 데이터를 사용한 아코디언 값 채우기 + table 비활성화
         $table.hide();
@@ -400,10 +411,14 @@ $(document).ready(function() {
     };
   
     // 4-2-3. 갱신 전 fadeOut 처리
-    $tableWrap.fadeOut(300, () => {
+    if(activeFadeIn){
+      $tableWrap.fadeOut(300, () => {
+        updateContent();
+        $tableWrap.fadeIn(300); // 데이터 갱신 후 fadeIn
+      });
+    } else {
       updateContent();
-      $tableWrap.fadeIn(300); // 데이터 갱신 후 fadeIn
-    });
+    }
   } //activeCategoryInfo
   
   activeCategoryInfo(0); // 기본값 설정
@@ -423,7 +438,8 @@ $(document).ready(function() {
     $('#email-domain').val('');
     $('#agree').prop('checked', false)
     $('#agree label').css({ fontWeight: 'normal' });
-    $('#submit').css({ cursor: 'pointer', opacity: 1 })
+    $('#submit').css({ cursor: 'pointer', opacity: 1 });
+    $('#submit').removeClass('disabled');
   } //closeModal
   $('.modal .input-wrap .closeBtn').click(closeModal);
 
@@ -524,7 +540,13 @@ $(document).ready(function() {
       return;
     }
 
-    $(this).css({ cursor: 'not-allowed', opacity: 0.5 })
+    // 중복 클릭 이벤트 방지
+    if ($(this).hasClass('disabled')) {
+      return;
+    }
+    $(this).css({ cursor: 'not-allowed', opacity: 0.5 });
+    $(this).addClass('disabled');
+
 
     // EmailJS 전송 파라미터 설정
     const templateParams = {
@@ -593,5 +615,10 @@ $(document).ready(function() {
       drawPointsOnCircle(actionCategory.length);
       activeCategoryInfo(0);
     });
+  });
+
+  // 6-3. img 이벤트 방지
+  $('img').on('dragstart', function (e) {
+    e.preventDefault();
   });
 });
