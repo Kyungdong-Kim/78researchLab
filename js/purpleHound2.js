@@ -21,7 +21,7 @@ $(document).ready(function() {
   }
   // 1-3. 언어 변환 클릭 이벤트 처리
   $('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function () {
-    const activeIndex = $('.tab-btn.active').data('index');
+    const activeIndex = $('.custom-btn.active').data('index');
     const findInfo = guiStepDetails.find(item => item.step == activeIndex);
   
     if ($(this).text() === 'En') {
@@ -33,7 +33,7 @@ $(document).ready(function() {
       $('tr td').html($(this).attr('ko'));
   
       // 툴팁 언어변환
-      $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
+      $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn').each(function () {
         const koTitle = $(this).attr('ko');
         $(this).attr('data-bs-title', koTitle);
         const tooltipInstance = bootstrap.Tooltip.getInstance(this);
@@ -51,7 +51,7 @@ $(document).ready(function() {
       $('tr td').html($(this).attr('en'));
   
       // 툴팁 언어 변환
-      $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').each(function () {
+      $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn').each(function () {
         const enTitle = $(this).attr('en');
         $(this).attr('data-bs-title', enTitle);
         const tooltipInstance = bootstrap.Tooltip.getInstance(this);
@@ -109,7 +109,7 @@ $(document).ready(function() {
 
   // 3-1. 클릭 이벤트에 따르는 img 활성화 및 비활성화
   const activateStepGui = $currentItem => {
-    $currentItem.addClass('active').siblings('.tab-btn').removeClass('active');
+    $currentItem.addClass('active').siblings('.custom-btn').removeClass('active');
     
     // 부트스트랩 tooltip 비활성화
     const tooltipInstance = bootstrap.Tooltip.getInstance($currentItem[0]);
@@ -141,10 +141,10 @@ $(document).ready(function() {
       }
     });
 
-    const durationTime = $('.tab-btn.active').data('duration');
-    const $currentActiveStep = $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn.active');
-    let $nextItem = $currentActiveStep.next('.tab-btn');
-    $nextItem = $nextItem.length === 0 ? $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').first() : $nextItem;
+    const durationTime = $('.custom-btn.active').data('duration');
+    const $currentActiveStep = $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn.active');
+    let $nextItem = $currentActiveStep.next('.custom-btn');
+    $nextItem = $nextItem.length === 0 ? $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn').first() : $nextItem;
     
     if (autoMoveTimeout) {
       clearTimeout(autoMoveTimeout);
@@ -155,7 +155,7 @@ $(document).ready(function() {
     }, durationTime + 1000);
   } //activateStepGui
 
-  $('.sec3 .sec-bottom .tab-btn-wrap .tab-btn').on('click', function() {
+  $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn').on('click', function() {
     if (autoMoveTimeout) {
       clearTimeout(autoMoveTimeout);
     }
@@ -175,7 +175,7 @@ $(document).ready(function() {
     const $circleWrap = $('.sec4 .sec-bottom .wrap-box .circle-wrap');
     const $circle = $('.sec4 .sec-bottom .wrap-box .circle-wrap .circle');
     $circleWrap.find('.point, .tooltip').remove();
-    $circle.find('.tab-btn').remove();
+    $circle.find('.custom-btn').remove();
     
     if($(window).width() >= 1300){
       $circleWrap.css({
@@ -224,11 +224,12 @@ $(document).ready(function() {
           transition: 'all 0.5s ease',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         });
 
         // 4-1-3. circle-wrap에 포인트 추가
         if(i === 0){
+          $point.find('.icon').css({ opacity: 1 })
           const $clonedActivePoint = $point.clone();
           $circleWrap.append($clonedActivePoint);
 
@@ -265,6 +266,13 @@ $(document).ready(function() {
 
         if(activeIndex !== clickedIndex){
           $('.centerPoint').remove();
+          $('.point').each(function() {
+            const $item = $(this);
+            if ($item.data('index') === activeIndex) {
+              $item.find('.icon').css({ opacity: 0.5 });
+            }
+          });          
+          $(this).find('.icon').css({ opacity: 1 })
           const $clonedNewPoint = $(this).clone();
           $circleWrap.append($clonedNewPoint);
   
@@ -309,7 +317,7 @@ $(document).ready(function() {
       for (let i = 0; i < numPoints; i++) {
         // .circle-wrap .circle 요소 내부에 탭 버튼 생성
         const $tabBtn = $(
-          `<button class="tab-btn ${i === 0 ? 'active' : ''}" data-index="${i}"
+          `<button class="custom-btn ${i === 0 ? 'active' : ''}" data-index="${i}"
              data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="${actionCategory[i][isKorean ? 'title_ko' : 'title_en']}" ko="${actionCategory[i].title_ko}" en="${actionCategory[i].title_en}">
             <i class="${iconClasses[i]} icon"></i>
           </button>`
@@ -329,10 +337,10 @@ $(document).ready(function() {
       }
 
       // 4-1-6. 포인트 클릭 시, 좌표 수정 및 table 업데이트
-      $('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .tab-btn').on('click', function() {
+      $('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .custom-btn').on('click', function() {
         const clickedIndex = $(this).data('index');
 
-        $(this).addClass('active').siblings('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .tab-btn').removeClass('active');
+        $(this).addClass('active').siblings('.sec4 .sec-bottom .wrap-box .circle-wrap .circle .custom-btn').removeClass('active');
         activeCategoryInfo(clickedIndex);
       });
     }
@@ -598,7 +606,7 @@ $(document).ready(function() {
   
     if (isInSec3 && !alreadyEntered) {
       alreadyEntered = true;
-      activateStepGui($('.sec3 .sec-bottom .tab-btn-wrap .tab-btn.active'));
+      activateStepGui($('.sec3 .sec-bottom .custom-btn-wrap .custom-btn.active'));
     } else if (!isInSec3 && alreadyEntered) {
       alreadyEntered = false;
   

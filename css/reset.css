@@ -229,6 +229,7 @@ footer .footer-top .snsBox .icon{
 }
 footer .footer-top .snsBox .icon svg{
   transition: 0.3s;
+  vertical-align: baseline;
 }
 footer .footer-top .snsBox .icon:hover svg {
   fill: #fff;
