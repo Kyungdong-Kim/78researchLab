@@ -775,6 +775,9 @@ opacity: 0.5;
   .sec3 .sec-bottom .info{
     min-height: 300px;
   }
+  .sec3 .sec-bottom .custom-btn-wrap{
+    width: 140px;
+  }
   .sec3 .sec-bottom .custom-btn-wrap .custom-btn{
     height: 30px;
   }

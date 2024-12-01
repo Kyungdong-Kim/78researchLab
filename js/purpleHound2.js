@@ -210,8 +210,8 @@ $(document).ready(function() {
     const $circle = $('.sec4 .sec-bottom .wrap-box .circle-wrap .circle');
     $circleWrap.find('.point, .tooltip').remove();
     $circle.find('.custom-btn').remove();
-    
-    if($(window).width() >= 1300){
+
+    if($(window).width() >= 1285){
       $circleWrap.css({
         width: '30%',
         height: 'auto',
