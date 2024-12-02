@@ -245,7 +245,7 @@ $(document).ready(function() {
     $circleWrap.find('.point, .tooltip').remove();
     $circle.find('.custom-btn').remove();
 
-    if($(window).width() >= 1285){
+    if($(window).width() >= (1300 - 16)){
       $circleWrap.css({
         width: '30%',
         height: 'auto',
@@ -443,7 +443,7 @@ $(document).ready(function() {
     const $title = $tableWrap.find(".title .category");
     const $table = $tableWrap.find("table tbody");
     const $accordion = $tableWrap.find("#accordionFlushExample");
-    const isWideScreen = $(window).width() > 550;
+    const isWideScreen = $(window).width() > (550 - 16);
   
     // 공통 업데이트
     const updateContent = () => {
@@ -508,7 +508,7 @@ $(document).ready(function() {
     $('.modal').removeClass('active');
     $('#name, #company, #phone-part1, #phone-part2, #phone-part3, #email, #custom-email-domain').each(function () {
       $(this).val('');
-      $(this).closest('.input-wrap').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
+      $(this).closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
     });
   
     $('#email-domain').val('');
@@ -517,81 +517,107 @@ $(document).ready(function() {
     $('#submit').css({ cursor: 'pointer', opacity: 1 });
     $('#submit').removeClass('disabled');
   } //closeModal
-  $('.modal .input-wrap .closeBtn').click(closeModal);
+  $('.modal .input-box .closeBtn').click(closeModal);
 
   // 5-2. 필수 입력값 확인
   const validateRequiredFields = () => {
-    let isValid = true;
-
     // 이름 검증
-    if (!$('#name').val()) {
-      $('#name').closest('.input-wrap').css({ border: '2px solid #5F4B8Ba8' });
-      isValid = false;
+    if ($('#name').val().trim().length == 0) {
+      alert(isKorean ? '이름을 입력해주세요' : 'Please enter your name');
+      $('#name').closest('.input-box').css({ border: '2px solid #FF000099' });
+      $('#name').focus();
+      return false;
     } else {
-      $('#name').closest('.input-wrap').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
+      $('#name').closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
     }
-
-    // 이메일 검증
-    if (!$('#email').val() || !$('#custom-email-domain').val()) {
-      $('#email').closest('.input-wrap').css({ border: '2px solid #5F4B8Ba8' });
-      isValid = false;
-    } else {
-      $('#email').closest('.input-wrap').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
-    }
-
     // 회사명 검증
-    if (!$('#company').val()) {
-      $('#company').closest('.input-wrap').css({ border: '2px solid #5F4B8Ba8' });
-      isValid = false;
+    if ($('#company').val().trim().length == 0) {
+      alert(isKorean ? '소속을 입력해주세요' : 'Please enter your affiliation');
+      $('#company').closest('.input-box').css({ border: '2px solid #FF000099' });
+      $('#company').focus();
+      return false;
     } else {
-      $('#company').closest('.input-wrap').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
+      $('#company').closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
     }
-
     // 전화번호 검증
-    if (!$('#phone-part1').val() || !$('#phone-part2').val() || !$('#phone-part3').val()) {
+    if ($('#phone-part1').val().trim().length == 0 || $('#phone-part2').val().trim().length == 0 || $('#phone-part3').val().trim().length == 0) {
+      alert(isKorean ? '전화번호를 입력해주세요' : 'Please enter your phone number');
       $('#phone-part1, #phone-part2, #phone-part3').each(function () {
-        $(this).closest('.input-wrap').css({ border: '2px solid #5F4B8Ba8' });
+        if ($(this).val().trim().length == 0) {
+          $(this).closest('.input-box').css({ border: '2px solid #FF000099' });
+          if (!$(this).is(':focus')) {
+            $(this).focus();
+            return false;
+          }
+        } else {
+          $(this).closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
+        }
       });
-      isValid = false;
+      return false;
     } else {
       $('#phone-part1, #phone-part2, #phone-part3').each(function () {
-        $(this).closest('.input-wrap').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
+        $(this).closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
       });
     }
-
+    // 이메일 검증
+    if ($('#email').val().trim().length == 0 || $('#custom-email-domain').val().trim().length == 0) {
+      alert(isKorean ? '이메일을 입력해주세요' : 'Please enter your email address');
+      $('#email').closest('.input-box').css({ border: '2px solid #FF000099' });
+      $('#email, #custom-email-domain').each(function () {
+        if ($(this).val().trim().length == 0) {
+          $(this).closest('.input-box').css({ border: '2px solid #FF000099' });
+          if (!$(this).is(':focus')) {
+            $(this).focus();
+            return false;
+          }
+        } else {
+          $(this).closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
+        }
+      });
+      return false;
+    } else {
+      $('#email').closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' });
+    }
     // 개인정보 동의 검증
     if (!$('#agree').prop('checked')) {
-      alert('개인 정보 동의가 필요합니다.');
+      alert(isKorean ? '개인 정보 동의가 필요합니다' : 'Consent for personal information is required');
       $('#agree label').css({ fontWeight: 800 });
-      isValid = false;
+      return false;
     } else {
       $('#agree label').css({ fontWeight: 'normal' });
     }
-
-    return isValid;
+    return true;
   } //validateRequiredFields
 
   // 5-3. 입력값 유효성 검증
   const validateInput = () => {
-    // Email 검증
-    const email = `${$('#email').val()}@${$('#custom-email-domain').val()}`;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-      alert('유효한 이메일 주소를 입력해주세요.');
-      $('#email').closest('.input-wrap').css({ border: '2px solid #5F4B8Ba8' });
-      return false;
-    }
-
     // Phone 검증
     const phone = `${$('#phone-part1').val()}-${$('#phone-part2').val()}-${$('#phone-part3').val()}`;
     const phoneRegex = /^\d{3}-\d{3,4}-\d{4}$/;
 
     if (!phoneRegex.test(phone)) {
-      alert('유효한 전화번호를 입력해주세요.');
+      alert(isKorean ? '유효한 전화번호를 입력해주세요' : 'Please enter a valid phone number');
       $('#phone-part1, #phone-part2, #phone-part3').each(function () {
-        $(this).closest('.input-wrap').css({ border: '2px solid #5F4B8Ba8' });
+        $(this).closest('.input-box').css({ border: '2px solid #FF000099' });
+        $(this).val('');
       });
+      $('#phone-part1').focus();
+
+      return false;
+    }
+
+    // Email 검증
+    const email = `${$('#email').val()}@${$('#custom-email-domain').val()}`;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      alert(isKorean ? '유효한 이메일 주소를 입력해주세요' : 'Please enter a valid email address');
+      $('#email').closest('.input-box').css({ border: '2px solid #FF000099' });
+      $('#email, #custom-email-domain').each(function(){
+        $(this).val('');
+      });
+      $('#email').focus();
+
       return false;
     }
 
@@ -608,7 +634,7 @@ $(document).ready(function() {
   $('#email-domain').on('change', inputDomain);
   $('#custom-email-domain').on('input', function() {
     $('#email-domain').val('');
-  });  
+  });
 
   // 5-4. 요청 버튼 클릭 이벤트
   $('#submit').click(function () {
@@ -642,7 +668,7 @@ $(document).ready(function() {
         const res = await emailjs.send(serviceId, templateId, templateParams, 'tdb7tpSvPwnlfmihQ');
         if (res.status === 200) {
           closeModal();
-          alert('요청이 완료되었습니다.');
+          alert(isKorean ? '입력하신 이메일로 소개자료를 발송해 드렸습니다.' : 'We have sent the introductory materials to the email you provided.');
           const salesRes = await emailjs.send(salesServiceId, salesTemplateId, {
             ...templateParams,
             service: 'PurpleHound',
@@ -654,11 +680,15 @@ $(document).ready(function() {
         }
       } catch (error) {
         console.error('EmailJS error:', error);
-        alert('요청에 실패하였습니다. 잠시 후 다시 시도해주세요.');
+        alert(isKorean ? '요청에 실패하였습니다. 잠시 후 다시 시도해주세요.' : 'The request has failed. Please try again later."');
         $('#submit').css({ cursor: 'pointer', opacity: 1 })
       }
     } //sendEmail
     sendEmail();
+  });
+
+  $('.modal .input-wrap .input-bottom .input-box input').on('input', function(){
+    $(this).closest('.input-box').css({ border: '1px solid rgba(0, 0, 0, 0.3)' })
   });
 
   // ===== 6. 공용 이벤트 처리
