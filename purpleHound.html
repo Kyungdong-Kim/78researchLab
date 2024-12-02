@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./favicon/purpleHound.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/purpleHound.css">
   <title>PurpleHound | 78researchlab</title>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CYTPWFCRYC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CYTPWFCRYC');
-</script>
-
-
 <body>
-  <!-- 0. header -->
 	<header>
 		<div class="logo">
 			<img src="./images/PurpleHound.png" alt="logo">
@@ -33,11 +26,11 @@
         <li>
           <a href="https://www.78researchlab.com/">Home</a>
         </li>
-				<li>
-					<a href="./redSpider.html">RedSpider</a>
+        <li>
+					<p class="active">PurpleHound</p>
 				</li>
 				<li>
-					<p class="active">PurpleHound</p>
+					<a href="./redSpider.html">RedSpider</a>
 				</li>
 				<li>
 					<a href="./blueBears.html">BlueBears</a>
@@ -53,11 +46,11 @@
       <li class="menu">
 				<a href="https://www.78researchlab.com/">Home</a>
 			</li>
-			<li class="menu">
-				<a href="./redSpider.html">RedSpider</a>
+      <li class="menu">
+				<p class="active">PurpleHound</p>
 			</li>
 			<li class="menu">
-				<p class="active">PurpleHound</p>
+				<a href="./redSpider.html">RedSpider</a>
 			</li>
 			<li class="menu">
 				<a href="./blueBears.html">BlueBears</a>
@@ -69,298 +62,203 @@
 		</ul>
 	</header>
 
-  <!-- 1. banner -->
   <div class="banner">
-    <span 
-      ko="공격기술 기반 시나리오 위협 침투 테스팅" 
-      en="Attack technology-based scenario threat penetration testing">공격기술 기반 시나리오 위협 침투 테스팅</span>
-    <p class="title" 
-      ko="사이버 공격 시뮬레이션 기반의 자동화된 진단 솔루션" 
-      en="Automated diagnosis solution based on cyber attack simulation">사이버 공격 시뮬레이션 기반의 자동화된 진단 솔루션</p>
+    <div class="text-img-box" data-aos="fade-up-right" data-aos-duration="1000" data-aos-offset="0" data-aos-anchor-placement="center-bottom">
+      <img class="ko" src="./images/services/ph_banner_text_ko.png" alt="Banner Text">
+      <img class="en" src="./images/services/ph_banner_text_en.png" alt="Banner Text">
+    </div>
+    <div class="img-box">
+      <img src="./images/services/ph_banner_bg.png">
+      <img src="./images/services/ph_banner_arrow.png" alt="bannerArrow" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-offset="0">
+    </div>
+    <div class="mobile-img">
+      <img class="ko" src="./images/services/ph_banner_mobile_ko.png" alt="banner">
+      <img class="en" src="./images/services/ph_banner_mobile_en.png" alt="banner">
+    </div>
   </div>
 
-  <!-- 2. section 1 -->
-  <section class="sec1">
-    <div class="sec-top">
-      <h1 
-        ko="최선의 방어는 <b>공격</b>입니다." 
-        en="The best defense is <b>Attack</b>.">최선의 방어는 <b>공격</b>입니다.</h1>
-      <p 
-        ko="공격을 기다리기보다 먼저 그 취약점을 발견하고 대응할 때, 실제 공격에 보다 능동적인 그리고 강력한 보안체계를 구축할 수 있습니다."
-        en="When you discover and respond to vulnerabilities before waiting for an attack, you can build a more active and robust security system against actual attacks.">공격을 기다리기보다 먼저 그 취약점을 발견하고 대응할 때, 실제 공격에 보다 능동적인 그리고 강력한 보안체계를 구축할 수 있습니다.</p>
-        <p 
-        ko="<b>PurpleHound</b>는 선제적인 보안체계 구축을 위한 솔루션입니다. 다양한 시나리오를 기반으로 사이버 공격을 실행해 보안 인프라를 테스트함으로써 구축된 보안 인프라의 효과성, 방어 도구의 효율성을 포함해 사이버 보안 대응을 위한 자동화된 진단 솔루션을 제공합니다."
-        en="<b>PurpleHound</b> is a solution for building a preemptive security system. It tests the security infrastructure by executing cyber attacks based on various scenarios. This provides an automated diagnostic solution for cyber security response, including the effectiveness of the established security infrastructure and the effectiveness of defense tools."><b>PurpleHound</b>는 선제적인 보안체계 구축을 위한 솔루션입니다. 다양한 시나리오를 기반으로 사이버 공격을 실행해 보안 인프라를 테스트함으로써 구축된 보안 인프라의 효과성, 방어 도구의 효율성을 포함해 사이버 보안 대응을 위한 자동화된 진단 솔루션을 제공합니다.</p>
+  <section class="sec sec1">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
+      <p class="title" ko="안전한 가상화 시스템을 통한 실전 같은 사이버 공격 대응" en="Realistic Cyber Attack Response Through a Secure Virtualization System">안전한 가상화 시스템을 통한 실전 같은 사이버 공격 대응</p>
+      <p class="sub" ko="실제 공격 시뮬레이션으로 검증된 가상화 시스템 환경을 제공합니다." en="Provides a Virtualization System Environment Verified by Real-World Attack Simulations.">실제 공격 시뮬레이션으로 검증된 가상화 시스템 환경을 제공합니다.</p>
     </div>
-
     <div class="sec-bottom">
-      <p
-        ko="초연결 시대, 사이버 보안 위협에 어떤 솔루션을 선택하시겠습니까?"
-        en="In the era of hyper-connectivity, which solution would you choose to deal with cyber security threats?">초연결 시대, 사이버 보안 위협에 어떤 솔루션을 선택하시겠습니까?</p>
-        <table>
-          <thead>
-            <tr>
-              <th>What Other Can Do</th>
-              <th ko="구 분" en="Division">구 분</th>
-              <th>What <b>PurpleHound</b> Can Do</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>
-                <div class="txtBox">
-                  <p ko="방어형 솔루션" en="Defensive Solution">방어형 솔루션</p>
-                  <p 
-                    ko="<span>존재하는 위협</span>에 대응하여 방어하는 솔루션" 
-                    en="Solutions that defend against <span>existing threats</span>"><span>존재하는 위협</span>에 대응하여 방어하는 솔루션</p>
-                  <p 
-                    ko=": 이미 알려진 위협 패턴을 감지하고 제한적으로 대응함으로써 변형된 공격에 대비" 
-                    en=": Prepare for modified attacks by detecting known threat patterns and responding in a limited manner">: 이미 알려진 위협 패턴을 감지하고 제한적으로 대응함으로써 변형된 공격에 대비</p>
-                </div>
-              </td>
-              <td ko="위협 대응 방식" en="Threat response">위협 대응 방식</td>
-              <td>
-                <div class="txtBox">
-                  <p ko="공격형 솔루션" en="Offensive Solution">공격형 솔루션</p>
-                  <p 
-                    ko="<span>예측하지 못한 위협</span>에 대응하기 위해 선제적으로 대응하는 솔루션" 
-                    en="A preemptive solution to respond to <span>unforeseen threats</span>"><span>예측하지 못한 위협</span>에 대응하기 위해 선제적으로 대응하는 솔루션</p>
-                  <p 
-                    ko=": 리스크 시뮬레이션을 통해 다양한 각도에서 대응 전략을 수립하여 새로운 위협에 대비" 
-                    en="
-                    : Prepare for new threats by establishing response strategies from various angles through risk simulation">: 리스크 시뮬레이션을 통해 다양한 각도에서 대응 전략을 수립하여 새로운 위협에 대비</p>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="txtBox">
-                  <p ko="표준형 솔루션" en="Standard Solution">표준형 솔루션</p>
-                  <p 
-                    ko="호환 가능하며 보편적인 위협에 대응할 수 있는 솔루션" 
-                    en="Solutions that are compatible and can counter common threats">호환 가능하며 보편적인 위협에 대응할 수 있는 솔루션</p>
-                  <p 
-                    ko=": 국내외에서 다양한 기업이 사용할 수 있으며, 일반적인 보안 요구에 맞추어 최적화" 
-                    en=": Can be used by various companies at home and abroad, optimized for general security needs">: 국내외에서 다양한 기업이 사용할 수 있으며, 일반적인 보안 요구에 맞추어 최적화</p>
-                </div>
-              </td>
-              <td ko="적용 대상" en="Applies to">적용 대상</td>
-              <td>
-                <div class="txtBox">
-                  <p ko="맞춤형 솔루션" en="Custom Solution">맞춤형 솔루션</p>
-                  <p 
-                    ko="조직의 보안 인프라와 위협 요인에 맞게 개발된 솔루션" 
-                    en="Solutions tailored to your organization's security infrastructure and threat actors">조직의 보안 인프라와 위협 요인에 맞게 개발된 솔루션</p>
-                  <p 
-                    ko=": 조직의 특수한 요구사항과 환경을 고려하여 구축되며, 국내 상황과 시기에 맞는 사이버 위협 대응 제공" 
-                    en=": Established in consideration of the organization's special requirements and environment, and provides cyber threat response appropriate to the domestic situation and time">: 조직의 특수한 요구사항과 환경을 고려하여 구축되며, 국내 상황과 시기에 맞는 사이버 위협 대응 제공</p>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      <img class="ko img-ko" src="./images/table-ko.png" alt="Table">
-      <img class="en img-en" src="./images/table-en.png" alt="Table">
+      <img class="en" src="./images/services/ph_sec1_en.png" alt="PH Sec1">
+      <img class="ko" src="./images/services/ph_sec1_ko.png" alt="PH Sec1">
     </div>
   </section>
-
-  <!-- 3. section 2 -->
-  <section class="sec2">
-    <div class="sec-top">
-      <span
-        ko="PurpleHound는 한 발 앞선 솔루션을 제공합니다."
-        en="PurpleHound offers a one step ahead solution.">PurpleHound는 한 발 앞선 솔루션을 제공합니다.</span>
-      <p class="title"
-        ko="실전 공격에 대응하는 맞춤형 보안 솔루션"
-        en="Customized security solution to respond to real-world attacks">실전 공격에 대응하는 맞춤형 보안 솔루션</p>
+  
+  <section class="sec sec2">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
+      <p class="title" ko="사이버 보안 역량을 높이는 실전 대응 시나리오" en="Real-World Response Scenarios to Enhance Cybersecurity Capabilities">사이버 보안 역량을 높이는 실전 대응 시나리오</p>
+      <p class="sub" ko="대응 역량 검증, 최신 위협 대응, 모의 해킹 보완 등 다양한 보안 활용 사례를 제공합니다." en="Offers Various Complementary Use Cases, Including Capability Verification, Response to Emerging Threats, and Penetration Testing Enhancements.">대응 역량 검증, 최신 위협 대응, 모의 해킹 보완 등 다양한 보안 활용 사례를 제공합니다.</p>
     </div>
     <div class="sec-bottom">
-      <div class="tab-btn">
-        <input type="radio" id="offensive" name="tab" checked>
-        <label for="offensive"
-          ko="공격형 솔루션"
-          en="Offensive Solution">공격형 솔루션</label>
-        <input type="radio" id="customized" name="tab">
-        <label for="customized"
-          ko="맞춤형 솔루션"
-          en="Custom Solution">맞춤형 솔루션</label>
-      </div>
-
-      <div class="tab-wrap">
-        <div id="tab1" class="tab active">
-          <div class="imgBox">
-            <img class="ko" src="./images/offensiveSolution.png" alt="Offensive Solution">
-            <img class="en" src="./images/offensiveSolution-en.png" alt="Offensive Solution">
+      <div class="swiper mySwiper swiper-1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img class="ko" src="./images/services/ph_slide_1_ko.png" alt="slide1">
+            <img class="en" src="./images/services/ph_slide_1_en.png" alt="slide1">
           </div>
-          <div class="txtBox">
-            <p class="title"
-              ko="실전 공격상황에서 구축된 보안 인프라가 제대로 동작하는가?"
-              en="Does the established security infrastructure work properly in an actual attack situation?">실전 공격상황에서 구축된 보안 인프라가 제대로 동작하는가?</p>
-            <ul>
-              <li
-                ko="100개 이상의 공격 시나리오로 실전 공격 시뮬레이션에 대응 확인"
-                en="Over 100 attack scenarios to check response to actual attack simulations">100개 이상의 공격 시나리오로 실전 공격 시뮬레이션에 대응 확인</li>
-            </ul>
+          <div class="swiper-slide">
+            <img class="ko" src="./images/services/ph_slide_2_ko.png" alt="slide2">
+            <img class="en" src="./images/services/ph_slide_2_en.png" alt="slide2">
+          </div>
+          <div class="swiper-slide">
+            <img class="ko" src="./images/services/ph_slide_3_ko.png" alt="slide3">
+            <img class="en" src="./images/services/ph_slide_3_en.png" alt="slide3">
           </div>
         </div>
-        <div id="tab2" class="tab">
-          <div class="imgBox"></div>
-          <div class="txtBox">
-            <p class="title"
-              ko="국내에서 발생하는 보안 위협에 최적화된 보안 솔루션인가?"
-              en="Is it a security solution optimized for domestic security threats?">국내에서 발생하는 보안 위협에 최적화된 보안 솔루션인가?</p>
-            <ul>
-              <li
-                ko="국내 정부, 금융, 산업체 대상 최신 APT 공격 시나리오 신속 제공"
-                en="Prompt provision of latest APT attack scenarios targeting domestic government, finance, and industry">국내 정부, 금융, 산업체 대상 최신 APT 공격 시나리오 신속 제공</li>
-              <li
-                ko="한글(HWP), 알집과 같은 K-SW 활용 국내 특화 공격 기술 최우선 제공"
-                en="<b>ex_S.Korea)</b> Priority provision of domestic specialized attack technology using K-SW such as Hangeul (HWP) and Alzip">한글(HWP), 알집과 같은 K-SW 활용 국내 특화 공격 기술 최우선 제공</li>
-            </ul>
-            <p class="title"
-              ko="다양한 실전 공격에 대해 보안담당자가 체계적으로 대응하는가?"
-              en="Does the security officer systematically respond to various real-world attacks?">다양한 실전 공격에 대해 보안담당자가 체계적으로 대응하는가?</p>
-            <ul>
-              <li
-                ko="*MITRE ATT&CK 프레임워크 100% 준수"
-                en="100% compliant with *MITRE ATT&CK framework">*MITRE ATT&CK 프레임워크 100% 준수</li>
-              <li
-                ko="TTP(Tactic, Technique, Procedure) 관점 공격기술별 성공 / 실패 여부 확인 가능"
-                en="It is possible to check the success/failure of each attack technique from the TTP (Tactic, Technique, Procedure) perspective">TTP(Tactic, Technique, Procedure) 관점 공격기술별 성공 / 실패 여부 확인 가능</li>
-              <li
-                ko="Endpoint securuty 솔루션, SIEM, 통합 로그 시스템 연동으로 방어 / 탐지 여부를 구분하여 결과 레포팅하여 조직 내 보안 SW 약점 식별 가능"
-                en="Endpoint security solution, SIEM, and integrated log system interlock to identify security SW weaknesses within the organization by classifying defense/detection and reporting the results">Endpoint securuty 솔루션, SIEM, 통합 로그 시스템 연동으로 방어 / 탐지 여부를 구분하여 결과 레포팅하여 조직 내 보안 SW 약점 식별 가능</li>
-              <li
-                ko="조직 내 보안 솔루션 도입 시 효과 검증"
-                en="Validation of effectiveness when introducing security solutions within the organization">조직 내 보안 솔루션 도입 시 효과 검증</li>
-            </ul>
-            <span
-              ko="*실제 사이버 공격 사례를 바탕으로 공격을 무력화하는 단계를 개발하여 정리한 것"
-              en="*Developing and organizing steps to neutralize an attack based on actual cyber attack cases">*실제 사이버 공격 사례를 바탕으로 공격을 무력화하는 단계를 개발하여 정리한 것</span>
-          </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+  
+  <section class="sec sec3">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
+      <p class="title" ko="단계별로 직관적인 시뮬레이션 인터페이스" en="Step-by-Step Intuitive Simulation Interface">단계별로 직관적인 시뮬레이션 인터페이스</p>
+      <p class="sub" ko="사용자 중심의 단계별 UI로 더욱 쉬운 보안 시뮬레이션을 진행합니다." en="Conduct Security Simulations More Easily with a User-Centered Step-by-Step UI.">사용자 중심의 단계별 UI로 더욱 쉬운 보안 시뮬레이션을 진행합니다.</p>
+    </div>
+    <div class="sec-bottom">
+      <div class="custom-btn-wrap">
+        <button class="custom-btn active" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="모든 데이터의 일원화된 뷰 및 저장 기능 제공" data-duration='3100' ko="모든 데이터의 일원화된 뷰 및 저장 기능 제공" en="Unified View and Storage Functionality for All Data" data-index="1">
+          <p ko="대시보드" en="Dashboard">대시보드</p>
+        </button>
+        <button class="custom-btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="에이전트 상태의 직관적인 시각화" data-duration='9120' ko="에이전트 상태의 직관적인 시각화" en="Intuitive Visualization of Agent Status" data-index="2">
+          <p ko="허브" en="Hub">허브</p>
+        </button>
+        <button class="custom-btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="시뮬레이션 실행 및 예약" data-duration='13290' ko="시뮬레이션 실행 및 예약" en="Simulation Execution and Scheduling" data-index="3">
+          <p ko="실행/예약" en="Execute/Schedule">실행/예약</p>
+        </button>
+        <button class="custom-btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="직관적인 실행 결과 확인 (특허 출원 기술)" data-duration='19820' ko="직관적인 실행 결과 확인 (특허 출원 기술)" en="Intuitive Execution Results Monitoring (Patent-Pending Technology)" data-index="4">
+          <p ko="실행 결과" en="Results">실행 결과</p>
+        </button>
+        <button class="custom-btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="간편한 공격 시나리오 커스터마이징" data-duration='15310' ko="간편한 공격 시나리오 커스터마이징" en="Easy Attack Scenario Customization" data-index="5">
+          <p ko="커스터마이징" en="Customize">커스터마이징</p>
+        </button>
+        <button class="custom-btn" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="공격 시나리오 정보의 종합 제공" data-duration='13630' ko="공격 시나리오 정보의 종합 제공" en="Comprehensive Provision of Attack Scenario Information" data-index="6">
+          <p ko="공격 시나리오" en="Attack Scenario">공격 시나리오</p>
+        </button>
+      </div>
+      <div class="info">
+        <div class="txt-box">
+          <p class="title">모든 데이터의 일원화된 뷰 및 저장 기능 제공</p>
+          <p class="sub">전체적인 데이터를 한눈에 확인하고, 필요한 정보를 손쉽게 저장할 수 있도록 기본보고서를 지원합니다.</p>
+        </div>
+        <div class="img-box">
+          <img src="./images/gui/gui_1.webp" alt="PH_gui_1" data-index='1' data-duration='3100'>
+          <img src="./images/gui/gui_2.webp" alt="PH_gui_2" data-index='2' data-duration='9120'>
+          <img src="./images/gui/gui_3.webp" alt="PH_gui_3" data-index='3' data-duration='13290'>
+          <img src="./images/gui/gui_4.webp" alt="PH_gui_4" data-index='4' data-duration='19820'>
+          <img src="./images/gui/gui_5.webp" alt="PH_gui_5" data-index='5' data-duration='15310'>
+          <img src="./images/gui/gui_6.webp" alt="PH_gui_6" data-index='6' data-duration='13630'>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. section 3 -->
-  <section class="sec3">
-    <h3 class="title"
-      ko="78RESEARCHLAB의 사이버 공격 시뮬레이터 시나리오"
-      en="78RESEARCHLAB'S CYBER ATTACK SIMULATOR SCENARIO">78RESEARCHLAB의 사이버 공격 시뮬레이터 시나리오</h3>
-		<div class="cardBox">
-      <div class="card active">
-        <p class="title"
-          ko="산업 분야별 특화 시나리오"
-          en="Scenarios specific to industry">산업 분야별 특화 시나리오</p>
-        <ul>
-          <li
-            ko="금융권"
-            en="Financial Sector">금융권</li>
-          <li
-            ko="공공기관 / 연구소"
-            en="Public Institution / Research Institute">공공기관 / 연구소</li>
-          <li
-            ko="국방 / 방위산업"
-            en="Defense / Defense Industry">국방 / 방위산업</li>
-          <li
-            ko="언론사"
-            en="Press">언론사</li>
-          <li
-            ko="대기업 (하이테크 기술 유출 방지)"
-            en="Large enterprises (high-tech technology leakage prevention)">대기업 (하이테크 기술 유출 방지)</li>
-        </ul>
+  <section class="sec sec4">
+    <div class="sec-top" data-aos="fade-up" data-aos-duration="300" data-aos-offset="10">
+      <p class="title" ko="국내 환경에 맞춘 최적의 공격 시나리오 제공" en="Optimized Attack Scenarios Tailored for the Domestic Environment">국내 환경에 맞춘 최적의 공격 시나리오 제공</p>
+      <p class="sub" ko="국내 ICT 환경에 최적화된 공격 시나리오로 유사 솔루션과 차별화된 가용성(현실성) 높은 공격 시나리오를 제공합니다." en="Provides attack scenarios optimized for the domestic ICT environment, offering high availability (realism) that differentiates from similar solutions.">국내 ICT 환경에 최적화된 공격 시나리오로 유사 솔루션과 차별화된 가용성(현실성) 높은 공격 시나리오를 제공합니다.</p>
+    </div>
+    <div class="sec-bottom">
+      <div class="box-wrap">
+        <div class="count-box">
+          <p class="count">
+            +30 
+            <span ko="개" en="items">개</span>
+            <span ko="/ 월" en="/ month">/ 월</span>
+          </p>
+          <p ko="최신 APT 공격 시나리오 추가" en="Addition of Latest API Attack Scenarios">최신 APT 공격 시나리오 추가</p>
+        </div>
       </div>
-      <div class="card">
-        <p class="title"
-          ko="공격자 특화 시나리오"
-          en="Attacker-Specific Scenario">공격자 특화 시나리오</p>
-        <ul>
-          <li>Lazarus (North Korea)</li>
-          <li>Kimsuky (North Korea)</li>
-          <li>Panda (China)</li>
-          <li>Fancy Bear (Russia)</li>
-          <li>etc.</li>
-        </ul>
+      <div class="wrap-box">
+        <div class="circle-wrap">
+          <div class="circle"></div>
+        </div>
+        <div class="table-wrap">
+          <p class="title">
+            <span class="category" ko="네트워크 공격 시나리오" en="Network Attack Scenarios">네트워크 공격 시나리오</span> 
+            _ TOP 5
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th ko="순위" en="Rank"></th>
+                <th ko="공격 유형" en="Attack Type"></th>
+                <th ko="설명" en="Description"></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div class="accordion accordion-flush" id="accordionFlushExample"></div>
+        </div>
       </div>
-      <div class="card">
-        <p class="title"
-          ko="TTP 관점 시나리오"
-          en="TTP Perspective Scenario">TTP 관점 시나리오</p>
-        <ul>
-          <li
-            ko="Full Chain 통합 시나리오"
-            en="Full Chain Integration Scenario">Full Chain 통합 시나리오</li>
-          <li
-            ko="스피어피싱"
-            en="Spear Phishing">스피어피싱</li>
-          <li
-            ko="보안 솔루션 우회"
-            en="Bypass Security Solution">보안 솔루션 우회</li>
-          <li
-            ko="데이터 수집 및 유출"
-            en="Data Collection and Leakage">데이터 수집 및 유출</li>
-          <li
-            ko="내부 네트워크 전파"
-            en="Internal Network Propagation">내부 네트워크 전파</li>
-          <li>etc.</li>
-        </ul>
-      </div>
+    </div>
+
+    <button class="sales-btn" ko="소개자료 다운로드" en="Download Brochure">소개자료 다운로드</button>
+  </section>
+
+  <div class="modal">
+		<div class="input-wrap">
+			<div class="imgBox">
+				<img src="./favicon/purpleHound.ico" alt="PurpleHound">
+			</div>
+			<div class="closeBtn">
+				<span></span><span></span>
+			</div>
+			<div class="input-top">
+				<p
+				 ko="PurpleHound 자료 요청하기"
+				 en="Request a PurpleHound intro">PurpleHound 자료 요청하기</p>
+			</div>
+      <div class="input-bottom">
+        <div class="input-box">
+          <p ko="이름" en="Name">이름</p>
+          <input id="name" name="name" type="text" autocomplete="off" aria-label="이름 입력">
+        </div>
+        <div class="input-box">
+          <p ko="소속" en="Company">소속</p>
+          <input id="company" name="company" type="text" autocomplete="off" aria-label="소속 입력">
+        </div>
+        <div class="input-box">
+          <p ko="전화번호" en="Phone">전화번호</p>
+          <div class="phone-number-inputs">
+            <input id="phone-part1" type="text" maxlength="3" placeholder="010" autocomplete="off">
+            <span>-</span>
+            <input id="phone-part2" type="text" maxlength="4" placeholder="1234" autocomplete="off">
+            <span>-</span>
+            <input id="phone-part3" type="text" maxlength="4" placeholder="5678" autocomplete="off">
+          </div>
+        </div>
+        <div class="input-box">
+          <p ko="이메일" en="Email">이메일</p>
+          <div class="email-inputs">
+            <input id="email" type="text" autocomplete="off">
+            <span>@</span>
+            <input type="text" id="custom-email-domain">
+            <select id="email-domain">
+              <option value="" ko="직접 입력" en="Manual Input">직접 입력</option>
+              <option value="gmail.com">gmail.com</option>
+              <option value="naver.com">naver.com</option>
+              <option value="daum.net">daum.net</option>
+              <option value="hanmail.net">hanmail.net</option>
+              <option value="nate.com">nate.com</option>
+            </select>
+          </div>
+        </div>
+        <div class="checkbox-wrap">
+          <input type="checkbox" name="agree" id="agree">
+          <label for="agree" ko="개인정보 동의" en="Agree to Privacy Policy">개인정보 동의</label>
+        </div>
+        <button id="submit" type="submit" ko="요청하기" en="Submit">요청하기</button>
+      </div>      
 		</div>
-  </section>
+	</div>
 
-  <!-- 5. section 4 -->
-  <section class="sec4">
-    <div class="sec-top">
-      <p class="title"
-        ko="사이버 공격으로부터 안전하신가요?"
-        en="Are you safe from cyber attacks?">사이버 공격으로부터 안전하신가요?</p>
-      <span
-        ko="최신 사이버 공격에 대해 안전한가를 객관적으로 측정하고 평가해보세요."
-        en="Objectively measure and evaluate whether you are safe against the latest cyber attacks.">최신 사이버 공격에 대해 안전한가를 객관적으로 측정하고 평가해보세요.</span>
-      <span
-        ko="기존의 사후대비 성격의 보안이 아닌 <b>최신 공격기술을 포함한 모든 위협상황을 가정하고 테스트함</b>으로써 공격을 사전 차단합니다."
-        en="It blocks attacks in advance by <b>assuming and testing all threat situations including the latest attack technologies</b>, rather than the existing post-preparation security.">기존의 사후대비 성격의 보안이 아닌 <b>최신 공격기술을 포함한 모든 위협상황을 가정하고 테스트함</b>으로써 공격을 사전 차단합니다.</span>
-    </div>
-    <div class="sec-bottom">
-      <div class="buttonBox">
-        <div class="btn">
-          <input type="radio" name="ui" id="dashboard" checked
-            ko="전체적인 데이터를 확인할 수 있는 그래프 및 시나리오 업데이트 알림"
-            en="Graphs and scenario update notifications to check overall data">
-          <label for="dashboard" class="active">DashBoard</label>
-        </div>
-        <div class="btn">
-          <input type="radio" name="ui" id="scenario"
-            ko="신규 공격 시나리오 정보"
-            en="New Attack Scenario Information">
-          <label for="scenario">Scenario</label>
-        </div>
-        <div class="btn">
-          <input type="radio" name="ui" id="history"
-            ko="시뮬레이션 결과"
-            en="Simulation Result">
-          <label for="history">Simulation Result</label>
-        </div>
-      </div>
-      <div class="imgBox">
-        <div class="img active" id="img1">
-          <img class="ko" src="./images/gui/gui1-ko.png" alt="DashBoard">
-          <img class="en" src="./images/gui/gui1-en.png" alt="DashBoard">
-        </div>
-        <div class="img" id="img2">
-          <img src="./images/gui/gui2.png" alt="Scenario">
-        </div>
-        <div class="img" id="img3">
-          <img src="./images/gui/gui3.png" alt="Simulation">
-        </div>
-      </div>
-      <p class="btnInfo"></p>
-    </div>
-  </section>
-
-  <!-- 6. footer -->
   <footer>
     <div class="footer-top">
       <a href="https://www.78researchlab.com/" class="logoBox" title="Home">
@@ -375,6 +273,9 @@
           en="505, Gangnamdaero 464, Gangnam-gu, Seoul (Corporate Research Institute)">서울시 강남구 강남대로 464, 505호(기업부설연구소)</p>
         <p>Tel : 02 - 6952 - 7809</p>
         <p>Mail To : contact@78researchlab.com</p>
+        <p>
+          <a href="privacy.html" ko="개인정보 처리방침" en="Privacy Policy">개인정보 처리방침</a>
+        </p>
       </div>
       <div class="snsBox">
         <a class="icon" href="mailto:contact@78researchlab.com" target="_blank">
@@ -419,9 +320,20 @@
     <p class="copyrights">Copyrights © 2024 All Rights Reserved by 78ResearchLab.Inc.</p>
   </footer>
 
-  <script src="./js/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/common.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="./js/purpleHound.js"></script>
+  <script src="./js/purpleHound.js" type="module"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+      new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  });
+  </script>
 </body>
 </html>
