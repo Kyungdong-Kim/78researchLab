@@ -6,9 +6,20 @@ $(document).ready(function() {
   AOS.init();
   // 1-2. 언어 초기화
   let isKorean = !localStorage.getItem('lang') || localStorage.getItem('lang') === 'Ko';
-  $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
+  $('p, span, label, b, a, h3, h1, th, td, li, #submit, .sales-btn').each(function () {
     const langAttr = isKorean ? 'ko' : 'en';
     $(this).html($(this).attr(langAttr));
+
+    // 툴팁 언어 변환
+    $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn').each(function () {
+      const enTitle = $(this).attr(langAttr);
+      $(this).attr('data-bs-title', enTitle);
+      const tooltipInstance = bootstrap.Tooltip.getInstance(this);
+      if (tooltipInstance) {
+        tooltipInstance.dispose();
+      }
+      new bootstrap.Tooltip(this);
+    });
   });
 
   if (isKorean) {

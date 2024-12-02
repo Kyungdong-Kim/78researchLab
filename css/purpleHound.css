@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Noto+Serif+Vithkuqi:wght@400..700&family=Nunito:wght@500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:opsz,wght@8..60,500&family=Ultra&display=swap');
 
 /* 0. header */
 header {
@@ -349,6 +350,15 @@ header .menu-wrap .menu a.active {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 20px;
+}
+.sec4 .sec-bottom .wrap-box .table-wrap .title .category{
+  margin-right: 5px;
+}
+.sec4 .sec-bottom .wrap-box .table-wrap .title span:last-child{
+  font-family: "Anton", sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
 }
 .sec4 .sec-bottom .wrap-box .table-wrap table{
   width: 100%;
