@@ -214,9 +214,13 @@ footer .footer-top .txtBox p:nth-child(-n+4)::after{
   top: 0;
   color: #e5e5e5a4;
 }
+footer .footer-top .txtBox p a{
+  text-decoration: underline;
+  font-weight: normal;
+}
 footer .footer-top .txtBox p a:hover{
   color: inherit;
-  text-decoration: underline;
+  font-weight: 600;
 }
 footer .footer-top .snsBox{
   width: 300px;

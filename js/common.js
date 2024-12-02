@@ -1,4 +1,19 @@
 $(document).ready(function () {
+  // 언어 초기화
+  let isKorean = !localStorage.getItem('lang') || localStorage.getItem('lang') === 'Ko';
+  $('p, span, label, b, a, h3, h1, th, td, li, button#submit, option').each(function () {
+    const langAttr = isKorean ? 'ko' : 'en';
+    $(this).html($(this).attr(langAttr));
+    
+    if(isKorean){
+      $('.ko').show();
+      $('.en').hide();
+    } else {
+      $('.en').show();
+      $('.ko').hide();  
+    }
+  });
+
 	// change language
 	$('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function () {
 		if ($(this).text() === 'En') {

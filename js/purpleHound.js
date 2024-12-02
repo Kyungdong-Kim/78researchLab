@@ -5,8 +5,7 @@ $(document).ready(function() {
   // 1-1. Animation On Scroll 라이브러리 
   AOS.init();
   // 1-2. 언어 초기화
-  let isKorean;
-  isKorean = ($('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').text() !== 'Ko');
+  let isKorean = !localStorage.getItem('lang') || localStorage.getItem('lang') === 'Ko';
   $('p, span, label, b, a, h3, h1, th, td, li').each(function () {
     const langAttr = isKorean ? 'ko' : 'en';
     $(this).html($(this).attr(langAttr));
@@ -29,8 +28,20 @@ $(document).ready(function() {
       $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_ko);
       $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_ko);
       $('.sales-btn').html($('.sales-btn').attr('ko'));
-      $('tr th').html($(this).attr('ko'));
-      $('tr td').html($(this).attr('ko'));
+
+      $('tr').each(function(){
+        const $tr = $(this);
+        const $th = $tr.find('th');
+        const $td = $tr.find('td');
+      
+        $th.each(function(){
+          $(this).html($(this).attr('ko'));
+        });
+      
+        $td.each(function(){
+          $(this).html($(this).attr('ko'));
+        });
+      });
   
       // 툴팁 언어변환
       $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn').each(function () {
@@ -64,9 +75,21 @@ $(document).ready(function() {
       $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_en);
       $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_en);
       $('.sales-btn').html($('.sales-btn').attr('en'));
-      $('tr th').html($(this).attr('en'));
-      $('tr td').html($(this).attr('en'));
   
+      $('tr').each(function(){
+        const $tr = $(this);
+        const $th = $tr.find('th');
+        const $td = $tr.find('td');
+      
+        $th.each(function(){
+          $(this).html($(this).attr('en'));
+        });
+      
+        $td.each(function(){
+          $(this).html($(this).attr('en'));
+        });
+      });
+
       // 툴팁 언어 변환
       $('.sec3 .sec-bottom .custom-btn-wrap .custom-btn').each(function () {
         const enTitle = $(this).attr('en');

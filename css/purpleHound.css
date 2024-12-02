@@ -182,11 +182,13 @@ header .menu-wrap .menu a.active {
 .sec3 .sec-bottom .custom-btn-wrap .custom-btn:hover{
   color: gray;
   background-color: rgba(0, 0, 0, 0.03);
+  font-weight: 800;
 }
 .sec3 .sec-bottom .custom-btn-wrap .custom-btn.active{
   background-color: rgba(0, 0, 0, 0.05);
   color: #5F4B8B;
   border-left: 5px solid #5F4B8B;
+  font-weight: 800;
 }
 .tooltip-inner {
   max-width: fit-content;
@@ -557,6 +559,10 @@ header .menu-wrap .menu a.active {
 .modal.active .checkbox-wrap input,
 .modal.active .checkbox-wrap label{
   cursor: pointer;
+  margin: 5px 0;
+}
+.modal.active .checkbox-wrap label{
+  text-decoration: underline;
 }
 .modal.active .input-wrap .input-bottom #submit{
 	width: fit-content;

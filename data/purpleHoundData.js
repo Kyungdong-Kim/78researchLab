@@ -143,10 +143,10 @@ export const financeAttack = [
   },
   {
     id: 2,
-    name_ko: '거래 변조 공격',
-    description_ko: '정상적인 금융 거래 과정에 개입하여 거래 정보를 변조함으로써 자금을 탈취하는 공격입니다.',
-    name_en: 'Transaction Tampering Attack',
-    description_en: 'An attack that interferes with legitimate financial transactions and alters transaction information to steal funds.'
+    name_ko: '프로토콜 공격',
+    description_ko: '운영체제의 서비스 프로세스가 사용하는 프로토콜에 조작된 데이터(시스템 명령어 등)를 전송하는 공격입니다.',
+    name_en: 'Protocol Attack',
+    description_en: "An attack that sends manipulated data (e.g., system commands) to the protocols used by the operating system's service processes."
   },
   {
     id: 3,
@@ -157,17 +157,17 @@ export const financeAttack = [
   },
   {
     id: 4,
-    name_ko: '금융 앱 변조',
-    description_ko: '정상적인 금융 앱을 변조하여 사용자의 금융 정보를 탈취하거나 거래를 조작하는 공격입니다.',
-    name_en: 'Financial App Tampering',
-    description_en: 'An attack that modifies legitimate financial apps to steal user financial information or manipulate transactions.'
+    name_ko: '스피어피싱 공격',
+    description_ko: '특정 조직이나 개인을 겨냥한 맞춤형 피싱 메일을 보내는 공격으로, 신뢰할 수 있는 발신자로 위장하여 악성코드를 전송하거나 중요 정보를 탈취합니다.',
+    name_en: 'Spear Phishing Attack',
+    description_en: 'An attack that targets specific organizations or individuals by sending tailored phishing emails, disguising as a trusted sender to deliver malware or steal sensitive information.'
   },
   {
     id: 5,
-    name_ko: 'ATM 스키밍(Skimming)',
-    description_ko: 'ATM기기에 물리적인 장치를 설치하여 카드 정보와 비밀번호를 탈취하는 공격입니다.',
-    name_en: 'ATM Skimming',
-    description_en: 'An attack that installs physical devices on ATMs to capture card information and PINs.'
+    name_ko: 'S/W 공급망 공격',
+    description_ko: 'S/W 설치 및 업데이트 배포 과정을 통해 PC에 정상 소프트웨어로 위장한 악성코드를 감염시키는 공격입니다.',
+    name_en: 'Software Supply Chain Attack',
+    description_en: 'An attack that infects PCs with malware disguised as legitimate software through the software installation or update distribution process.'
   }
 ];
 
