@@ -663,7 +663,8 @@ $(document).ready(function() {
 
   // ===== 6. 공용 이벤트 처리
   // 6-1. 스크롤 이벤트
-  window.addEventListener("scroll", function () {
+  let isCountAnimating = false;
+  const checkArea = () => {
     checkScroll();
   
     const scrollTop = $(window).scrollTop();
@@ -671,18 +672,55 @@ $(document).ready(function() {
     const $sec3 = $('.sec3');
     const sec3Offset = $sec3.offset();
     const isInSec3 = (scrollTop + windowHeight) >= (sec3Offset.top + 90) && scrollTop < (sec3Offset.top + $sec3.height());
+    const $sec4 = $('.sec4 .sec-bottom');
+    const sec4Top = $sec4.offset().top;
+    const offsetBottom = scrollTop + windowHeight;
+    const isInSec4 = offsetBottom >= (sec4Top + $('.count-box').height() / 2);
   
     if (isInSec3 && !alreadyEntered) {
       alreadyEntered = true;
       activateStepGui($('.sec3 .sec-bottom .custom-btn-wrap .custom-btn.active'));
-    } else if (!isInSec3 && alreadyEntered) {
+    } else if (!isInSec3 && alreadyEntered){
       alreadyEntered = false;
-  
+
       if (autoMoveTimeout) {
         clearTimeout(autoMoveTimeout);
       }
     }
-  });
+
+    if (isInSec4 && !isCountAnimating) {
+      isCountAnimating = true;
+  
+      // countUP 애니메이션 실행
+      $("#count-value").each(function () {
+        const $this = $(this);
+        const targetNumber = parseInt($this.data("value"), 10);
+        $this.text(0);
+  
+        $({ count: 0 }).animate(
+          { count: targetNumber },
+          {
+            duration: 500,
+            easing: "linear",
+            step: function (now) {
+              $this.text(Math.ceil(now));
+            },
+            complete: function () {
+              $this.text(targetNumber);
+            },
+          }
+        );
+      });
+    }
+  
+    // .sec4 영역에서 벗어났을 때 초기화
+    if (!isInSec4 && isCountAnimating) {
+      isCountAnimating = false;
+      $("#count-value").text(0);
+    }
+  } //checkArea
+  checkArea();
+  window.addEventListener("scroll", checkArea);
 
   // 6-2. resize 이벤트
   $(window).on("resize", function () {
