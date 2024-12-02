@@ -473,7 +473,7 @@ $(document).ready(function() {
         const dataAccordionRows = attackData.map((item, idx) => `
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading-${item.id}">
-              <button class="accordion-button ${idx === 0 ? "" : "collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${item.id}" aria-expanded="${idx === 0}" aria-controls="flush-collapse-${item.id}" ko="#${item.id}. ${item.name_ko}" en="#${item.id}. ${item.name_en}">#${item.id}. ${isKorean ? item.name_ko : item.name_en}
+              <button class="accordion-button ${idx === 0 ? "" : "collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-${item.id}" aria-expanded="${idx === 0}" aria-controls="flush-collapse-${item.id}" ko="${item.id}. ${item.name_ko}" en="${item.id}. ${item.name_en}">${item.id}. ${isKorean ? item.name_ko : item.name_en}
               </button>
             </h2>
             <div id="flush-collapse-${item.id}" class="accordion-collapse collapse ${idx === 0 ? "show" : ""}" aria-labelledby="flush-heading-${item.id}" data-bs-parent="#accordionFlushExample">
