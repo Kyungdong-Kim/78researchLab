@@ -443,7 +443,7 @@ $(document).ready(function() {
     const $title = $tableWrap.find(".title .category");
     const $table = $tableWrap.find("table tbody");
     const $accordion = $tableWrap.find("#accordionFlushExample");
-    const isWideScreen = $(window).width() > (550 - 16);
+    const isWideScreen = $(window).width() >= (550 - 16);
   
     // 공통 업데이트
     const updateContent = () => {
