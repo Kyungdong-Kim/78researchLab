@@ -11,7 +11,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Pretendard';
-  word-break: keep-all;
+  /* word-break: keep-all; */
+  word-break: break-all;
 }
 ::-moz-selection {
   background: #3F4E6E;
@@ -28,6 +29,9 @@ a{
   text-decoration: none;
   color: inherit;
   display: block;
+}
+a:hover{
+  color: inherit;
 }
 button{
   background-color: transparent;
@@ -64,6 +68,7 @@ header .menu-wrap{
   align-items: center;
   width: fit-content;
   height: 100%;
+  margin: 0;
 }
 header .menu-wrap .menu{
   width: fit-content;
@@ -157,12 +162,15 @@ header .menuBtn.active ul li{
 header .menuBtn.active ul li p.active,
 header .menu-wrap li p.active{
   font-weight: 800;
+  margin: 0;
+  transform: translateY(0);
 }
 
 /* footer */
 footer{
   width: 100%;
-  height: 300px;
+  height: fit-content;
+  min-height: 300px;
   background-color: #202020;
   padding: 20px 50px;
 }
@@ -185,6 +193,7 @@ footer .footer-top .logoBox img{
   object-fit: contain;
 }
 footer .footer-top .txtBox{
+  height: fit-content;
   text-align: center;
   color: #e5e5e5a4;
   display: flex;
@@ -198,12 +207,20 @@ footer .footer-top .txtBox p{
   padding: 0 20px;
   position: relative;
 }
-footer .footer-top .txtBox p:nth-child(-n+3)::after{
+footer .footer-top .txtBox p:nth-child(-n+4)::after{
   content: '|';
   position: absolute;
   right: 0;
   top: 0;
   color: #e5e5e5a4;
+}
+footer .footer-top .txtBox p a{
+  text-decoration: underline;
+  font-weight: normal;
+}
+footer .footer-top .txtBox p a:hover{
+  color: inherit;
+  font-weight: 600;
 }
 footer .footer-top .snsBox{
   width: 300px;
@@ -223,6 +240,7 @@ footer .footer-top .snsBox .icon{
 }
 footer .footer-top .snsBox .icon svg{
   transition: 0.3s;
+  vertical-align: baseline;
 }
 footer .footer-top .snsBox .icon:hover svg {
   fill: #fff;
@@ -252,6 +270,9 @@ footer .copyrights{
   font-size: 0.8rem;
   font-weight: 100;
 }
+.en{
+  display: none;
+}
 
 @media (max-width : 800px) {
   footer .footer-top .snsBox{
@@ -264,7 +285,11 @@ footer .copyrights{
   }
 }
 @media (max-width : 525px) {
-  footer .footer-top .txtBox p:nth-child(-n+3)::after{
+  footer .footer-top .txtBox{
+    flex-direction: column;
+    height: fit-content;
+  }
+  footer .footer-top .txtBox p:nth-child(-n+4)::after{
     content: '';
   }
 }
