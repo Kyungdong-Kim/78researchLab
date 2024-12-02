@@ -517,7 +517,7 @@ $(document).ready(function() {
     $('#submit').css({ cursor: 'pointer', opacity: 1 });
     $('#submit').removeClass('disabled');
   } //closeModal
-  $('.modal .input-box .closeBtn').click(closeModal);
+  $('.modal .input-wrap .closeBtn').click(closeModal);
 
   // 5-2. 필수 입력값 확인
   const validateRequiredFields = () => {
