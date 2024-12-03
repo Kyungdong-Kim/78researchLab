@@ -39,7 +39,11 @@ $(document).ready(function() {
       $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_ko);
       $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_ko);
       $('.sales-btn').html($('.sales-btn').attr('ko'));
-
+      $('#submit').html($('#submit').attr('ko'));
+      
+      $('option').each(function(){
+        $(this).html($(this).attr('ko'))
+      })
       $('tr').each(function(){
         const $tr = $(this);
         const $th = $tr.find('th');
@@ -86,7 +90,11 @@ $(document).ready(function() {
       $('.sec3 .sec-bottom .info .txt-box .title').html(findInfo.title_en);
       $('.sec3 .sec-bottom .info .txt-box .sub').html(findInfo.description_en);
       $('.sales-btn').html($('.sales-btn').attr('en'));
-  
+      $('#submit').html($('#submit').attr('en'));
+
+      $('option').each(function(){
+        $(this).html($(this).attr('en'))
+      })
       $('tr').each(function(){
         const $tr = $(this);
         const $th = $tr.find('th');
@@ -532,7 +540,7 @@ $(document).ready(function() {
     }
     // 회사명 검증
     if ($('#company').val().trim().length == 0) {
-      alert(isKorean ? '소속을 입력해주세요' : 'Please enter your affiliation');
+      alert(isKorean ? '소속을 입력해주세요' : 'Please enter your company');
       $('#company').closest('.input-box').css({ border: '2px solid #FF000099' });
       $('#company').focus();
       return false;

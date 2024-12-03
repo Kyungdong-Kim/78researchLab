@@ -177,7 +177,7 @@ export const guiStepDetails = [
     step: 1,
     title_ko: '모든 데이터의 일원화된 뷰 및 저장 기능 제공',
     title_en: 'Unified View and Storage Functionality for All Data',
-    description_ko: '전체적인 데이터를 한눈에 확인하고, 필요한 정보를 손쉽게 저장할 수 있도록 기본보고서를 지원합니다.',
+    description_ko: '전체적인 데이터를 한눈에 확인하고, 필요한 정보를 손쉽게 저장할 수 있도록 기본 보고서를 지원합니다.',
     description_en: 'Provides comprehensive reports to easily view overall data at a glance and store necessary information effortlessly.',
   },
   {
