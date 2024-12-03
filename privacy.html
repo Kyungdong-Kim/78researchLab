@@ -111,13 +111,21 @@
   <script src="./js/jquery.js"></script>
 	<script src="./js/common.js"></script>
   <script>
-  $('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function () {  
-    if ($(this).text() === 'En') {
-      $('p, ul li').html($(this).attr('ko'));
-    } else {
-      $('p, ul li').html($(this).attr('en'));
-    }
-  });
+    $('header .menu-wrap .menu.lang, header .menuBtn ul li.lang').click(function () {  
+      if ($(this).text() === 'En') {
+        $('p, ul li').html($(this).attr('ko'));
+      } else {
+        $('p, ul li').html($(this).attr('en'));
+      }
+    });
+
+    $(document).ready(function () {
+      if (window.history.length <= 1) {
+        $('header .menu-wrap .menu').hide();
+      } else {
+        $('header .menu-wrap .menu').show();
+      }
+    });
   </script>
 </body>
 </html>
