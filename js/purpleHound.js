@@ -615,7 +615,7 @@ $(document).ready(function() {
     }
 
     // Email 검증
-    const email = `${$('#email').val()}@${$('#custom-email-domain').val()}`;
+    const email = `${$('#email').val().trim()}@${$('#custom-email-domain').val().trim()}`;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
