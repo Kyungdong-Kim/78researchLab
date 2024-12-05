@@ -139,6 +139,24 @@ $(document).ready(function() {
     }
   });
 
+  // 1-4. modal 활성화
+  // 페이지 로드 시 URL 해시 값에 따라 모달을 활성화
+  const checkHashAndOpenModal = () => {
+    if (window.location.hash === '#active-modal') {
+      $('.modal').addClass('active');
+    }
+  };
+  checkHashAndOpenModal();
+
+  // 해시 값이 변경될 때마다 모달을 처리하도록 이벤트 리스너 추가
+  $(window).on('hashchange', function () {
+    if (window.location.hash === '#active-modal') {
+      $('.modal').addClass('active');
+    } else {
+      closeModal();
+    }
+  });
+
   // ===== 2. Swiper 초기화
   var swiper = new Swiper(".mySwiper.swiper-1", {
     slidesPerView: 1,
@@ -513,6 +531,7 @@ $(document).ready(function() {
     $('.modal').addClass('active');
   });
   const closeModal = () => {
+    window.location.hash = '';
     $('.modal').removeClass('active');
     $('#name, #company, #phone-part1, #phone-part2, #phone-part3, #email, #custom-email-domain').each(function () {
       $(this).val('');
@@ -524,6 +543,7 @@ $(document).ready(function() {
     $('#agree label').css({ fontWeight: 'normal' });
     $('#submit').css({ cursor: 'pointer', opacity: 1 });
     $('#submit').removeClass('disabled');
+
   } //closeModal
   $('.modal .input-wrap .closeBtn').click(closeModal);
 
